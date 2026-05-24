@@ -1,0 +1,336 @@
+{
+    "@@locale": "ar",
+    "loginTitle": "تسجيل الدخول",
+    "@loginTitle": {
+        "description": "عنوان شاشة تسجيل الدخول"
+    },
+    "loginSubtitle": "مرحباً بك! الرجاء تسجيل الدخول إلى حسابك.",
+    "@loginSubtitle": {
+        "description": "العنوان الفرعي لشاشة تسجيل الدخول"
+    },
+    "emailAddress": "البريد الإلكتروني",
+    "@emailAddress": {
+        "description": "تسمية حقل البريد الإلكتروني"
+    },
+    "emailAddressHint": "أدخل عنوان بريدك الإلكتروني",
+    "@emailAddressHint": {
+        "description": "نص التلميح لحقل البريد الإلكتروني"
+    },
+    "password": "كلمة المرور",
+    "@password": {
+        "description": "تسمية حقل كلمة المرور"
+    },
+    "passwordHint": "أدخل كلمة مرورك",
+    "@passwordHint": {
+        "description": "نص التلميح لحقل كلمة المرور"
+    },
+    "didyouForgetPassword": "هل نسيت كلمة المرور؟",
+    "@didyouForgetPassword": {
+        "description": "نص خيار نسيت كلمة المرور في شاشة تسجيل الدخول"
+    },
+    "loginButton": "تسجيل الدخول",
+    "@loginButton": {
+        "description": "نص زر تسجيل الدخول"
+    },
+    "orLoginWith": "أو تسجيل الدخول باستخدام",
+    "@orLoginWith": {
+        "description": "نص للفصل بين طرق تسجيل الدخول التقليدية وتسجيل الدخول عبر وسائل التواصل الاجتماعي"
+    },
+    "signWithGoogle": "تسجيل الدخول باستخدام جوجل",
+    "@signWithGoogle": {
+        "description": "نص زر تسجيل الدخول باستخدام جوجل"
+    },
+    "dontHaveAnAccount": "ليس لديك حساب؟",
+    "@dontHaveAnAccount": {
+        "description": "نص خيار التسجيل في شاشة تسجيل الدخول"
+    },
+    "registerNow": "تسجيل الآن",
+    "@registerNow": {
+        "description": "نص خيار التسجيل الآن في شاشة تسجيل الدخول"
+    },
+
+
+
+
+    "registerTitle": "تسجيل جديد",
+    "@registerTitle": {
+        "description": "عنوان شاشة التسجيل"
+    },
+    "registerSubtitle": "أنشئ حساباً جديداً للبدء.",
+    "@registerSubtitle": {
+        "description": "العنوان الفرعي لشاشة التسجيل"
+    },
+    "firstName": "الاسم الأول",
+    "@firstName": {
+        "description": "تسمية حقل الاسم الأول"
+    },
+    "firstNameHint": "أدخل اسمك الأول",
+    "@firstNameHint": {
+        "description": "نص التلميح لحقل الاسم الأول"
+    },
+    "lastName": "الاسم الأخير",
+    "@lastName": {
+        "description": "تسمية حقل الاسم الأخير"
+    },
+    "lastNameHint": "أدخل اسمك الأخير",
+    "@lastNameHint": {
+        "description": "نص التلميح لحقل الاسم الأخير"
+    },
+    "phoneNumber": "رقم الهاتف",
+    "@phoneNumber": {
+        "description": "تسمية حقل رقم الهاتف"
+    },
+    "phoneNumberHint": "أدخل رقم هاتفك",
+    "@phoneNumberHint": {
+        "description": "نص التلميح لحقل رقم الهاتف"
+    },
+    "confirmPassword": "تأكيد كلمة المرور",
+    "@confirmPassword": {
+        "description": "تسمية حقل تأكيد كلمة المرور"
+    },
+    "confirmPasswordHint": "أعد إدخال كلمة المرور",
+    "@confirmPasswordHint": {
+        "description": "نص التلميح لحقل تأكيد كلمة المرور"
+    },
+    "registerButton": "تسجيل جديد",
+    "@registerButton": {
+        "description": "نص زر تسجيل جديد"
+    },
+    "alreadyHaveAnAccount": "هل لديك حساب بالفعل؟",
+    "@alreadyHaveAnAccount": {
+        "description": "نص خيار التسجيل في شاشة تسجيل الدخول"
+    },
+    "loginNow": "تسجيل الدخول الآن",
+    "@loginNow": {
+        "description": "نص خيار التسجيل الآن في شاشة التسجيل"
+    },
+
+
+
+    "forgotPasswordTitle": "نسيت كلمة المرور",
+    "@forgotPasswordTitle": {
+        "description": "عنوان شاشة نسيت كلمة المرور"
+    },
+    "forgotPasswordSubtitle": "لا تقلق! يحدث ذلك. الرجاء إدخال بريدك الإلكتروني لإعادة تعيين كلمة المرور.",
+    "@forgotPasswordSubtitle": {
+        "description": "العنوان الفرعي لشاشة نسيت كلمة المرور"
+    },
+    "forgotButton": "إرسال رابط إعادة التعيين",
+    "@forgotButton": {
+        "description": "نص زر إرسال رابط إعادة التعيين في شاشة نسيت كلمة المرور"
+    },
+
+
+
+    "home": "الرئيسية",
+    "@home": {
+        "description": "تسمية الشاشة الرئيسية في شريط التنقل السفلي"
+    },
+    "hi": "مرحباً👋",
+    "@hi": {
+        "description": "A greeting used to welcome the user"
+    },
+    "welcomeBack": "أهلا بعودتك",
+    "@welcomeBack": {
+        "description": "A message used to welcome the user back to the app"
+    },
+
+
+
+    "favourites": "المفضلة",
+    "@favourites": {
+        "description": "نص تسمية الشاشة المفضلة في شريط التنقل السفلي"
+    },
+    "favouritesTitle": "مفضلاتي",
+    "@favouritesTitle": {
+        "description": "عنوان شاشة المفضلة"
+    },
+    "emptyFavourites": "قائمة مفضلاتك فارغة.",
+    "@emptyFavourites": {
+        "description": "رسالة تعرض عندما تكون قائمة المفضلات فارغة"
+    },
+
+
+
+    "cart": "السلة",
+    "@cart": {
+        "description": "نص تسمية الشاشة السلة في شريط التنقل السفلي"
+    },
+    "cartTitle": "سلتك",
+    "@cartTitle": {
+        "description": "عنوان شاشة السلة"
+    },
+    "emptyCart": "سلتك فارغة.",
+    "@emptyCart": {
+        "description": "رسالة تعرض عندما تكون سلة المستخدم فارغة"
+    },
+
+
+
+    "profile": "الملف الشخصي",
+    "@profile": {
+        "description": "تسمية الشاشة الشخصية في شريط التنقل السفلي"
+    },
+    "settings": "الإعدادات",
+    "@settings": {
+        "description": "تسمية الشاشة الإعدادات في شريط التنقل السفلي"
+    },
+    "preferences": "التفضيلات",
+    "@preferences": {
+        "description": "تسمية قسم التفضيلات في شاشة الإعدادات"
+    },
+    "helpSupport": "الدعم والمساعدة",
+    "@helpSupport": {
+        "description": "تسمية قسم الدعم والمساعدة في شاشة الإعدادات"
+    },
+    "other": "أخرى",
+    "@other": {
+        "description": "تسمية قسم الآخرين في شاشة الإعدادات"
+    },
+    "logout": "تسجيل الخروج",
+    "@logout": {
+        "description": "نص خيار تسجيل الخروج في شاشة الإعدادات"
+    },
+
+
+
+    "account": "الحساب",
+    "@account": {
+        "description": "تسمية خيار إعدادات الحساب"
+    },
+    "personalInformation": "المعلومات الشخصية",
+    "@personalInformation": {
+        "description": "تسمية خيار إعدادات المعلومات الشخصية"
+    },
+    "save": "حفظ",
+    "@save": {
+        "description": "نص زر حفظ في شاشة إعدادات المعلومات الشخصية"
+    },
+    "deleteAccount": "حذف الحساب",
+    "@deleteAccount": {
+        "description": "نص خيار حذف الحساب في شاشة إعدادات المعلومات الشخصية"
+    },
+
+
+
+    "Language": "اللغة",
+    "@Language": {
+        "description": "نص تسمية خيار إعدادات اللغة"
+    },
+    "English": "الإنجليزية",
+    "@English": {
+        "description": "نص خيار اختيار اللغة الإنجليزية"
+    },
+    "Arabic": "العربية",
+    "@Arabic": {
+        "description": "نص خيار اختيار اللغة العربية"
+    },
+
+
+    
+    "Theme": "السمة",
+    "@Theme": {
+        "description": "نص تسمية خيار إعدادات السمة"
+    },
+    "Light": "فاتح",
+    "@Light": {
+        "description": "نص خيار اختيار السمة الفاتحة"
+    },
+    "Dark": "داكن",
+    "@Dark": {
+        "description": "نص خيار اختيار السمة الداكنة"
+    },
+    "System": "النظام",
+    "@System": {
+        "description": "نص خيار اختيار السمة الافتراضية للنظام"
+    },
+
+
+
+    "privacyPolicy": "سياسة الخصوصية",
+    "@privacyPolicy": {
+        "description": "تسمية خيار سياسة الخصوصية في شاشة الإعدادات"
+    },
+    "privacyPolicyDescription": "مرحباً بك في متجرنا الإلكتروني. فيما يلي الشروط والأحكام التي تنظم استخدامك للمتجر والآثار القانونية الناتجة عن استخدام خدماتنا. من خلال استخدام أي خدمة أو منتج، توافق على هذه الشروط.",
+    "@privacyPolicyDescription": {
+        "description": "وصف خيار سياسة الخصوصية في شاشة الإعدادات"
+    },
+    "firstPolicy": "1. المقدّمة والتعريفات",
+    "@firstPolicy": {
+        "description": "عنوان القسم الأول من سياسة الخصوصية"
+    },
+    "firstPolicyDescription": "تقدم هذه السياسة مقدمة عن المتجر الإلكتروني، وتحدد التعريفات الأساسية المستخدمة في الاتفاقية، مثل تعريف المتجر، العميل، الخدمة، المنتج، وغيرها من المصطلحات ذات الصلة.",
+    "@firstPolicyDescription": {
+        "description": "وصف القسم الأول من سياسة الخصوصية"
+    },
+    "secondPolicy": "2. الأهلية القانونية",
+    "@secondPolicy": {
+        "description": "عنوان القسم الثاني من سياسة الخصوصية"
+    },
+    "secondPolicyDescription": "يقر العميل بأن لديه القدرة القانونية الصالحة للتعامل مع المتجر والبالغ من العمر 18 سنة على الأقل. وفي حالة المخالفة، يتحمل العميل العواقب.",
+    "@secondPolicyDescription": {
+        "description": "وصف القسم الثاني من سياسة الخصوصية"
+    },
+    "thirdPolicy": "3. طبيعة الالتزام",
+    "@thirdPolicy": {
+        "description": "عنوان القسم الثالث من سياسة الخصوصية"
+    },
+    "thirdPolicyDescription": "يتعهد المتجر بتوفير الخدمة أو المنتج للعميل. قد يشمل ذلك خدمات послبيعية إضافية حسب نوع المنتج أو الخدمة.",
+    "@thirdPolicyDescription": {
+        "description": "وصف القسم الثالث من سياسة الخصوصية"
+    },
+    "fourthPolicy": "4. إرشادات الاستخدام",
+    "@fourthPolicy": {
+        "description": "عنوان القسم الرابع من سياسة الخصوصية"
+    },
+    "fourthPolicyDescription": "يجب على العميل استخدام المنصة وفقاً للأنظمة والأخلاق العامة ولا يجوز له استخدام الخدمة مخالفاً للقوانين المعمول بها.",
+    "@fourthPolicyDescription": {
+        "description": "وصف القسم الرابع من سياسة الخصوصية"
+    },
+    "fivthPolicy": "5. الحسابات وإلزامات التسجيل",
+    "@fivthPolicy": {
+        "description": "عنوان القسم الخامس من سياسة الخصوصية"
+    },
+    "fivthPolicyDescription": "يتحمل العميل مسؤولية سرية بيانات حسابه وكلمة المرور، ويوافق على استخدام معلومات دقيقة ومحدثة، ويحتفظ المتجر بالحق في تعليق الحساب في حال حدوث مخالفة.",
+    "@fivthPolicyDescription": {
+        "description": "وصف القسم الخامس من سياسة الخصوصية"
+    },
+    "sexthPolicy": "6. الملكية الفكرية, خدمات الدفع, التعديلات, مسؤولية المتجر, قيود الوصول, والقوانين المعمول بها",
+    "@sexthPolicy": {
+        "description": "عنوان القسم السادس من سياسة الخصوصية"
+    },
+    "sexthPolicyDescription": "يشمل هذا القسم تفاصيل حول الملكية الفكرية، وخدمات الدفع، والتعديلات على الاتفاقية، ومساءلة المتجر، وقيود الوصول، والقوانين المعمول بها—جميعها خاضعة للاتفاقية الأصلية الكاملة.",
+    "@sexthPolicyDescription": {
+        "description": "وصف القسم السادس من سياسة الخصوصية"
+    },
+
+
+
+    "aboutUsTitle": "معلومات عن المتجر",
+    "@aboutUsTitle": {
+        "description": "عنوان شاشة معلومات عنا"
+    },
+    "aboutUsDescription": "مرحبًا بكم في \"مياه الريف\"، المكان الذي تجدون فيه المياه الطبيعية المعبأة بعناية لتلبية احتياجاتكم اليومية بأعلى جودة. نحن نقدم مياه الريف المعبأة في زجاجات منخفضة الصوديوم، نقية تمامًا وخالية من أي إضافات غير ضرورية، مما يجعلها الخيار الأمثل لكل أفراد العائلة.",
+    "@aboutUsDescription": {
+        "description": "فقرة وصفية تستخدم في شاشة معلومات عنا"
+    },
+    "visionTitle": "رؤيتنا",
+    "@visionTitle": {
+        "description": "عنوان قسم الرؤيا في معلومات عنا"
+    },
+    "visionDescription": "الحفاظ على أعلى معايير الجودة لإنتاج مياه معبأة بأفضل الطرق الخاضعة لكافة قياسات الجودة وللتأكد من تقديم مياه صحية نقية بأفضل المواصفات العالمية.",
+    "@visionDescription": {
+        "description": "وصف قسم الرؤيا في معلومات عنا"
+    },
+
+
+
+    "contactUsTitle": "اتصل بنا",
+    "@contactUsTitle": {
+        "description": "عنوان شاشة اتصل بنا"
+    },
+    "contactUsDescription": "إذا كانت لديك أي أسئلة أو تحتاج إلى مساعدة، تواصل معنا عبر البريد الإلكتروني أو الهاتف. فريق دعم العملاء لدينا جاهز لمساعدتك فيما يتعلق بالطلبات والمنتجات والاستفسارات العامة.",
+    "@contactUsDescription": {
+        "description": "فقرة وصفية تستخدم في شاشة اتصل بنا"
+    }
+}

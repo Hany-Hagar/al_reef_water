@@ -1,0 +1,90 @@
+import 'package:flutter/material.dart';
+import '../../const_data/app_data.dart';
+import '../../../core/utils/nav_to.dart';
+import '../../../core/widgets/custom_text.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../services/icon_broken.dart';
+
+class CustomAppBar extends StatelessWidget {
+  final IconData? leading;
+  final Color? iconColor;
+  final String title;
+  final Widget? bottom;
+  final Color? backgroundColor;
+  final Widget? action;
+  const CustomAppBar({
+    super.key,
+    this.leading,
+    this.iconColor,
+    required this.title,
+    this.bottom,
+    this.backgroundColor,
+    this.action,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: defaultAppBarPadding(context),
+      decoration: BoxDecoration(
+        color: backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: bottom != null
+            ? BorderRadius.only(
+                bottomLeft: Radius.circular(20.r),
+                bottomRight: Radius.circular(20.r),
+              )
+            : null,
+      ),
+      child: Column(
+        spacing: 10.h,
+        children: [
+          Row(
+            children: [
+              _Start(iconColor: iconColor, leading: leading),
+              SizedBox(width: 16.w),
+              _Title(text: title),
+              Spacer(),
+              ?action,
+            ],
+          ),
+          ?bottom,
+        ],
+      ),
+    );
+  }
+}
+
+class _Start extends StatelessWidget {
+  final Color? iconColor;
+  final IconData? leading;
+
+
+  const _Start({required this.iconColor, required this.leading});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => NavTo.pop(context),
+      child: Icon(
+        leading ?? IconBroken.Arrow___Right,
+        size: 25.sp,
+        color: iconColor ?? Theme.of(context).hintColor,
+      ),
+    );
+  }
+}
+
+class _Title extends StatelessWidget {
+  final String text;
+  const _Title({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomText(
+      text: text,
+      size: 25.sp,
+      type: Type.overMedium,
+      color: Theme.of(context).hintColor,
+    );
+  }
+}

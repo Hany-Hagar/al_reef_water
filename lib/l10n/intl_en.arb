@@ -1,0 +1,334 @@
+{
+    "@@locale": "en",
+
+
+
+    "loginTitle": "Login",
+    "@loginTitle": {
+        "description": "Title for the login screen"
+    },
+    "loginSubtitle": "Welcome back! Please login to your account.",
+    "@loginSubtitle": {
+        "description": "Subtitle for the login screen"
+    },
+    "emailAddress": "Email Address",
+    "@emailAddress": {
+        "description": "Label for the email address field"
+    },
+    "emailAddressHint": "Enter your email address",
+    "@emailAddressHint": {
+        "description": "Hint text for the email address field"
+    },
+    "password": "Password",
+    "@password": {
+        "description": "Label for the password field"
+    },
+    "passwordHint": "Enter your password",
+    "@passwordHint": {
+        "description": "Hint text for the password field"
+    },
+    "didyouForgetPassword": "Did you forget your password?",
+    "@didyouForgetPassword": {
+        "description": "Text for the forgot password option in the login screen"
+    },
+    "loginButton": "Login",
+    "@loginButton": {
+        "description": "Text for the login button"
+    },
+    "orLoginWith": "Or login with",
+    "@orLoginWith": {
+        "description": "Text for the alternative login options"
+    },
+    "signWithGoogle": "Sign in with Google",
+    "@signWithGoogle": {
+        "description": "Text for the Google sign-in button"
+    },
+    "dontHaveAnAccount": "Don't have an account?",
+    "@dontHaveAnAccount": {
+        "description": "Text for the option to switch to the registration screen"
+    },
+    "registerNow": "Register now",
+    "@registerNow": {
+        "description": "Text for the register now option in the login screen"
+    },
+
+
+
+    "registerTitle": "Register",
+    "@registerTitle": {
+        "description": "Title for the registration screen"
+    },
+    "registerSubtitle": "Create a new account to get started.",
+    "@registerSubtitle": {
+        "description": "Subtitle for the registration screen"
+    },
+    "firstName": "First Name",
+    "@firstName": {
+        "description": "Label for the first name field"
+    },
+    "firstNameHint": "Enter your first name",
+    "@firstNameHint": {
+        "description": "Hint text for the first name field"
+    },
+    "lastName": "Last Name",
+    "@lastName": {
+        "description": "Label for the last name field"
+    },
+    "lastNameHint": "Enter your last name",
+    "@lastNameHint": {
+        "description": "Hint text for the last name field"
+    },
+    "phoneNumber": "Phone Number",
+    "@phoneNumber": {
+        "description": "Label for the phone number field"
+    },
+    "phoneNumberHint": "Enter your phone number",
+    "@phoneNumberHint": {
+        "description": "Hint text for the phone number field"
+    },
+    "confirmPassword": "Confirm Password",
+    "@confirmPassword": {
+        "description": "Label for the confirm password field"
+    },
+    "confirmPasswordHint": "Re-enter your password",
+    "@confirmPasswordHint": {
+        "description": "Hint text for the confirm password field"
+    },
+    "registerButton": "Register",
+    "@registerButton": {
+        "description": "Text for the register button"
+    },
+    "alreadyHaveAnAccount": "Already have an account?",
+    "@alreadyHaveAnAccount": {
+        "description": "Text for the option to switch to the login screen"
+    },
+    "loginNow": "Login now",
+    "@loginNow": {
+        "description": "Text for the login now option in the registration screen"
+    },
+
+
+
+    "forgotPasswordTitle": "Forgot Password",
+    "@forgotPasswordTitle": {
+        "description": "Title for the forgot password screen"
+    },
+    "forgotPasswordSubtitle": "Don't worry! It happens. Please enter your email to reset your password.",
+    "@forgotPasswordSubtitle": {
+        "description": "Subtitle for the forgot password screen"
+    },
+    "forgotButton": "Send Reset Link",
+    "@forgotButton": {
+        "description": "Text for the send reset link button in the forgot password screen"
+    },
+
+
+    "home": "Home",
+    "@home": {
+        "description": "Label for the home screen in the bottom navigation bar"
+    },
+    "hi": "Hi👋",
+    "@hi": {
+        "description": "A greeting used to welcome the user"
+    },
+    "welcomeBack": "Welcome back",
+    "@welcomeBack": {
+        "description": "A message used to welcome the user back to the app"
+    },
+
+
+
+    "favourites": "Favourites",
+    "@favourites": {
+        "description": "Label for the favourites screen in the bottom navigation bar"
+    },
+    "favouritesTitle": "Your Favourites",
+    "@favouritesTitle": {
+        "description": "Title for the favourites screen"
+    },
+    "emptyFavourites": "Your favourites list is empty.",
+    "@emptyFavourites": {
+        "description": "Message displayed when the user's favourites list is empty"
+    },
+
+
+
+    "cart": "Cart",
+    "@cart": {
+        "description": "Label for the cart screen in the bottom navigation bar"
+    },
+    "cartTitle": "Your Cart",
+    "@cartTitle": {
+        "description": "Title for the cart screen"
+    },
+    "emptyCart": "Your cart is empty.",
+    "@emptyCart": {
+        "description": "Message displayed when the user's cart is empty"
+    },
+
+
+
+    "profile": "Profile",
+    "@profile": {
+        "description": "Label for the profile screen in the bottom navigation bar"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Label for the settings screen in the bottom navigation bar"
+    },
+    "preferences": "Preferences",
+    "@preferences": {
+        "description": "Label for the preferences section in the settings screen"
+    },
+    "helpSupport": "Support & Help",
+    "@helpSupport": {
+        "description": "Label for the support and help section in the settings screen"
+    },
+    "other": "Other",
+    "@other": {
+        "description": "Label for the other section in the settings screen"
+    },
+    "logout": "Logout",
+    "@logout": {
+        "description": "Text for the logout option in the settings screen"
+    },
+
+
+
+    "account": "Account",
+    "@account": {
+        "description": "Label for the account settings option"
+    },
+    "personalInformation": "Personal Information",
+    "@personalInformation": {
+        "description": "Label for the personal information settings option"
+    },
+    "save": "Save",
+    "@save": {
+        "description": "Text for the save button in the account settings screen"
+    },
+    "deleteAccount": "Delete Account",
+    "@deleteAccount": {
+        "description": "Text for the delete account button in the account settings screen"
+    },
+
+
+
+
+    "Language": "Language",
+    "@Language": {
+        "description": "Label for the language settings option"
+    },
+    "English": "English",
+    "@English": {
+        "description": "Option for selecting English language"
+    },
+    "Arabic": "Arabic",
+    "@Arabic": {
+        "description": "Option for selecting Arabic language"
+    },
+
+
+
+    "Theme": "Theme",
+    "@Theme": {
+        "description": "Label for the theme settings option"
+    },
+    "Light": "Light",
+    "@Light": {
+        "description": "Option for selecting light theme"
+    },
+    "Dark": "Dark",
+    "@Dark": {
+        "description": "Option for selecting dark theme"
+    },
+    "System": "System",
+    "@System": {
+        "description": "Option for selecting system default theme"
+    },
+
+    "privacyPolicy": "Privacy Policy",
+    "@privacyPolicy": {
+        "description": "Label for the privacy policy option in the settings screen"
+    },
+    "privacyPolicyDescription": "Our online store welcomes you. Below are the terms and conditions governing your use of the store and the legal effects arising from using our services. By using any service or product, you agree to these terms.",
+    "@privacyPolicyDescription": {
+        "description": "Description for the privacy policy option in the settings screen"
+    },
+    "firstPolicy": "1. Introduction and Definitions",
+    "@firstPolicy": {
+        "description": "Title for the first section of the privacy policy"
+    },
+    "firstPolicyDescription": "The preamble is an integral part of this agreement and includes definitions of the store, consumer, and the agreement itself.",
+    "@firstPolicyDescription": {
+        "description": "Description for the first section of the privacy policy"
+    },
+    "secondPolicy": "2. Consumer Legal Capacity",
+    "@secondPolicy": {
+        "description": "Title for the second section of the privacy policy"
+    },
+    "secondPolicyDescription": "The consumer acknowledges having valid legal capacity to deal with the store and being at least 18 years old. In case of violation, the consumer bears the consequences.",
+    "@secondPolicyDescription": {
+        "description": "Description for the second section of the privacy policy"
+    },
+    "thirdPolicy": "3. Nature of Commitment",
+    "@thirdPolicy": {
+        "description": "Title for the third section of the privacy policy"
+    },
+    "thirdPolicyDescription": "The store’s commitment is to provide the service or product to the customer. It may include additional after-sales services depending on the product or service type.",
+    "@thirdPolicyDescription": {
+        "description": "Description for the third section of the privacy policy"
+    },
+    "fourthPolicy": "4. Usage Guidelines",
+    "@fourthPolicy": {
+        "description": "Title for the fourth section of the privacy policy"
+    },
+    "fourthPolicyDescription": "The consumer must use the platform in accordance with regulations and public morals and must not use the service in violation of applicable laws.",
+    "@fourthPolicyDescription": {
+        "description": "Description for the fourth section of the privacy policy"
+    },
+    "fivthPolicy": "5. Accounts and Registration Obligations",
+    "@fivthPolicy": {
+        "description": "Title for the fifth section of the privacy policy"
+    },
+    "fivthPolicyDescription": "The consumer is responsible for the confidentiality of their account data and password, agrees to use accurate and up-to-date information, and the store reserves the right to suspend the account in case of violation.",
+    "@fivthPolicyDescription": {
+        "description": "Description for the fifth section of the privacy policy"
+    },
+    "sexthPolicy": "6. Intellectual Property, Payment Services, Modifications, Store Liability, Access Restrictions, and Applicable Laws",
+    "@sexthPolicy": {
+        "description": "Title for the sixth section of the privacy policy"
+    },
+    "sexthPolicyDescription": "This includes details on intellectual property, payment services, modifications to the agreement, store liability, access restrictions, and applicable laws—all subject to the full original agreement.",
+    "@sexthPolicyDescription": {
+        "description": "Description for the sixth section of the privacy policy"
+    },
+
+
+
+    "aboutUsTitle": "About Us",
+    "@aboutUsTitle": {
+        "description": "Title for the About Us screen"
+    },
+    "aboutUsDescription": "Welcome to \"Al-Reef Water\", where you’ll find naturally bottled water carefully prepared to meet your daily needs with top quality. We offer low-sodium bottled water, pure and free from unnecessary additives—an ideal choice for everyone, from children to seniors. Al-Reef Water is a healthy choice thanks to advanced production methods that preserve essential minerals your body needs. We put your health first by providing mineral-rich water that supports your overall well-being and balance.",
+    "@aboutUsDescription": {
+        "description": "Description paragraph used in the About Us screen"
+    },
+    "visionTitle": "Our Vision",
+    "@visionTitle": {
+        "description": "Title for the Vision section in About Us"
+    },
+    "visionDescription": "Maintaining the highest quality standards to produce bottled water using best practices compliant with all quality measurements, ensuring pure, healthy water that meets top international specifications.",
+    "@visionDescription": {
+        "description": "Description for the Vision section in About Us"
+    }
+    ,
+    "contactUsTitle": "Contact Us",
+    "@contactUsTitle": {
+        "description": "Title for the Contact Us screen"
+    },
+    "contactUsDescription": "If you have questions or need assistance, reach out to us via email or phone. Our customer support team is available to help you with orders, products, and general inquiries.",
+    "@contactUsDescription": {
+        "description": "Description paragraph used in the Contact Us screen"
+    }
+}
