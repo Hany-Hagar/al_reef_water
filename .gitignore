@@ -43,3 +43,20 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firebase related
+.firebase/
+**/google-services.json
+**/GoogleService-Info.plist
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+firebase.json
+firebase_options.dart
+
+# Google Play & Android Signing related
+**/android/key.properties
+**/*.keystore
+**/*.jks
+**/*.p12
+**/play-services-*.json
