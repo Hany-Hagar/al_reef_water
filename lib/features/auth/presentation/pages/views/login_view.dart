@@ -26,7 +26,7 @@ class LoginView extends StatelessWidget {
           NavTo.pushReplacement(context: context, nextPage: const LayoutView());
         }
       },
-      child: CustomBackground(body: LoginBody()),
+      child: CustomBackground(body: LoginBody())
     );
   }
 }

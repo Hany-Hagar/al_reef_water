@@ -76,6 +76,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "لا تقلق! يحدث ذلك. الرجاء إدخال بريدك الإلكتروني لإعادة تعيين كلمة المرور."),
         "forgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور"),
+        "forgotSuccess": MessageLookupByLibrary.simpleMessage(
+            "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني."),
         "fourthPolicy":
             MessageLookupByLibrary.simpleMessage("4. إرشادات الاستخدام"),
         "fourthPolicyDescription": MessageLookupByLibrary.simpleMessage(
@@ -111,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerNow": MessageLookupByLibrary.simpleMessage("تسجيل الآن"),
         "registerSubtitle":
             MessageLookupByLibrary.simpleMessage("أنشئ حساباً جديداً للبدء."),
+        "registerSuccess": MessageLookupByLibrary.simpleMessage(
+            "تم التسجيل بنجاح! الرجاء تسجيل الدخول إلى حسابك."),
         "registerTitle": MessageLookupByLibrary.simpleMessage("تسجيل جديد"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "secondPolicy":

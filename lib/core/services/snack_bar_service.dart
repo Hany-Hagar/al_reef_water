@@ -31,8 +31,8 @@ SnackBar _snackBar({
     elevation: 6.0,
     backgroundColor: bgColor,
     behavior: SnackBarBehavior.floating,
-    padding: EdgeInsets.symmetric(vertical: 10.h),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+    padding: EdgeInsets.symmetric(vertical: 10.h , horizontal: 20.w),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
     margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
     duration: const Duration(seconds:2),
     animation: CurvedAnimation(
@@ -42,7 +42,7 @@ SnackBar _snackBar({
     content: CustomText(
       text: text,
       size: 18.sp,
-      maxLines: 5,
+      maxLines: 6,
       type: Type.overMedium,
       textAlign: TextAlign.center,
       color: Theme.of(context).scaffoldBackgroundColor,

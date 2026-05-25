@@ -9,7 +9,7 @@ class RegisterBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
+    var formKey = GlobalKey<FormState>();
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         var cubit = AuthCubit.get(context);

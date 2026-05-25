@@ -300,6 +300,16 @@ class S {
     );
   }
 
+  /// `Registration successful! Please login to your account.`
+  String get registerSuccess {
+    return Intl.message(
+      'Registration successful! Please login to your account.',
+      name: 'registerSuccess',
+      desc: 'Message displayed when registration is successful',
+      args: [],
+    );
+  }
+
   /// `Forgot Password`
   String get forgotPasswordTitle {
     return Intl.message(
@@ -326,6 +336,17 @@ class S {
       'Send Reset Link',
       name: 'forgotButton',
       desc: 'Text for the send reset link button in the forgot password screen',
+      args: [],
+    );
+  }
+
+  /// `A password reset link has been sent to your email.`
+  String get forgotSuccess {
+    return Intl.message(
+      'A password reset link has been sent to your email.',
+      name: 'forgotSuccess',
+      desc:
+          'Message displayed when the password reset link is successfully sent',
       args: [],
     );
   }

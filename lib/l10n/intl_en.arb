@@ -106,6 +106,10 @@
     "@loginNow": {
         "description": "Text for the login now option in the registration screen"
     },
+    "registerSuccess": "Registration successful! Please login to your account.",
+    "@registerSuccess": {
+        "description": "Message displayed when registration is successful"
+    },
 
 
 
@@ -120,6 +124,10 @@
     "forgotButton": "Send Reset Link",
     "@forgotButton": {
         "description": "Text for the send reset link button in the forgot password screen"
+    },
+    "forgotSuccess": "A password reset link has been sent to your email.",
+    "@forgotSuccess": {
+        "description": "Message displayed when the password reset link is successfully sent"
     },
 
 

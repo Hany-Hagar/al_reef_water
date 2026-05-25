@@ -9,10 +9,10 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
+    var formKey = GlobalKey<FormState>();
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        var cubit = context.read<AuthCubit>();
+        var cubit = AuthCubit.get(context);
         return AuthForm(
           formKey: formKey,
           isRegister: false,

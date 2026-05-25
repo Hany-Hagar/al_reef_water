@@ -34,6 +34,13 @@ class AuthRepoImpl extends AuthRepo {
       if (user == null) {
         return Left(Failure.handle('User not found'));
       }
+      final userDoc = await authData.getUserData(user.uid);
+      if (userDoc.exists) {
+        final data = userDoc.data();
+        if (data is Map<String, dynamic>) {
+          return Right(UserModel.fromMap(data));
+        }
+      }
       return Right(UserModel.fromFirebaseUser(user));
     } catch (e) {
       return Left(Failure.handle(e.toString()));

@@ -75,6 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Don\'t worry! It happens. Please enter your email to reset your password."),
         "forgotPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Forgot Password"),
+        "forgotSuccess": MessageLookupByLibrary.simpleMessage(
+            "A password reset link has been sent to your email."),
         "fourthPolicy":
             MessageLookupByLibrary.simpleMessage("4. Usage Guidelines"),
         "fourthPolicyDescription": MessageLookupByLibrary.simpleMessage(
@@ -110,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerNow": MessageLookupByLibrary.simpleMessage("Register now"),
         "registerSubtitle": MessageLookupByLibrary.simpleMessage(
             "Create a new account to get started."),
+        "registerSuccess": MessageLookupByLibrary.simpleMessage(
+            "Registration successful! Please login to your account."),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "secondPolicy":

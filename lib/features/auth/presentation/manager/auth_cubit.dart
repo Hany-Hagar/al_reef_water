@@ -36,6 +36,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signIn({required GlobalKey<FormState> formKey}) async {
+    if (!formKey.currentState!.validate()) return;
     emit(SignInLoadingState());
     final result = await authRepo.signIn(
       email: emailController.text,
@@ -90,6 +91,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signUp({required GlobalKey<FormState> formKey}) async {
+    if (!formKey.currentState!.validate()) return;
     emit(SignUpLoadingState());
     final result = await authRepo.signUp(user: _registerUser);
     result.fold((failure) => emit(SignUpErrorState(failure.message)), (user) {
@@ -100,7 +102,9 @@ class AuthCubit extends Cubit<AuthState> {
 
   // Reset Password
   var resetEmailController = TextEditingController();
+
   Future<void> resetPassword({required GlobalKey<FormState> formKey}) async {
+    if (!formKey.currentState!.validate()) return;
     emit(ResetPasswordLoadingState());
     final result = await authRepo.resetPassword(
       email: resetEmailController.text,
@@ -132,7 +136,6 @@ class AuthCubit extends Cubit<AuthState> {
     result.fold((failure) => emit(SignOutErrorState(failure.message)), (_) {
       getIt<LayoutCubit>().currentIndex = 0;
       emit(SignOutSuccessState());
-
     });
   }
 }
