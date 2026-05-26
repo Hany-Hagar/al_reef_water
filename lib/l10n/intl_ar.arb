@@ -146,8 +146,12 @@
     "@popularProducts": {
         "description": "Title for the popular products section on the home screen"
     },
+    "addProductToCartSuccess": "تم إضافة المنتج إلى السلة بنجاح!",
+    "@addProductToCartSuccess": {
+        "description": "Message displayed when a product is successfully added to the cart"
+    },
 
-
+    
 
     "favourites": "المفضلة",
     "@favourites": {

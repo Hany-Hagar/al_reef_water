@@ -1,16 +1,16 @@
-import '../../../../../generated/l10n.dart';
 import 'favourite_icon.dart';
-import '../views/product_view.dart';
 import 'package:flutter/material.dart';
 import '../../manager/product_cubit.dart';
 import '../../manager/product_states.dart';
-import '../../../../../core/utils/nav_to.dart';
+import '../../../../../generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/models/product_model.dart';
 import '../../../../../core/widgets/custom_text.dart';
 import '../../../../../core/widgets/custom_grid.dart';
+import '../../../../../core/services/icon_broken.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../../cart/presentation/manager/cart_cubit.dart';
+import '../../../../cart/presentation/manager/cart_states.dart';
 
 class HomeProducts extends StatelessWidget {
   const HomeProducts({super.key});
@@ -56,24 +56,28 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => NavTo.push(
-        context: context,
-        nextPage: ProductView(product: product),
-      ),
-      child: Card(
-        margin: EdgeInsets.zero,
-        clipBehavior: Clip.antiAlias,
-        color: Theme.of(  context).scaffoldBackgroundColor,
-        child: Column(
-          children: [
-            _Image(imageUrl: product.images.first, productId: product.id),
-            SizedBox(height: 8.h),
-            Expanded(child: _ItemBody(product: product)),
-            SizedBox(height: 8.h),
-          ],
+    return Stack(
+      alignment: AlignmentDirectional.bottomEnd,
+      children: [
+        Card(
+          margin: EdgeInsets.zero,
+          clipBehavior: Clip.antiAlias,
+          color: Theme.of(context).scaffoldBackgroundColor,
+          child: Column(
+            children: [
+              _Image(imageUrl: product.images.first, productId: product.id),
+              SizedBox(height: 8.h),
+              Expanded(child: _ItemBody(product: product)),
+              SizedBox(height: 8.h),
+            ],
+          ),
         ),
-      ),
+        PositionedDirectional(
+          end: 12.w,
+          bottom: 12.h,
+          child: _Carticon(product: product),
+        ),
+      ],
     );
   }
 }
@@ -99,7 +103,11 @@ class _Image extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(top: 8.h, right: 8.w, child:  FavouriteIcon(productId: productId)),
+        Positioned(
+          top: 8.h,
+          right: 8.w,
+          child: FavouriteIcon(productId: productId),
+        ),
       ],
     );
   }
@@ -129,6 +137,30 @@ class _ItemBody extends StatelessWidget {
             type: Type.overMedium,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _Carticon extends StatelessWidget {
+  final ProductModel product;
+  const _Carticon({required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => CartCubit.get(context).addToCart(product),
+      child: BlocBuilder<CartCubit, CartState>(
+        builder: (context, state) {
+          if (state is AddToCartLoading && state.productId == product.id) {
+            return SizedBox(
+              width: 24.w,
+              height: 24.h,
+              child: CircularProgressIndicator(),
+            );
+          }
+          return Icon(IconBroken.Buy, size: 24.sp);
+        },
       ),
     );
   }

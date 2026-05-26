@@ -1,3 +1,6 @@
+import '../../../../../core/services/snack_bar_service.dart';
+import '../../../../cart/presentation/manager/cart_cubit.dart';
+import '../../../../cart/presentation/manager/cart_states.dart';
 import '../widgets/home_body.dart';
 import 'package:flutter/material.dart';
 import '../../manager/product_cubit.dart';
@@ -20,9 +23,16 @@ class HomeView extends StatelessWidget {
       value: getIt<ProductCubit>()
         ..fetchProducts()
         ..fetchProducts(),
-      child: CustomBackground(
-        top: const _Top(),
-        body: const HomeBody(),
+      child: BlocListener<CartCubit, CartState>(
+        listener: (context, state) {
+          if (state is AddToCartSuccess) {
+            SnackBarService.success(
+              context: context,
+              message: S.of(context).addProductToCartSuccess,
+            );
+          }
+        },
+        child: CustomBackground(top: const _Top(), body: const HomeBody()),
       ),
     );
   }

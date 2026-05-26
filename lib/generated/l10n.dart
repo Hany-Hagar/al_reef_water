@@ -391,6 +391,17 @@ class S {
     );
   }
 
+  /// `Product added to cart successfully!`
+  String get addProductToCartSuccess {
+    return Intl.message(
+      'Product added to cart successfully!',
+      name: 'addProductToCartSuccess',
+      desc:
+          'Message displayed when a product is successfully added to the cart',
+      args: [],
+    );
+  }
+
   /// `Favourites`
   String get favourites {
     return Intl.message(

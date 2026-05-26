@@ -24,7 +24,7 @@ class CartCubit extends Cubit<CartState> {
   }
 
   void addToCart(ProductModel product) async {
-    emit(AddToCartLoading());
+    emit(AddToCartLoading(productId: product.id));
     final result = await cartRepo.addToCart(product);
     result.fold((failure) => emit(CartFailure(failure.message)), (cartItem) {
       cartItems.add(cartItem);

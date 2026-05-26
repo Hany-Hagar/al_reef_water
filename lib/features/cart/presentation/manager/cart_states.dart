@@ -12,7 +12,10 @@ class CartFailure extends CartState {
   CartFailure(this.message);
 }
 
-class AddToCartLoading extends CartState {}
+class AddToCartLoading extends CartState {
+  final String productId;
+  AddToCartLoading({required this.productId});
+}
 class AddToCartSuccess extends CartState {}
 
 class RemoveFromCartLoading extends CartState {}
