@@ -102,7 +102,7 @@ class AuthRepoImpl extends AuthRepo {
       if (firebaseUser == null) {
         return Left(Failure.handle('User not created'));
       }
-      await authData.addUserData(uid: firebaseUser.uid, userModel: user);
+      await authData.addUserData(uid: firebaseUser.uid, userModel: user.copyWith(id: firebaseUser.uid));
       return Right(user.copyWith(id: firebaseUser.uid));
     } catch (e) {
       return Left(Failure.handle(e.toString()));

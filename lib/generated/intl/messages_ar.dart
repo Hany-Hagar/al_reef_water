@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutUsTitle":
             MessageLookupByLibrary.simpleMessage("معلومات عن المتجر"),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
+        "address": MessageLookupByLibrary.simpleMessage("العنوان"),
+        "addressHint": MessageLookupByLibrary.simpleMessage("أدخل عنوانك"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
         "cart": MessageLookupByLibrary.simpleMessage("السلة"),
@@ -104,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "phoneNumberHint":
             MessageLookupByLibrary.simpleMessage("أدخل رقم هاتفك"),
+        "popularProducts": MessageLookupByLibrary.simpleMessage("أهم المنتجات"),
         "preferences": MessageLookupByLibrary.simpleMessage("التفضيلات"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "privacyPolicyDescription": MessageLookupByLibrary.simpleMessage(

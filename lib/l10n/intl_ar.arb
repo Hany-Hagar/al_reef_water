@@ -142,6 +142,10 @@
     "@welcomeBack": {
         "description": "A message used to welcome the user back to the app"
     },
+    "popularProducts": "أهم المنتجات",
+    "@popularProducts": {
+        "description": "Title for the popular products section on the home screen"
+    },
 
 
 
@@ -179,6 +183,17 @@
     "@profile": {
         "description": "تسمية الشاشة الشخصية في شريط التنقل السفلي"
     },
+    "address": "العنوان",
+    "@address": {
+        "description": "تسمية حقل العنوان في شاشة الملف الشخصي"
+    },
+    "addressHint": "أدخل عنوانك",
+    "@addressHint": {
+        "description": "نص التلميح لحقل العنوان في شاشة الملف الشخصي"
+    },
+
+
+
     "settings": "الإعدادات",
     "@settings": {
         "description": "تسمية الشاشة الإعدادات في شريط التنقل السفلي"

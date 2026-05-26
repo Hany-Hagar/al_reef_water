@@ -1,3 +1,4 @@
+import '../../../../../generated/l10n.dart';
 import 'favourite_icon.dart';
 import '../views/product_view.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class HomeProducts extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 14.w),
               child: CustomText(
-                text: "أشهر المنتجات",
+                text: S.of(context).popularProducts,
                 size: 20.sp,
                 type: Type.header,
               ),

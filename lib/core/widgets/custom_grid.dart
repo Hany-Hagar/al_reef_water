@@ -40,7 +40,6 @@ class CustomGrid extends StatelessWidget {
     }
     return Skeletonizer(
       enabled: isLoading,
-      ignoreContainers: true,
       child: _Grid(
         items: isLoading ? emptyItems : items,
         physics: physics,

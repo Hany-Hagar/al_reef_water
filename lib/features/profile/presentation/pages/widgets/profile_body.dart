@@ -1,12 +1,16 @@
 // ignore_for_file: unused_element_parameter
 
+import 'dart:developer';
+
+import 'profile_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/widgets/custom_text.dart';
+import '../../../../../core/services/icon_broken.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../core/services/location_service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
-import 'profile_widget.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({super.key});
@@ -26,6 +30,22 @@ class ProfileBody extends StatelessWidget {
           hint: s.phoneNumberHint,
           keyboardType: TextInputType.phone,
           controller: TextEditingController(),
+        ),
+        _Item(
+          title: s.address,
+          hint: s.addressHint,
+          suffixIcon: Icons.map,
+          prefixIcon: IconBroken.Location,
+          controller: TextEditingController(),
+          keyboardType: TextInputType.streetAddress,
+          onSuffixPressed: () {
+            LocationService.openLocationPicker(
+              context: context,
+              onLocationPicked: (pickedData) {
+                log("location: $pickedData");
+              },
+            );
+          },
         ),
         _Item(
           readOnly: true,

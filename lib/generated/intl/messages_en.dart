@@ -33,6 +33,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Welcome to \"Al-Reef Water\", where you’ll find naturally bottled water carefully prepared to meet your daily needs with top quality. We offer low-sodium bottled water, pure and free from unnecessary additives—an ideal choice for everyone, from children to seniors. Al-Reef Water is a healthy choice thanks to advanced production methods that preserve essential minerals your body needs. We put your health first by providing mineral-rich water that supports your overall well-being and balance."),
         "aboutUsTitle": MessageLookupByLibrary.simpleMessage("About Us"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
+        "addressHint":
+            MessageLookupByLibrary.simpleMessage("Enter your address"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
@@ -103,6 +106,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "phoneNumberHint":
             MessageLookupByLibrary.simpleMessage("Enter your phone number"),
+        "popularProducts":
+            MessageLookupByLibrary.simpleMessage("Popular Products"),
         "preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "privacyPolicyDescription": MessageLookupByLibrary.simpleMessage(

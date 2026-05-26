@@ -143,6 +143,10 @@
     "@welcomeBack": {
         "description": "A message used to welcome the user back to the app"
     },
+    "popularProducts": "Popular Products",
+    "@popularProducts": {
+        "description": "Title for the popular products section on the home screen"
+    },
 
 
 
@@ -175,15 +179,29 @@
     },
 
 
+    
+    "settings": "Settings",
+    "@settings": {
+        "description": "Label for the settings screen in the bottom navigation bar"
+    },
+
+
 
     "profile": "Profile",
     "@profile": {
         "description": "Label for the profile screen in the bottom navigation bar"
     },
-    "settings": "Settings",
-    "@settings": {
-        "description": "Label for the settings screen in the bottom navigation bar"
+    "address": "Address",
+    "@address": {
+        "description": "Label for the address field in the profile screen"
     },
+    "addressHint": "Enter your address",
+    "@addressHint": {
+        "description": "Hint text for the address field in the profile screen"
+    },
+
+
+
     "preferences": "Preferences",
     "@preferences": {
         "description": "Label for the preferences section in the settings screen"

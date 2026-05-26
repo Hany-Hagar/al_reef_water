@@ -381,6 +381,16 @@ class S {
     );
   }
 
+  /// `Popular Products`
+  String get popularProducts {
+    return Intl.message(
+      'Popular Products',
+      name: 'popularProducts',
+      desc: 'Title for the popular products section on the home screen',
+      args: [],
+    );
+  }
+
   /// `Favourites`
   String get favourites {
     return Intl.message(
@@ -441,6 +451,16 @@ class S {
     );
   }
 
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: 'Label for the settings screen in the bottom navigation bar',
+      args: [],
+    );
+  }
+
   /// `Profile`
   String get profile {
     return Intl.message(
@@ -451,12 +471,22 @@ class S {
     );
   }
 
-  /// `Settings`
-  String get settings {
+  /// `Address`
+  String get address {
     return Intl.message(
-      'Settings',
-      name: 'settings',
-      desc: 'Label for the settings screen in the bottom navigation bar',
+      'Address',
+      name: 'address',
+      desc: 'Label for the address field in the profile screen',
+      args: [],
+    );
+  }
+
+  /// `Enter your address`
+  String get addressHint {
+    return Intl.message(
+      'Enter your address',
+      name: 'addressHint',
+      desc: 'Hint text for the address field in the profile screen',
       args: [],
     );
   }

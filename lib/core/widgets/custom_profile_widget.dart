@@ -18,7 +18,7 @@ class CustomProfileWidget extends StatelessWidget {
     return CircleAvatar(
       radius: radius.r,
       backgroundColor: Theme.of(context).primaryColor,
-      child: CustomText(text: first + last, size: 20.sp, type: Type.header),
+      child: CustomText(text: "$first$last", size: 20.sp, type: Type.header),
     );
   }
 }
