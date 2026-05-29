@@ -5,19 +5,23 @@ class UserModel {
   final String id;
   final String firstName;
   final String lastName;
+  final String location;
   final String? password;
   final String phone;
   final String email;
   List<String> favorites;
+  final List<ProductModel> cart;
 
   UserModel({
     required this.id,
     required this.firstName,
     required this.lastName,
     required this.phone,
+    required this.location,
     required this.email,
     this.password,
     required this.favorites,
+    this.cart = const [],
   });
 
   // From Firebase User
@@ -26,9 +30,11 @@ class UserModel {
       id: user.uid,
       firstName: user.displayName ?? '',
       lastName: '',
+      location: "",
       phone: user.phoneNumber ?? '',
       email: user.email ?? '',
       favorites: [],
+      cart: [],
     );
   }
 
@@ -39,8 +45,12 @@ class UserModel {
       lastName: (map['lastName'] ?? '').toString(),
       phone: (map['phone'] ?? '').toString(),
       email: (map['email'] ?? '').toString(),
+      location: (map['location'] ?? '').toString(),
       favorites: (map['favorites'] as List<dynamic>? ?? <dynamic>[])
           .map((item) => item.toString())
+          .toList(),
+      cart: (map['cart'] as List<dynamic>? ?? <dynamic>[])
+          .map((item) => ProductModel.fromMap(item as Map<String, dynamic>))
           .toList(),
     );
   }
@@ -52,7 +62,9 @@ class UserModel {
       'lastName': lastName,
       'phone': phone,
       'email': email,
+      "location":location,
       'favorites': favorites,
+      'cart': cart.map((item) => item.toMap()).toList(),
     };
   }
 
@@ -60,6 +72,7 @@ class UserModel {
     String? id,
     String? firstName,
     String? lastName,
+    String? location,
     String? phone,
     String? email,
     List<String>? favorites,
@@ -70,8 +83,10 @@ class UserModel {
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
       phone: phone ?? this.phone,
+      location: location??this.location,
       email: email ?? this.email,
       favorites: favorites ?? this.favorites,
+      cart: cart ?? this.cart,
     );
   }
 }

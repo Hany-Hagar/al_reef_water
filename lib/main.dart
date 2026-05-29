@@ -17,6 +17,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'features/home/presentation/manager/banner_cubit.dart';
 import 'features/home/presentation/manager/product_cubit.dart';
 import 'features/favourites/presentation/manager/fav_cubit.dart';
+import 'features/profile/presentation/manager/profile_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'features/settings/presentation/manager/settings_cubit.dart';
 
@@ -57,6 +58,9 @@ class MyApp extends StatelessWidget {
 
         // Settings
         BlocProvider(create: (context) => getIt<SettingsCubit>()),
+
+        // Profile
+        BlocProvider(create: (context) => getIt<ProfileCubit>()), 
       ],
       child: BlocBuilder<SettingsCubit, AppUserPref>(
         builder: (context, state) => ScreenUtilInit(

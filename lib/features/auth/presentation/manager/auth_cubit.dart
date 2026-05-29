@@ -77,6 +77,7 @@ class AuthCubit extends Cubit<AuthState> {
     phone: phoneController.text,
     email: registerEmailController.text,
     password: registerPasswordController.text,
+    location: "",
     favorites: [],
   );
 

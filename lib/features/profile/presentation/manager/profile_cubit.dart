@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
 import 'profile_states.dart';
+import 'package:flutter/material.dart';
 import '../../data/repo/profile_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../auth/data/models/user_model.dart';
@@ -16,17 +17,18 @@ class ProfileCubit extends Cubit<ProfileState> {
   var firstNameController = TextEditingController();
   var lastNameController = TextEditingController();
   var phoneController = TextEditingController();
-  
-  
+  var locationController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
 
-
-  void getProfile(String uid) async {
-    emit(ProfileLoadingState());
-    var result = await profileRepo.getProfile(uid);
-    result.fold((failure) => emit(ProfileErrorState(failure.message)), (data) {
-      profile = data;
-      emit(ProfileLoadedState());
-    });
+  void setTextFormFields({required UserModel user}) {
+    log("User:${user.toMap().toString()}");
+    firstNameController.text = user.firstName;
+    lastNameController.text = user.lastName;
+    phoneController.text = user.phone;
+    locationController.text = user.location;
+    emailController.text = user.email;
   }
 
   void updateProfile({

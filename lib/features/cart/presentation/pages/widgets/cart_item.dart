@@ -133,7 +133,7 @@ class _CountDetails extends StatelessWidget {
                 _CountButton(
                   isLoading: isLoading,
                   icon: Icons.remove,
-                  onTap: () => cubit.increaseCartQuantity(cartId),
+                  onTap: () => cubit.decreaseCartQuantity(cartId),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -146,7 +146,7 @@ class _CountDetails extends StatelessWidget {
                 _CountButton(
                   isLoading: isLoading,
                   icon: Icons.add,
-                  onTap: () => cubit.decreaseCartQuantity(cartId),
+                  onTap: () => cubit.increaseCartQuantity(cartId),
                 ),
               ],
             ),

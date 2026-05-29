@@ -1,3 +1,4 @@
+import 'package:al_reef_app/features/profile/data/database/profile_data.dart';
 import 'package:get_it/get_it.dart';
 import '../../features/auth/data/repo/auth_repo.dart';
 import '../../features/cart/data/database/cart_data.dart';
@@ -20,6 +21,9 @@ import '../../features/auth/presentation/manager/auth_cubit.dart';
 import '../../features/home/presentation/manager/banner_cubit.dart';
 import '../../features/home/presentation/manager/product_cubit.dart';
 import '../../features/favourites/presentation/manager/fav_cubit.dart';
+import '../../features/profile/data/repo/profile_repo.dart';
+import '../../features/profile/data/repo/profile_repo_impl.dart';
+import '../../features/profile/presentation/manager/profile_cubit.dart';
 import '../../features/settings/presentation/manager/settings_cubit.dart';
 
 var getIt = GetIt.instance;
@@ -55,5 +59,10 @@ void setupLocator() {
   getIt.registerLazySingleton<CartData>(() => CartData());
   getIt.registerLazySingleton<CartRepo>(() => CartRepoImpl(cartData: getIt<CartData>()));
   getIt.registerLazySingleton<CartCubit>(() => CartCubit(cartRepo: getIt<CartRepo>()));
+
+  // Profile
+  getIt.registerLazySingleton<ProfileData>(() => ProfileData());
+  getIt.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl(profileData: getIt<ProfileData>()));
+  getIt.registerLazySingleton<ProfileCubit>(() => ProfileCubit(profileRepo: getIt<ProfileRepo>()));
 
 }

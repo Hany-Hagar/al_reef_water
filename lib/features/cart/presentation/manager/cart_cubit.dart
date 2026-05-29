@@ -63,7 +63,7 @@ class CartCubit extends Cubit<CartState> {
       emit(DecreaseCartQuantityLoading(cartId: cartId));
       _updateCartQuantity(cartId, newQuantity, DecreaseCartQuantitySuccess());
     } else {
-      removeFromCart("cartId");
+      removeFromCart(cartId);
     }
   }
 

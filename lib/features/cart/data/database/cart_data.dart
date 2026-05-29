@@ -1,4 +1,5 @@
 
+import '../../../../const_data/firebase_assets.dart';
 import '../model/cart_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../home/data/models/product_model.dart';
@@ -8,12 +9,13 @@ class CartData {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+
   String get userId => _auth.currentUser!.uid;
 
   CollectionReference get _cartItems => _firestore
-      .collection('cart')
+      .collection(FirebaseAssets.userCollection)
       .doc(userId)
-      .collection('items');
+      .collection(FirebaseAssets.cartCollection);
 
   Future<List<CartModel>> fetchCartProducts() async {
     final snapshot = await _cartItems.get();

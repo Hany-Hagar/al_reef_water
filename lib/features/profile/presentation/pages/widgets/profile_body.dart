@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element_parameter
 
 import 'dart:developer';
-
 import 'profile_widget.dart';
 import 'package:flutter/material.dart';
+import '../../manager/profile_cubit.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/widgets/custom_text.dart';
 import '../../../../../core/services/icon_broken.dart';
@@ -11,6 +11,7 @@ import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/extensions/address_format.dart';
 import '../../../../../core/services/location_service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../auth/presentation/manager/auth_cubit.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class ProfileBody extends StatelessWidget {
@@ -19,6 +20,7 @@ class ProfileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var s = S.of(context);
+    var cubit = ProfileCubit.get(context);
     return Column(
       spacing: 10.h,
       children: [
@@ -30,14 +32,14 @@ class ProfileBody extends StatelessWidget {
           prefixIcon: Icons.phone,
           hint: s.phoneNumberHint,
           keyboardType: TextInputType.phone,
-          controller: TextEditingController(),
+          controller: cubit.phoneController,
         ),
         _Item(
           title: s.address,
           hint: s.addressHint,
           suffixIcon: Icons.map,
           prefixIcon: IconBroken.Location,
-          controller: TextEditingController(),
+          controller: cubit.locationController,
           keyboardType: TextInputType.streetAddress,
           onSuffixPressed: () {
             LocationService.openLocationPicker(
@@ -53,7 +55,7 @@ class ProfileBody extends StatelessWidget {
           title: s.emailAddress,
           prefixIcon: Icons.email,
           hint: s.emailAddressHint,
-          controller: TextEditingController(),
+          controller: cubit.emailController,
           keyboardType: TextInputType.emailAddress,
         ),
         _Item(
@@ -61,7 +63,7 @@ class ProfileBody extends StatelessWidget {
           obscureText: true,
           hint: s.passwordHint,
           prefixIcon: Icons.lock,
-          controller: TextEditingController(),
+          controller: cubit.passwordController,
           keyboardType: TextInputType.visiblePassword,
         ),
         _Item(
@@ -69,7 +71,7 @@ class ProfileBody extends StatelessWidget {
           prefixIcon: Icons.lock,
           title: s.confirmPassword,
           hint: s.confirmPasswordHint,
-          controller: TextEditingController(),
+          controller: cubit.confirmPasswordController,
           keyboardType: TextInputType.visiblePassword,
         ),
         SizedBox(height: 15.h),
@@ -132,6 +134,7 @@ class _Name extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var s = S.of(context);
+    var cubit = AuthCubit.get(context);
     return Row(
       children: [
         Expanded(
@@ -140,7 +143,7 @@ class _Name extends StatelessWidget {
             hint: s.firstNameHint,
             prefixIcon: Icons.person,
             keyboardType: TextInputType.name,
-            controller: TextEditingController(),
+            controller: cubit.firstNameController,
           ),
         ),
         SizedBox(width: 10.w),
@@ -150,7 +153,7 @@ class _Name extends StatelessWidget {
             hint: s.lastNameHint,
             prefixIcon: Icons.person,
             keyboardType: TextInputType.name,
-            controller: TextEditingController(),
+            controller: cubit.lastNameController,
           ),
         ),
       ],

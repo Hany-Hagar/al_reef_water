@@ -1,4 +1,3 @@
-
 import 'auth_repo.dart';
 import 'package:dartz/dartz.dart';
 import '../models/user_model.dart';
@@ -16,6 +15,13 @@ class AuthRepoImpl extends AuthRepo {
       final user = authData.currentUser;
       if (user == null) {
         return Left(Failure.handle('No user logged in'));
+      }
+      final userDoc = await authData.getUserData(user.uid);
+      if (userDoc.exists) {
+        final data = userDoc.data();
+        if (data is Map<String, dynamic>) {
+          return Right(UserModel.fromMap(data));
+        }
       }
       return Right(UserModel.fromFirebaseUser(user));
     } catch (e) {
@@ -51,7 +57,9 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failure, UserModel>> signInWithGoogle() async {
     try {
       final OAuthCredential credential = await authData.signInWithGoogle();
-      final userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+      final userCredential = await FirebaseAuth.instance.signInWithCredential(
+        credential,
+      );
       final firebaseUser = userCredential.user;
       if (firebaseUser == null) {
         return Left(Failure.handle('User not found'));
@@ -66,17 +74,19 @@ class AuthRepoImpl extends AuthRepo {
         }
         return Right(UserModel.fromFirebaseUser(firebaseUser));
       } else {
-        // [الحساب غير موجود]: تقسيم الاسم الكامل القادم من جوجل لحفظه كحساب جديد
         final fullName = firebaseUser.displayName ?? '';
         final nameParts = fullName.trim().split(' ');
         final firstName = nameParts.isNotEmpty ? nameParts.first : '';
-        final lastName = nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '';
+        final lastName = nameParts.length > 1
+            ? nameParts.sublist(1).join(' ')
+            : '';
 
         final newUser = UserModel(
           id: firebaseUser.uid,
           email: firebaseUser.email ?? '',
           firstName: firstName,
           lastName: lastName,
+          location: "",
           phone: firebaseUser.phoneNumber ?? '',
           favorites: const [],
         );
@@ -90,7 +100,6 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
-
   @override
   Future<Either<Failure, UserModel>> signUp({required UserModel user}) async {
     try {
@@ -102,7 +111,10 @@ class AuthRepoImpl extends AuthRepo {
       if (firebaseUser == null) {
         return Left(Failure.handle('User not created'));
       }
-      await authData.addUserData(uid: firebaseUser.uid, userModel: user.copyWith(id: firebaseUser.uid));
+      await authData.addUserData(
+        uid: firebaseUser.uid,
+        userModel: user.copyWith(id: firebaseUser.uid),
+      );
       return Right(user.copyWith(id: firebaseUser.uid));
     } catch (e) {
       return Left(Failure.handle(e.toString()));
