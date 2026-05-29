@@ -23,7 +23,7 @@ class CustomBackground extends StatelessWidget {
         Container(
           width: double.infinity,
           height: double.infinity,
-          color: Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0.5),
+          color: Theme.of(context).scaffoldBackgroundColor.withValues(alpha: 0.8),
         ),
 
         // المحتوى الرئيسي

@@ -1,4 +1,6 @@
+
 import 'custom_text.dart';
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +13,7 @@ class CustomList extends StatelessWidget {
   final String? errorMessage;
   final ScrollPhysics? physics;
   final EdgeInsetsGeometry? padding;
+  final String? emptyAnimation;
   final Widget Function(BuildContext, dynamic) itemBuilder;
   const CustomList({
     super.key,
@@ -21,6 +24,7 @@ class CustomList extends StatelessWidget {
     this.physics,
     this.padding,
     required this.itemBuilder,
+    this.emptyAnimation,
     this.emptyItems = const [],
   });
 
@@ -36,6 +40,7 @@ class CustomList extends StatelessWidget {
         physics: physics,
         padding: padding,
         itemBuilder: itemBuilder,
+        emptyAnimation: emptyAnimation,
       ),
     );
   }
@@ -68,15 +73,16 @@ class _Failure extends StatelessWidget {
 }
 
 class _Empty extends StatelessWidget {
-  const _Empty();
+  final String? emptyAnimation;
+  const _Empty({this.emptyAnimation});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-
-        const Icon(Icons.inbox, size: 80),
+        if (emptyAnimation != null) Lottie.asset(emptyAnimation!, width: MediaQuery.sizeOf(context).width * 0.5),
+        if (emptyAnimation == null) const Icon(Icons.inbox, size: 80), 
          SizedBox(height: 16 , width: double.infinity,),
         CustomText(text: "No items found", size: 16.sp, type: Type.overMedium),
       ],
@@ -88,18 +94,20 @@ class _List extends StatelessWidget {
   final List items;
   final ScrollPhysics? physics;
   final EdgeInsetsGeometry? padding;
+  final String? emptyAnimation;
   final Widget Function(BuildContext, dynamic) itemBuilder;
   const _List({
     required this.items,
     this.physics,
     this.padding,
+    this.emptyAnimation,
     required this.itemBuilder,
   });
 
   @override
   Widget build(BuildContext context) {
     if (items.isEmpty) {
-      return const _Empty();
+      return  _Empty(emptyAnimation: emptyAnimation,);
     }
     return ListView.separated(
       physics: physics,

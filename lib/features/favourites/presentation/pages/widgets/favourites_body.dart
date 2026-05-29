@@ -2,8 +2,9 @@ import '../../manager/fav_cubit.dart';
 import '../../manager/fav_states.dart';
 import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../const_data/app_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../const_data/app_data.dart';
+import '../../../../../const_data/asset_data.dart';
 import '../../../../../core/widgets/custom_list.dart';
 import '../../../../../core/widgets/custom_text.dart';
 import '../../../../home/data/models/product_model.dart';
@@ -25,6 +26,7 @@ class FavouritesBody extends StatelessWidget {
             child: CustomList(
               isLoading: state is FavLoading,
               isFailure: state is FavFailure,
+              emptyAnimation: AssetData.emptyFav,
               items: FavCubit.get(context).favoriteProducts,
               errorMessage: state is FavFailure ? state.message : null,
               itemBuilder: (context, product) => _Item(product: product),

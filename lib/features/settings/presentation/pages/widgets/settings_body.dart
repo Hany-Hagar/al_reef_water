@@ -32,6 +32,11 @@ class SettingsBody extends StatelessWidget {
           icon: IconBroken.User,
           nextScreen: ProfileView(),
         ),
+               SettingsItem(
+          title: "الاوردرات",
+          icon: IconBroken.Buy,
+          nextScreen: ProfileView(),
+        ),
         _Title(text: s.preferences),
         AppPreferences.lang(),
         AppPreferences.theme(),

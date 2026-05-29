@@ -9,6 +9,7 @@ import '../../../data/model/cart_model.dart';
 import '../../../../../core/utils/nav_to.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../const_data/app_data.dart';
+import '../../../../../const_data/asset_data.dart';
 import '../../../../../core/widgets/custom_list.dart';
 import '../../../../../core/widgets/custom_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,6 +30,7 @@ class CartBody extends StatelessWidget {
             child: CustomList(
               isLoading: state is CartLoading,
               isFailure: state is CartFailure,
+              emptyAnimation: AssetData.emptyCart,
               items: CartCubit.get(context).cartItems,
               errorMessage: state is CartFailure ? state.message : null,
               emptyItems: List.generate(5, (index) => CartModel.empty()),
