@@ -8,6 +8,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../../core/widgets/custom_text.dart';
 import '../../../../../core/services/icon_broken.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../core/extensions/address_format.dart';
 import '../../../../../core/services/location_service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
@@ -42,7 +43,7 @@ class ProfileBody extends StatelessWidget {
             LocationService.openLocationPicker(
               context: context,
               onLocationPicked: (pickedData) {
-                log("location: $pickedData");
+                log("location: ${pickedData.toKsaDeliveryAddress()}");
               },
             );
           },

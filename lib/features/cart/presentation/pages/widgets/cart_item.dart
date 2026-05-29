@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import '../../manager/cart_cubit.dart';
+import '../../manager/cart_states.dart';
+import '../../../data/model/cart_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_text.dart';
-import '../../../../home/data/models/product_model.dart';
+import '../../../../../core/services/icon_broken.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartItem extends StatelessWidget {
-  final int count;
-  final ProductModel product;
-  const CartItem({super.key, required this.count, required this.product});
+  final bool isLoading;
+  final CartModel cart;
+  const CartItem({super.key, this.isLoading = false, required this.cart});
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +20,17 @@ class CartItem extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
       child: SizedBox(
-        height: 120.h,
+        height: 125.h,
         child: Row(
           children: [
             Expanded(
               flex: 2,
-              child: _ItemImage(imageUrl: product.images.first),
+              child: _Image(imageUrl: cart.product.images.first),
             ),
-            Expanded(flex: 3, child: _ItemBody(count: count, product: product)),
+            Expanded(
+              flex: 3,
+              child: _Body(isLoading: isLoading, cart: cart),
+            ),
           ],
         ),
       ),
@@ -31,10 +38,9 @@ class CartItem extends StatelessWidget {
   }
 }
 
-class _ItemImage extends StatelessWidget {
+class _Image extends StatelessWidget {
   final String imageUrl;
-
-  const _ItemImage({required this.imageUrl});
+  const _Image({required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -51,82 +57,117 @@ class _ItemImage extends StatelessWidget {
   }
 }
 
-class _ItemBody extends StatelessWidget {
-  final int count;
-  final ProductModel product;
-
-  const _ItemBody({required this.count, required this.product});
+class _Body extends StatelessWidget {
+  final bool isLoading;
+  final CartModel cart;
+  const _Body({required this.isLoading, required this.cart});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(10.r),
       child: Column(
+        spacing: 10.h,
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: CustomText(
-              text: product.title,
-              size: 14.sp,
-              maxLines: 3,
-              type: Type.overMedium,
-            ),
-          ),
-
-          CustomText(
-            text: "${product.price.toStringAsFixed(2)} ر.س",
-            size: 13.sp,
-            type: Type.overMedium,
-          ),
-
-          SizedBox(height: 10.h),
-
-          Row(
-            spacing: 10.w,
-            children: [
-              CustomText(text: "الكمية: " , size: 13.sp, type: Type.overMedium),
-              _ItemCount(count: count, onAdd: () {}, onRemove: () {}),
-            ]
-          ),
+          Expanded(child: _Title(title: cart.product.title)),
+          _Price(price: cart.product.price),
+          _CountDetails(isLoading: isLoading, cartId: cart.id),
         ],
       ),
     );
   }
 }
 
-class _ItemCount extends StatelessWidget {
-  final int count;
-  final VoidCallback onAdd;
-  final VoidCallback onRemove;
+class _Title extends StatelessWidget {
+  final String title;
+  const _Title({required this.title});
 
-  const _ItemCount({
-    required this.count,
-    required this.onAdd,
-    required this.onRemove,
-  });
+  @override
+  Widget build(BuildContext context) {
+    return CustomText(
+      text: title,
+      size: 14.sp,
+      maxLines: 3,
+      type: Type.overMedium,
+    );
+  }
+}
+
+class _Price extends StatelessWidget {
+  final double price;
+  const _Price({required this.price});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _CountButton(icon: Icons.remove, onTap: onRemove),
-
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: CustomText(text: "$count", size: 14.sp, type: Type.overMedium),
+        CustomText(text: "السعر: ", size: 13.sp, type: Type.overMedium),
+        CustomText(
+          text: "${price.toStringAsFixed(2)} ر.س",
+          size: 13.sp,
+          type: Type.overMedium,
         ),
-
-        _CountButton(icon: Icons.add, onTap: onAdd),
       ],
     );
   }
 }
 
+class _CountDetails extends StatelessWidget {
+  final bool isLoading;
+  final String cartId;
+  const _CountDetails({required this.isLoading, required this.cartId});
+
+  @override
+  Widget build(BuildContext context) {
+    var cubit = CartCubit.get(context);
+    return BlocBuilder<CartCubit, CartState>(
+      builder: (context, state) => Row(
+        children: [
+          CustomText(text: "الكمية: ", size: 13.sp, type: Type.overMedium),
+          Expanded(
+            child: Row(
+              children: [
+                _CountButton(
+                  isLoading: isLoading,
+                  icon: Icons.remove,
+                  onTap: () => cubit.increaseCartQuantity(cartId),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  child: CustomText(
+                    text: CartCubit.get(context).getItemCount(cartId),
+                    size: 14.sp,
+                    type: Type.overMedium,
+                  ),
+                ),
+                _CountButton(
+                  isLoading: isLoading,
+                  icon: Icons.add,
+                  onTap: () => cubit.decreaseCartQuantity(cartId),
+                ),
+              ],
+            ),
+          ),
+          _DeleteIcon(cartId: cartId),
+        ],
+      ),
+    );
+  }
+}
+
 class _CountButton extends StatelessWidget {
+  final bool isLoading;
   final IconData icon;
   final VoidCallback onTap;
 
-  const _CountButton({required this.icon, required this.onTap});
+  const _CountButton({
+    required this.isLoading,
+    required this.icon,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -138,10 +179,36 @@ class _CountButton extends StatelessWidget {
         height: 28.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6.r),
-          color: Theme.of(context).primaryColor,
+          color: isLoading
+              ? Theme.of(context).disabledColor
+              : Theme.of(context).primaryColor,
         ),
         child: Icon(icon, size: 18.sp),
       ),
+    );
+  }
+}
+
+class _DeleteIcon extends StatelessWidget {
+  final String cartId;
+  const _DeleteIcon({required this.cartId});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CartCubit, CartState>(
+      builder: (context, state) {
+        if (state is RemoveFromCartLoading && state.cartId == cartId) {
+          return SizedBox(
+            width: 24.w,
+            height: 24.h,
+            child: CircularProgressIndicator(),
+          );
+        }
+        return GestureDetector(
+          onTap: () => CartCubit.get(context).removeFromCart(cartId),
+          child: Icon(IconBroken.Delete, size: 24.sp, color: Colors.red),
+        );
+      },
     );
   }
 }

@@ -31,6 +31,16 @@ class CartRepoImpl implements CartRepo {
   }
 
   @override
+  Future<Either<Failure, void>> updateCartQuantity(String cartId, int quantity) async {
+    try {
+      await cartData.updateCartQuantity(cartId, quantity);
+      return const Right(null);
+    } catch (e) {
+      return Left(Failure.handle(e.toString()));
+    }
+  }
+
+  @override
   Future<Either<Failure, void>> removeFromCart(String cartId) async {
     try {
       await cartData.removeFromCart(cartId);

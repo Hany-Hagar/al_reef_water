@@ -1,6 +1,9 @@
+
 import '../widgets/profile_body.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../core/utils/nav_to.dart';
+import '../../../../../const_data/app_data.dart';
+import '../../../../../core/services/icon_broken.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/widgets/custom_background.dart';
 
@@ -10,9 +13,13 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomBackground(
-      top: const _Top(),
-      body: SingleChildScrollView(
-        child: Padding(padding: EdgeInsets.all(16.w), child: ProfileBody()),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Padding(padding: defaultAppBarPadding(context), child: ProfileBody()),
+          ),
+          _Top(),
+        ]
       ),
     );
   }
@@ -23,9 +30,16 @@ class _Top extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomAppBar(
-      title: "",
-      backgroundColor: Colors.transparent,
+    return Padding(
+      padding: defaultAppBarPadding(context),
+      child: GestureDetector(
+        onTap: () => NavTo.pop(context),
+        child: Icon(
+           IconBroken.Arrow___Right,
+          size: 25.sp,
+          color:  Theme.of(context).hintColor,
+        ),
+      )
     );
   }
 }

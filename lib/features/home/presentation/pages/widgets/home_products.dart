@@ -148,20 +148,20 @@ class _Carticon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => CartCubit.get(context).addToCart(product),
-      child: BlocBuilder<CartCubit, CartState>(
-        builder: (context, state) {
-          if (state is AddToCartLoading && state.productId == product.id) {
-            return SizedBox(
-              width: 24.w,
-              height: 24.h,
-              child: CircularProgressIndicator(),
-            );
-          }
-          return Icon(IconBroken.Buy, size: 24.sp);
-        },
-      ),
+    return BlocBuilder<CartCubit, CartState>(
+      builder: (context, state) {
+        if (state is AddToCartLoading && state.productId == product.id) {
+          return SizedBox(
+            width: 24.w,
+            height: 24.h,
+            child: CircularProgressIndicator(),
+          );
+        }
+        return GestureDetector(
+          onTap: () => CartCubit.get(context).addToCart(product),
+          child: Icon(IconBroken.Buy, size: 24.sp),
+        );
+      },
     );
   }
 }

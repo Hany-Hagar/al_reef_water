@@ -21,10 +21,18 @@ class ProfileData {
     required Map<String, dynamic> data,
   }) async {
     var uid = FirebaseAuth.instance.currentUser!.uid;
-    await _firestore
+     await _firestore
         .collection(FirebaseAssets.userCollection)
         .doc(uid)
         .update(data);
+  }
+
+  // Update Password
+  Future<void> updatePassword(String newPassword) async {
+    var user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+       await user.updatePassword(newPassword);
+    }
   }
 
   Future<void> deleteProfile(String uid) async {
@@ -34,4 +42,5 @@ class ProfileData {
         .doc(uid)
         .delete();
   }
+
 }

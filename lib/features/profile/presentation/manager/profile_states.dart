@@ -11,3 +11,10 @@ class ProfileErrorState extends ProfileState {
 
   ProfileErrorState(this.message);
 }
+
+class ProfileUpdatedState extends ProfileState {}
+
+class ProfileDeletedState extends ProfileState {}
+
+class ProfilePasswordUpdatedState extends ProfileState {}
+

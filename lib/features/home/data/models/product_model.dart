@@ -17,7 +17,7 @@ class ProductModel {
   factory ProductModel.empty() {
     return const ProductModel(
       id: '',
-      title: 'Loream Lorem',
+      title:'قارورة مياه الريف - عبوة 600 مل -تعبئة الكرتونل',
       price: 0.0,
       images: [
         "https://cdn.salla.sa/gOAgp/df1f7cc5-af34-430e-b42d-e9672ededf60-1000x667-mvF8acNaCiRDuFWbvu4wkUsXWhqwB4wjEzOsIXX9.jpg",

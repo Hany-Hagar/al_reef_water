@@ -232,7 +232,7 @@
     "personalInformation": "Personal Information",
     "@personalInformation": {
         "description": "Label for the personal information settings option"
-    },
+    },    
     "save": "Save",
     "@save": {
         "description": "Text for the save button in the account settings screen"

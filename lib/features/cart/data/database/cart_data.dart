@@ -53,6 +53,10 @@ class CartData {
     return newItem;
   }
 
+  Future<void> updateCartQuantity(String cartId, int quantity) async {
+    await _cartItems.doc(cartId).update({'quantity': quantity});
+  }
+
   Future<void> removeFromCart(String cartId) async {
     await _cartItems.doc(cartId).delete();
   }
