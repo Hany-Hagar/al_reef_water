@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import '../../../profile/presentation/manager/profile_states.dart';
+import '../../data/models/location_model.dart';
 import 'auth_states.dart';
 import 'package:flutter/material.dart';
 import '../../data/repo/auth_repo.dart';
@@ -94,7 +95,7 @@ class AuthCubit extends Cubit<AuthState> {
     phone: phoneController.text,
     email: registerEmailController.text,
     password: registerPasswordController.text,
-    location: "",
+    location: [LocationModel.empty()],
     favorites: [],
   );
 

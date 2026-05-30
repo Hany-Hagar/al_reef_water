@@ -28,7 +28,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     firstNameController.text = user.firstName;
     lastNameController.text = user.lastName;
     phoneController.text = user.phone;
-    locationController.text = user.location;
     emailController.text = user.email;
     passwordController.text = "";
     confirmPasswordController.text = "";
@@ -64,9 +63,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       phone: phoneController.text,
       location: locationController.text,
       email: emailController.text,
-      isPasswordChanged: havePasswordChanged(),
-      password: passwordController.text,
-      confirmPassword: confirmPasswordController.text,
     );
     result.fold((failure) => emit(ProfileErrorState(failure.message)), (data) {
       user = data;

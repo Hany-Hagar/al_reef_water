@@ -16,9 +16,6 @@ class ProfileRepoImpl implements ProfileRepo {
     required String phone,
     required String location,
     required String email,
-    required bool isPasswordChanged,
-    required String? password,
-    required String? confirmPassword,
   }) async {
     try {
       var data = await profileData.updateProfile(
@@ -28,9 +25,6 @@ class ProfileRepoImpl implements ProfileRepo {
         location: location,
         email: email,
       );
-      if (isPasswordChanged) {
-        await profileData.updatePassword(password!);
-      }
       return Right(UserModel.fromMap(data.data() as Map<String, dynamic>));
     } catch (e) {
       return Left(Failure.handle(e.toString()));

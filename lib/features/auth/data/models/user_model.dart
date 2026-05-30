@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../home/data/models/product_model.dart';
+import 'location_model.dart';
 
 class UserModel {
   final String id;
   final String firstName;
   final String lastName;
-  final String location;
+  final List<LocationModel> location;
   final String? password;
   final String phone;
   final String email;
@@ -30,7 +31,7 @@ class UserModel {
       id: user.uid,
       firstName: user.displayName ?? '',
       lastName: '',
-      location: "",
+      location: [LocationModel.empty()],
       phone: user.phoneNumber ?? '',
       email: user.email ?? '',
       favorites: [],
@@ -45,7 +46,9 @@ class UserModel {
       lastName: (map['lastName'] ?? '').toString(),
       phone: (map['phone'] ?? '').toString(),
       email: (map['email'] ?? '').toString(),
-      location: (map['location'] ?? '').toString(),
+      location: (map['location'] as List<dynamic>? ?? <dynamic>[])
+          .map((item) => LocationModel.fromFirestore(item as Map<String, dynamic>))
+          .toList(),
       favorites: (map['favorites'] as List<dynamic>? ?? <dynamic>[])
           .map((item) => item.toString())
           .toList(),
@@ -62,7 +65,7 @@ class UserModel {
       'lastName': lastName,
       'phone': phone,
       'email': email,
-      "location":location,
+      "location":location.map((item) => item.toFirestore()).toList(),
       'favorites': favorites,
       'cart': cart.map((item) => item.toMap()).toList(),
     };
@@ -72,7 +75,7 @@ class UserModel {
     String? id,
     String? firstName,
     String? lastName,
-    String? location,
+    List<LocationModel>? location,
     String? phone,
     String? email,
     List<String>? favorites,

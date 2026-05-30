@@ -28,13 +28,6 @@ class ProfileData {
     return _firestore.collection(FirebaseAssets.userCollection).doc(uid).get();
   }
 
-  // Update Password
-  Future<void> updatePassword(String newPassword) async {
-    var user = _auth.currentUser;
-    if (user != null) {
-      await user.updatePassword(newPassword);
-    }
-  }
 
   Future<void> deleteProfile() async {
     var uid = _auth.currentUser!.uid;

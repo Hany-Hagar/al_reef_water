@@ -86,7 +86,7 @@ class AuthRepoImpl extends AuthRepo {
           email: firebaseUser.email ?? '',
           firstName: firstName,
           lastName: lastName,
-          location: "",
+          location: [],
           phone: firebaseUser.phoneNumber ?? '',
           favorites: const [],
         );

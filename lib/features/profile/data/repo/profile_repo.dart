@@ -10,9 +10,6 @@ abstract class ProfileRepo {
     required String phone,
     required String location,
     required String email,
-    required bool isPasswordChanged,
-    required String? password,
-    required String? confirmPassword,
   });
 
 

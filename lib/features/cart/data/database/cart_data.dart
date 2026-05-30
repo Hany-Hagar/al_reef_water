@@ -47,7 +47,6 @@ class CartData {
     final newItem = CartModel(
       id: docRef.id,
       quantity: 1,
-      status: OrderStatus.pending,
       product: product,
     );
 
