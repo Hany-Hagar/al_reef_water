@@ -183,9 +183,28 @@
 
 
 
+    "settings": "الإعدادات",
+    "@settings": {
+        "description": "تسمية الشاشة الإعدادات في شريط التنقل السفلي"
+    },
+
+
+
     "profile": "الملف الشخصي",
     "@profile": {
         "description": "تسمية الشاشة الشخصية في شريط التنقل السفلي"
+    },
+    "profileTitle": "ملفي الشخصي",
+    "@profileTitle": {
+        "description": "عنوان شاشة الملف الشخصي"
+    },
+    "profileFirstName": "الاسم الأول",
+    "@profileFirstName": {
+        "description": "تسمية حقل الاسم الأول في شاشة الملف الشخصي"
+    },
+    "profileLastName": "الاسم الأخير",
+    "@profileLastName": {
+        "description": "تسمية حقل الاسم الأخير في شاشة الملف الشخصي"
     },
     "address": "العنوان",
     "@address": {
@@ -195,13 +214,24 @@
     "@addressHint": {
         "description": "نص التلميح لحقل العنوان في شاشة الملف الشخصي"
     },
-
-
-
-    "settings": "الإعدادات",
-    "@settings": {
-        "description": "تسمية الشاشة الإعدادات في شريط التنقل السفلي"
+    "UpdateProfileSuccess": "تم تحديث الملف الشخصي بنجاح!",
+    "@UpdateProfileSuccess": {
+        "description": "رسالة تعرض عندما يتم تحديث الملف الشخصي بنجاح"
     },
+
+
+
+    "orders": "الطلبات",
+    "@orders": {
+        "description": "تسمية قسم الطلبات في شاشة الإعدادات"
+    },
+    "ordersTitle": "طلباتي",
+    "@ordersTitle": {
+        "description": "عنوان شاشة طلباتي في قسم الطلبات في شاشة الإعدادات"
+    },
+
+
+
     "preferences": "التفضيلات",
     "@preferences": {
         "description": "تسمية قسم التفضيلات في شاشة الإعدادات"

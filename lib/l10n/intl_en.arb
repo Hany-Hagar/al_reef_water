@@ -195,6 +195,18 @@
     "@profile": {
         "description": "Label for the profile screen in the bottom navigation bar"
     },
+    "profileTitle": "Your Profile",
+    "@profileTitle": {
+        "description": "Title for the profile screen"
+    },
+    "profileFirstName": "First Name",
+    "@profileFirstName": {
+        "description": "Label for the first name field in the profile screen"
+    },
+    "profileLastName": "Last Name",
+    "@profileLastName": {
+        "description": "Label for the last name field in the profile screen"
+    },
     "address": "Address",
     "@address": {
         "description": "Label for the address field in the profile screen"
@@ -202,6 +214,21 @@
     "addressHint": "Enter your address",
     "@addressHint": {
         "description": "Hint text for the address field in the profile screen"
+    },
+    "UpdateProfileSuccess": "Profile updated successfully!",
+    "@UpdateProfileSuccess": {
+        "description": "Message displayed when the profile is successfully updated"
+    },
+
+
+
+    "orders": "Orders",
+    "@orders": {
+        "description": "Label for the orders section in the settings screen"
+    },
+    "ordersTitle": "Your Orders",
+    "@ordersTitle": {
+        "description": "Title for the orders screen"
     },
 
 

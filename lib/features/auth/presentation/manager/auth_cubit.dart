@@ -1,5 +1,7 @@
 // ignore_for_file: strict_top_level_inference
 
+import 'dart:async';
+import '../../../profile/presentation/manager/profile_states.dart';
 import 'auth_states.dart';
 import 'package:flutter/material.dart';
 import '../../data/repo/auth_repo.dart';
@@ -7,10 +9,22 @@ import '../../data/models/user_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/server_locator.dart';
 import '../../../layout/manager/layout_cubit.dart';
+import '../../../profile/presentation/manager/profile_cubit.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final AuthRepo authRepo;
-  AuthCubit({required this.authRepo}) : super(AuthInitialState());
+  // ignore: unused_field
+  StreamSubscription? _profileSubscription;
+  AuthCubit({required this.authRepo}) : super(AuthInitialState()) {
+    _profileSubscription = getIt<ProfileCubit>().stream.listen((
+      ProfileState profileState,
+    ) {
+      if (profileState is UpdateProfileSuccess) {
+        user = getIt<ProfileCubit>().user;
+        emit(ProfileUpdatedState());
+      }
+    });
+  }
   static AuthCubit get(context) => BlocProvider.of(context);
 
   UserModel? user;
@@ -21,6 +35,7 @@ class AuthCubit extends Cubit<AuthState> {
     final result = await authRepo.autoLogin();
     result.fold((failure) => emit(AutoLoginFailure(failure.message)), (user) {
       this.user = user;
+      getIt<ProfileCubit>().user = user;
       emit(AutoLoginSuccessState());
     });
   }
@@ -44,6 +59,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
     result.fold((failure) => emit(SignInErrorState(failure.message)), (user) {
       this.user = user;
+      getIt<ProfileCubit>().user = user;
       emit(SignInSuccessState());
     });
   }
@@ -55,6 +71,7 @@ class AuthCubit extends Cubit<AuthState> {
       (failure) => emit(SignInWithGoogleErrorState(failure.message)),
       (user) {
         this.user = user;
+        getIt<ProfileCubit>().user = user;
         emit(SignInWithGoogleSuccessState());
       },
     );
@@ -97,6 +114,7 @@ class AuthCubit extends Cubit<AuthState> {
     final result = await authRepo.signUp(user: _registerUser);
     result.fold((failure) => emit(SignUpErrorState(failure.message)), (user) {
       this.user = user;
+      getIt<ProfileCubit>().user = user;
       emit(SignUpSuccessState());
     });
   }
@@ -139,4 +157,13 @@ class AuthCubit extends Cubit<AuthState> {
       emit(SignOutSuccessState());
     });
   }
+
+
+  @override
+  Future<void> close() {
+    _profileSubscription?.cancel(); 
+    return super.close();
+  }
+
+
 }

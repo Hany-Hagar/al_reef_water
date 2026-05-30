@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Light": MessageLookupByLibrary.simpleMessage("فاتح"),
         "System": MessageLookupByLibrary.simpleMessage("النظام"),
         "Theme": MessageLookupByLibrary.simpleMessage("السمة"),
+        "UpdateProfileSuccess": MessageLookupByLibrary.simpleMessage(
+            "تم تحديث الملف الشخصي بنجاح!"),
         "aboutUsDescription": MessageLookupByLibrary.simpleMessage(
             "مرحبًا بكم في \"مياه الريف\"، المكان الذي تجدون فيه المياه الطبيعية المعبأة بعناية لتلبية احتياجاتكم اليومية بأعلى جودة. نحن نقدم مياه الريف المعبأة في زجاجات منخفضة الصوديوم، نقية تمامًا وخالية من أي إضافات غير ضرورية، مما يجعلها الخيار الأمثل لكل أفراد العائلة."),
         "aboutUsTitle":
@@ -100,6 +102,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "orLoginWith":
             MessageLookupByLibrary.simpleMessage("أو تسجيل الدخول باستخدام"),
+        "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
+        "ordersTitle": MessageLookupByLibrary.simpleMessage("طلباتي"),
         "other": MessageLookupByLibrary.simpleMessage("أخرى"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordHint": MessageLookupByLibrary.simpleMessage("أدخل كلمة مرورك"),
@@ -114,6 +118,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "privacyPolicyDescription": MessageLookupByLibrary.simpleMessage(
             "مرحباً بك في متجرنا الإلكتروني. فيما يلي الشروط والأحكام التي تنظم استخدامك للمتجر والآثار القانونية الناتجة عن استخدام خدماتنا. من خلال استخدام أي خدمة أو منتج، توافق على هذه الشروط."),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+        "profileFirstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
+        "profileLastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
+        "profileTitle": MessageLookupByLibrary.simpleMessage("ملفي الشخصي"),
         "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل جديد"),
         "registerNow": MessageLookupByLibrary.simpleMessage("تسجيل الآن"),
         "registerSubtitle":

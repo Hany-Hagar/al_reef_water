@@ -4,43 +4,43 @@ import '../../../../../const_data/firebase_assets.dart';
 
 class ProfileData {
   final FirebaseFirestore _firestore;
-
+  final FirebaseAuth _auth;
   ProfileData([FirebaseFirestore? firestore])
-    : _firestore = firestore ?? FirebaseFirestore.instance;
+    : _firestore = firestore ?? FirebaseFirestore.instance,
+      _auth = FirebaseAuth.instance;
 
-  Future<DocumentSnapshot> getProfile(String uid) async {
-    var uid = FirebaseAuth.instance.currentUser!.uid;
-    return await _firestore
-        .collection(FirebaseAssets.userCollection)
-        .doc(uid)
-        .get();
-  }
-
-  Future<void> updateProfile({
-    required String uid,
-    required Map<String, dynamic> data,
+  Future<DocumentSnapshot> updateProfile({
+    required String firstName,
+    required String lastName,
+    required String phone,
+    required String location,
+    required String email,
   }) async {
-    var uid = FirebaseAuth.instance.currentUser!.uid;
-     await _firestore
-        .collection(FirebaseAssets.userCollection)
-        .doc(uid)
-        .update(data);
+    var uid = _auth.currentUser!.uid;
+    await _firestore.collection(FirebaseAssets.userCollection).doc(uid).set({
+      'firstName': firstName,
+      'lastName': lastName,
+      'phone': phone,
+      'location': location,
+      'email': email,
+    }, SetOptions(merge: true));
+
+    return _firestore.collection(FirebaseAssets.userCollection).doc(uid).get();
   }
 
   // Update Password
   Future<void> updatePassword(String newPassword) async {
-    var user = FirebaseAuth.instance.currentUser;
+    var user = _auth.currentUser;
     if (user != null) {
-       await user.updatePassword(newPassword);
+      await user.updatePassword(newPassword);
     }
   }
 
-  Future<void> deleteProfile(String uid) async {
-    var uid = FirebaseAuth.instance.currentUser!.uid;
+  Future<void> deleteProfile() async {
+    var uid = _auth.currentUser!.uid;
     await _firestore
         .collection(FirebaseAssets.userCollection)
         .doc(uid)
         .delete();
   }
-
 }

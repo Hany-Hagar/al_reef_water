@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'profile_states.dart';
 import 'package:flutter/material.dart';
 import '../../data/repo/profile_repo.dart';
@@ -12,55 +10,76 @@ class ProfileCubit extends Cubit<ProfileState> {
   // ignore: strict_top_level_inference
   static ProfileCubit get(context) => BlocProvider.of(context);
 
-  late UserModel profile;
+  late UserModel user;
 
+  var passwordValidationKey = GlobalKey<FormState>();
   var firstNameController = TextEditingController();
   var lastNameController = TextEditingController();
   var phoneController = TextEditingController();
   var locationController = TextEditingController();
   var emailController = TextEditingController();
+  bool passwordObscure = true;
   var passwordController = TextEditingController();
+  var confirmPasswordObscure = true;
   var confirmPasswordController = TextEditingController();
+  var passwordAutoValidate = AutovalidateMode.disabled;
 
-  void setTextFormFields({required UserModel user}) {
-    log("User:${user.toMap().toString()}");
+  void setTextFormFields() {
     firstNameController.text = user.firstName;
     lastNameController.text = user.lastName;
     phoneController.text = user.phone;
     locationController.text = user.location;
     emailController.text = user.email;
+    passwordController.text = "";
+    confirmPasswordController.text = "";
   }
 
-  void updateProfile({
-    required UserModel userModel,
-    required String uid,
-  }) async {
-    emit(ProfileLoadingState());
+  bool havePasswordChanged() {
+    return passwordController.text.isNotEmpty ||
+        confirmPasswordController.text.isNotEmpty;
+  }
+
+  void togglePasswordObscure() {
+    passwordObscure = !passwordObscure;
+    emit(TogglePasswordObscureState());
+  }
+
+  void toggleConfirmPasswordObscure() {
+    confirmPasswordObscure = !confirmPasswordObscure;
+    emit(TogglePasswordObscureState());
+  }
+
+  void saveProfile() async {
+    if (havePasswordChanged()) {
+      final isPasswordFormValid =
+          passwordValidationKey.currentState?.validate() ?? false;
+      if (!isPasswordFormValid) {
+        return;
+      }
+    }
+    emit(UpdateProfileLoading());
     var result = await profileRepo.updateProfile(
-      userModel: userModel,
-      uid: uid,
+      firstName: firstNameController.text,
+      lastName: lastNameController.text,
+      phone: phoneController.text,
+      location: locationController.text,
+      email: emailController.text,
+      isPasswordChanged: havePasswordChanged(),
+      password: passwordController.text,
+      confirmPassword: confirmPasswordController.text,
     );
-    result.fold(
-      (failure) => emit(ProfileErrorState(failure.message)),
-      (_) => emit(ProfileUpdatedState()),
-    );
+    result.fold((failure) => emit(ProfileErrorState(failure.message)), (data) {
+      user = data;
+      emit(UpdateProfileSuccess());
+    });
   }
 
-  void deleteProfile(String uid) async {
-    emit(ProfileLoadingState());
-    var result = await profileRepo.deleteProfile(uid);
+  void deleteProfile() async {
+    emit(ProfileDeleteLoading());
+    var result = await profileRepo.deleteProfile();
     result.fold(
       (failure) => emit(ProfileErrorState(failure.message)),
-      (_) => emit(ProfileDeletedState()),
-    );
-  }
-
-  void updatePassword(String newPassword) async {
-    emit(ProfileLoadingState());
-    var result = await profileRepo.updatePassword(newPassword);
-    result.fold(
-      (failure) => emit(ProfileErrorState(failure.message)),
-      (_) => emit(ProfilePasswordUpdatedState()),
+      (_) => emit(ProfileDeleteSuccess()),
     );
   }
 }

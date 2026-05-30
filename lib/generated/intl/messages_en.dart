@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Light": MessageLookupByLibrary.simpleMessage("Light"),
         "System": MessageLookupByLibrary.simpleMessage("System"),
         "Theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "UpdateProfileSuccess": MessageLookupByLibrary.simpleMessage(
+            "Profile updated successfully!"),
         "aboutUsDescription": MessageLookupByLibrary.simpleMessage(
             "Welcome to \"Al-Reef Water\", where you’ll find naturally bottled water carefully prepared to meet your daily needs with top quality. We offer low-sodium bottled water, pure and free from unnecessary additives—an ideal choice for everyone, from children to seniors. Al-Reef Water is a healthy choice thanks to advanced production methods that preserve essential minerals your body needs. We put your health first by providing mineral-rich water that supports your overall well-being and balance."),
         "aboutUsTitle": MessageLookupByLibrary.simpleMessage("About Us"),
@@ -99,6 +101,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "orLoginWith": MessageLookupByLibrary.simpleMessage("Or login with"),
+        "orders": MessageLookupByLibrary.simpleMessage("Orders"),
+        "ordersTitle": MessageLookupByLibrary.simpleMessage("Your Orders"),
         "other": MessageLookupByLibrary.simpleMessage("Other"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordHint":
@@ -115,6 +119,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "privacyPolicyDescription": MessageLookupByLibrary.simpleMessage(
             "Our online store welcomes you. Below are the terms and conditions governing your use of the store and the legal effects arising from using our services. By using any service or product, you agree to these terms."),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "profileFirstName": MessageLookupByLibrary.simpleMessage("First Name"),
+        "profileLastName": MessageLookupByLibrary.simpleMessage("Last Name"),
+        "profileTitle": MessageLookupByLibrary.simpleMessage("Your Profile"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "registerNow": MessageLookupByLibrary.simpleMessage("Register now"),
         "registerSubtitle": MessageLookupByLibrary.simpleMessage(

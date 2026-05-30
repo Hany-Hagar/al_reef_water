@@ -1,35 +1,42 @@
-
 import '../widgets/profile_body.dart';
 import 'package:flutter/material.dart';
 import '../../manager/profile_cubit.dart';
-import '../../../../../core/utils/nav_to.dart';
+import '../../manager/profile_states.dart';
+import '../../../../../generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../const_data/app_data.dart';
 import '../../../../../core/di/server_locator.dart';
-import '../../../../../core/services/icon_broken.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/custom_background.dart';
-import '../../../../auth/presentation/manager/auth_cubit.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/services/snack_bar_service.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var user = AuthCubit.get(context).user;
+    var s = S.of(context);
     return BlocProvider.value(
-      value: getIt<ProfileCubit>()..setTextFormFields(user: user!),
-      child: CustomBackground(
-        body: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Padding(
-                padding: defaultAppBarPadding(context),
-                child: ProfileBody(),
-              ),
+      value: getIt<ProfileCubit>()..setTextFormFields(),
+      child: BlocListener<ProfileCubit, ProfileState>(
+        listener: (context, state) {
+          if (state is ProfileErrorState) {
+            SnackBarService.failure(context: context, message: state.message);
+          } else if (state is UpdateProfileSuccess) {
+            SnackBarService.success(
+              context: context,
+              message: s.UpdateProfileSuccess,
+            );
+          }
+        },
+        child: CustomBackground(
+          top: _Top(),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: ProfileBody(),
             ),
-            _Top(),
-          ],
+          ),
         ),
       ),
     );
@@ -41,16 +48,6 @@ class _Top extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: defaultAppBarPadding(context),
-      child: GestureDetector(
-        onTap: () => NavTo.pop(context),
-        child: Icon(
-          IconBroken.Arrow___Right,
-          size: 25.sp,
-          color: Theme.of(context).hintColor,
-        ),
-      ),
-    );
+    return CustomAppBar(title: S.of(context).profileTitle);
   }
 }

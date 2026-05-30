@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../core/di/server_locator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_text.dart';
 import '../../../../../core/services/icon_broken.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../auth/presentation/manager/auth_cubit.dart';
+import '../../../../auth/presentation/manager/auth_states.dart';
 
 class SettingsTopBackground extends StatelessWidget {
   const SettingsTopBackground({super.key});
@@ -91,9 +92,10 @@ class _Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var user = getIt<AuthCubit>().user;
-    var name = "${user?.firstName} ${user?.lastName}";
-    return Row(
+    return BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
+      var user = AuthCubit.get(context).user;
+      var name = "${user?.firstName} ${user?.lastName}";
+      return Row(
       children: [
         CircleAvatar(
           radius: 32.r,
@@ -122,5 +124,7 @@ class _Profile extends StatelessWidget {
         ),
       ],
     );
+    });
+    
   }
 }

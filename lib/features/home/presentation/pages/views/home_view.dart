@@ -1,3 +1,5 @@
+import 'package:al_reef_app/core/widgets/profile_widget.dart';
+
 import '../../../../../core/services/snack_bar_service.dart';
 import '../../../../cart/presentation/manager/cart_cubit.dart';
 import '../../../../cart/presentation/manager/cart_states.dart';
@@ -12,7 +14,6 @@ import '../../../../../core/widgets/custom_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/widgets/custom_background.dart';
 import '../../../../auth/presentation/manager/auth_cubit.dart';
-import '../../../../../core/widgets/custom_profile_widget.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -53,7 +54,7 @@ class _Top extends StatelessWidget {
         size: 16.sp,
         type: Type.header,
       ),
-      trailing: CustomProfileWidget(radius: 20),
+      trailing: ProfileWidget(),
     );
   }
 }

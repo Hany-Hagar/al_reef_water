@@ -31,10 +31,10 @@ class LocationService {
 
       if (result != null) {
         onLocationPicked(result);
-      } else {
       }
     } catch (e) {
-    ("❌ Error opening location picker: $e");
+      // تم تصحيح الـ print هنا أيضاً
+      debugPrint("❌ Error opening location picker: $e");
     }
   }
 }

@@ -33,7 +33,7 @@ class SettingsBody extends StatelessWidget {
           nextScreen: ProfileView(),
         ),
                SettingsItem(
-          title: "الاوردرات",
+          title: s.ordersTitle,
           icon: IconBroken.Buy,
           nextScreen: ProfileView(),
         ),

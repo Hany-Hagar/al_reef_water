@@ -482,6 +482,36 @@ class S {
     );
   }
 
+  /// `Your Profile`
+  String get profileTitle {
+    return Intl.message(
+      'Your Profile',
+      name: 'profileTitle',
+      desc: 'Title for the profile screen',
+      args: [],
+    );
+  }
+
+  /// `First Name`
+  String get profileFirstName {
+    return Intl.message(
+      'First Name',
+      name: 'profileFirstName',
+      desc: 'Label for the first name field in the profile screen',
+      args: [],
+    );
+  }
+
+  /// `Last Name`
+  String get profileLastName {
+    return Intl.message(
+      'Last Name',
+      name: 'profileLastName',
+      desc: 'Label for the last name field in the profile screen',
+      args: [],
+    );
+  }
+
   /// `Address`
   String get address {
     return Intl.message(
@@ -498,6 +528,36 @@ class S {
       'Enter your address',
       name: 'addressHint',
       desc: 'Hint text for the address field in the profile screen',
+      args: [],
+    );
+  }
+
+  /// `Profile updated successfully!`
+  String get UpdateProfileSuccess {
+    return Intl.message(
+      'Profile updated successfully!',
+      name: 'UpdateProfileSuccess',
+      desc: 'Message displayed when the profile is successfully updated',
+      args: [],
+    );
+  }
+
+  /// `Orders`
+  String get orders {
+    return Intl.message(
+      'Orders',
+      name: 'orders',
+      desc: 'Label for the orders section in the settings screen',
+      args: [],
+    );
+  }
+
+  /// `Your Orders`
+  String get ordersTitle {
+    return Intl.message(
+      'Your Orders',
+      name: 'ordersTitle',
+      desc: 'Title for the orders screen',
       args: [],
     );
   }

@@ -10,49 +10,37 @@ class ProfileRepoImpl implements ProfileRepo {
   ProfileRepoImpl({required this.profileData});
 
   @override
-  Future<Either<Failure, UserModel>> getProfile(String uid) async {
-    try {
-      var result = await profileData.getProfile(uid);
-
-      if (result.exists) {
-        final data = result.data();
-        if (data is Map<String, dynamic>) {
-          return Right(UserModel.fromMap(data));
-        }
-      }
-      return Right(UserModel.fromMap({}));
-    } catch (e) {
-      return Left(Failure.handle(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, void>> updateProfile({
-    required UserModel userModel,
-    required String uid,
+  Future<Either<Failure, UserModel>> updateProfile({
+    required String firstName,
+    required String lastName,
+    required String phone,
+    required String location,
+    required String email,
+    required bool isPasswordChanged,
+    required String? password,
+    required String? confirmPassword,
   }) async {
     try {
-      return Right(
-        await profileData.updateProfile(data: userModel.toMap(), uid: uid),
+      var data = await profileData.updateProfile(
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+        location: location,
+        email: email,
       );
+      if (isPasswordChanged) {
+        await profileData.updatePassword(password!);
+      }
+      return Right(UserModel.fromMap(data.data() as Map<String, dynamic>));
     } catch (e) {
       return Left(Failure.handle(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, void>> updatePassword(String newPassword) async {
+  Future<Either<Failure, void>> deleteProfile() async {
     try {
-      return Right(await profileData.updatePassword(newPassword));
-    } catch (e) {
-      return Left(Failure.handle(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, void>> deleteProfile(String uid) async {
-    try {
-      return Right(await profileData.deleteProfile(uid));
+      return Right(await profileData.deleteProfile());
     } catch (e) {
       return Left(Failure.handle(e.toString()));
     }

@@ -1,79 +1,26 @@
 // ignore_for_file: unused_element_parameter
 
-import 'dart:developer';
-import 'profile_widget.dart';
+import 'profile_data.dart';
 import 'package:flutter/material.dart';
 import '../../manager/profile_cubit.dart';
+import '../../manager/profile_states.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../core/widgets/custom_text.dart';
-import '../../../../../core/services/icon_broken.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../core/extensions/address_format.dart';
-import '../../../../../core/services/location_service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../auth/presentation/manager/auth_cubit.dart';
-import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var s = S.of(context);
-    var cubit = ProfileCubit.get(context);
+    var dataFormKey = GlobalKey<FormState>();
     return Column(
       spacing: 10.h,
       children: [
-        ProfileWidget(),
-        SizedBox(height: 20.h),
-        const _Name(),
-        _Item(
-          title: s.phoneNumber,
-          prefixIcon: Icons.phone,
-          hint: s.phoneNumberHint,
-          keyboardType: TextInputType.phone,
-          controller: cubit.phoneController,
-        ),
-        _Item(
-          title: s.address,
-          hint: s.addressHint,
-          suffixIcon: Icons.map,
-          prefixIcon: IconBroken.Location,
-          controller: cubit.locationController,
-          keyboardType: TextInputType.streetAddress,
-          onSuffixPressed: () {
-            LocationService.openLocationPicker(
-              context: context,
-              onLocationPicked: (pickedData) {
-                log("location: ${pickedData.toKsaDeliveryAddress()}");
-              },
-            );
-          },
-        ),
-        _Item(
-          readOnly: true,
-          title: s.emailAddress,
-          prefixIcon: Icons.email,
-          hint: s.emailAddressHint,
-          controller: cubit.emailController,
-          keyboardType: TextInputType.emailAddress,
-        ),
-        _Item(
-          title: s.password,
-          obscureText: true,
-          hint: s.passwordHint,
-          prefixIcon: Icons.lock,
-          controller: cubit.passwordController,
-          keyboardType: TextInputType.visiblePassword,
-        ),
-        _Item(
-          obscureText: true,
-          prefixIcon: Icons.lock,
-          title: s.confirmPassword,
-          hint: s.confirmPasswordHint,
-          controller: cubit.confirmPasswordController,
-          keyboardType: TextInputType.visiblePassword,
-        ),
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
+        ProfileData(formKey: dataFormKey),
+        //ProfileAccount(accountFormKey: cubit.passwordValidationKey),
         SizedBox(height: 15.h),
         _Actions(),
       ],
@@ -81,116 +28,43 @@ class ProfileBody extends StatelessWidget {
   }
 }
 
-class _Item extends StatelessWidget {
-  final String title;
-  final String hint;
-  final TextEditingController controller;
-  final bool obscureText;
-  final IconData prefixIcon;
-  final IconData? suffixIcon;
-  final TextInputType keyboardType;
-  final TextEditingController? passwordController;
-  final Function()? onSuffixPressed;
-  final bool readOnly;
-  const _Item({
-    required this.title,
-    required this.hint,
-    required this.controller,
-    required this.prefixIcon,
-    this.suffixIcon,
-    this.onSuffixPressed,
-    this.obscureText = false,
-    this.passwordController,
-    required this.keyboardType,
-    this.readOnly = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      spacing: 10.h,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomText(text: title, size: 16.sp, type: Type.overMedium),
-        MTextFormField(
-          hintText: hint,
-          controller: controller,
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon,
-          obscureText: obscureText,
-          suffixTap: onSuffixPressed,
-          keyboardType: keyboardType,
-          passwordController: passwordController,
-          readOnly: readOnly,
-        ),
-      ],
-    );
-  }
-}
-
-class _Name extends StatelessWidget {
-  const _Name();
-
-  @override
-  Widget build(BuildContext context) {
-    var s = S.of(context);
-    var cubit = AuthCubit.get(context);
-    return Row(
-      children: [
-        Expanded(
-          child: _Item(
-            title: s.firstName,
-            hint: s.firstNameHint,
-            prefixIcon: Icons.person,
-            keyboardType: TextInputType.name,
-            controller: cubit.firstNameController,
-          ),
-        ),
-        SizedBox(width: 10.w),
-        Expanded(
-          child: _Item(
-            title: s.lastName,
-            hint: s.lastNameHint,
-            prefixIcon: Icons.person,
-            keyboardType: TextInputType.name,
-            controller: cubit.lastNameController,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class _Actions extends StatelessWidget {
-  const _Actions({super.key});
+  const _Actions();
 
   @override
   Widget build(BuildContext context) {
     var s = S.of(context);
-    return Row(
-      children: [
-        Expanded(
-          flex: 5,
-          child: CustomButton(
-            text: S.of(context).save,
-            onPressed: () {},
-            width: double.infinity,
-          ),
-        ),
 
-        SizedBox(width: 10.w),
-        Expanded(
-          flex: 3,
-          child: CustomButton(
-            text: s.deleteAccount,
-            onPressed: () {},
-            textSize: 18.sp,
-            color: Colors.red,
-            width: double.infinity,
-            enableBorderColor: true,
-          ),
-        ),
-      ],
+    return BlocBuilder<ProfileCubit, ProfileState>(
+      builder: (context, state) {
+        var cubit = ProfileCubit.get(context);
+        return Row(
+          children: [
+            Expanded(
+              flex: 5,
+              child: CustomButton(
+                isLoading: state is UpdateProfileLoading,
+                text: S.of(context).save,
+                onPressed: () => cubit.saveProfile(),
+                width: double.infinity,
+              ),
+            ),
+            SizedBox(width: 10.w),
+            Expanded(
+              flex: 3,
+              child: CustomButton(
+                isLoading: state is ProfileDeleteLoading,
+                text: s.deleteAccount,
+                onPressed: () {},
+                textSize: 18.sp,
+                color: Colors.red,
+                width: double.infinity,
+                enableBorderColor: true,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

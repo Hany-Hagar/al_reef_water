@@ -2,6 +2,8 @@ sealed class AuthState {}
 
 class AuthInitialState extends AuthState {}
 
+class ProfileUpdatedState extends AuthState {}
+
 class ChangePasswordVisibilityState extends AuthState {}
 
 class ChangeConfirmPasswordVisibilityState extends AuthState {}
