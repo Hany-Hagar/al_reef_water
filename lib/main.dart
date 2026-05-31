@@ -16,6 +16,7 @@ import 'features/auth/presentation/manager/auth_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'features/home/presentation/manager/banner_cubit.dart';
 import 'features/home/presentation/manager/product_cubit.dart';
+import 'features/orders/presentation/manager/orders_cubit.dart';
 import 'features/favourites/presentation/manager/fav_cubit.dart';
 import 'features/profile/presentation/manager/profile_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -58,6 +59,9 @@ class MyApp extends StatelessWidget {
 
         // Settings
         BlocProvider(create: (context) => getIt<SettingsCubit>()),
+
+        // Orders
+        BlocProvider(create: (context) => getIt<OrdersCubit>()),
 
         // Profile
         BlocProvider(create: (context) => getIt<ProfileCubit>()), 

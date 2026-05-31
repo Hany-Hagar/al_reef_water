@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LocationModel {
+
+  final String title; 
+
   final double latitude;
   final double longitude;
 
@@ -13,6 +16,7 @@ class LocationModel {
   final DateTime? createdAt;
 
   const LocationModel({
+    required this.title,
     required this.latitude,
     required this.longitude,
     required this.country,
@@ -25,6 +29,7 @@ class LocationModel {
   // Empty
   factory LocationModel.empty() {
     return LocationModel(
+      title: '',
       latitude: 0.0,
       longitude: 0.0,
       country: '',
@@ -37,6 +42,7 @@ class LocationModel {
   
   // CopyWith
   LocationModel copyWith({
+    String? title,
     double? latitude,
     double? longitude,
     String? country,
@@ -46,6 +52,7 @@ class LocationModel {
     DateTime? createdAt,
   }) {
     return LocationModel(
+      title: title ?? this.title,
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
       country: country ?? this.country,
@@ -57,7 +64,7 @@ class LocationModel {
   }
 
   // FromOsm_search_and_pick
-  LocationModel buildLocationFromOSM(Map data) {
+  LocationModel buildLocationFromOSM(Map data , String title) {
     final address = data['address'] ?? {};
     final city = address['city'] ?? address['town'] ?? address['village'] ?? '';
     final district = address['suburb'] ?? address['neighbourhood'] ?? '';
@@ -68,6 +75,7 @@ class LocationModel {
         .trim();
 
     return LocationModel(
+      title: title,
       latitude: (data['lat'] as num).toDouble(),
       longitude: (data['lon'] as num).toDouble(),
       city: city,
@@ -81,6 +89,7 @@ class LocationModel {
   // FromFirestore
   factory LocationModel.fromFirestore(Map<String, dynamic> data) {
     return LocationModel(
+      title: data['title'] ?? '',
       latitude: (data['latitude'] as num).toDouble(),
       longitude: (data['longitude'] as num).toDouble(),
       country: data['country'] ?? '',
@@ -94,6 +103,7 @@ class LocationModel {
   // ToFirestore
   Map<String, dynamic> toFirestore() {
     return {
+      'title': title,
       'latitude': latitude,
       'longitude': longitude,
       'country': country,

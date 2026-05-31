@@ -13,6 +13,7 @@ import '../../../../../core/services/icon_broken.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../auth/presentation/manager/auth_cubit.dart';
 import '../../../../auth/presentation/manager/auth_states.dart';
+import '../../../../orders/presentation/pages/views/orders_view.dart';
 import '../../../../profile/presentation/pages/views/profile_view.dart';
 
 class SettingsBody extends StatelessWidget {
@@ -35,7 +36,7 @@ class SettingsBody extends StatelessWidget {
                SettingsItem(
           title: s.ordersTitle,
           icon: IconBroken.Buy,
-          nextScreen: ProfileView(),
+          nextScreen: OrdersView(),
         ),
         _Title(text: s.preferences),
         AppPreferences.lang(),

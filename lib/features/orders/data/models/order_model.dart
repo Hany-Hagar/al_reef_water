@@ -7,6 +7,7 @@ class OrderModel {
   final CartModel cart;
   final DateTime orderDate;
   final double totalAmount;
+  final OrderStatus status;
   
   OrderModel({
     required this.id,
@@ -14,6 +15,7 @@ class OrderModel {
     required this.cart,
     required this.orderDate,
     required this.totalAmount,
+    this.status = OrderStatus.pending,
   });
 
   // Empty
@@ -24,6 +26,7 @@ class OrderModel {
       cart: CartModel.empty(),
       orderDate: DateTime.now(),
       totalAmount: 0.0,
+      status: OrderStatus.pending,
     );
   }
 
@@ -37,6 +40,10 @@ class OrderModel {
       ),
       orderDate: (data['orderDate'] as Timestamp?)?.toDate() ?? DateTime.now(),
       totalAmount: (data['totalAmount'] as num?)?.toDouble() ?? 0.0,
+      status: OrderStatus.values.firstWhere(
+        (e) => e.toString() == 'OrderStatus.${data['status']}',
+        orElse: () => OrderStatus.pending,
+      ),
     );
   }
 
@@ -48,7 +55,16 @@ class OrderModel {
       'cart': cart.toFirestore(),
       'orderDate': orderDate,
       'totalAmount': totalAmount,
+      'status': status.toString().split('.').last,
     };
   }
+}
+
+enum OrderStatus {
+  pending,
+  processing,
+  shipped,
+  delivered,
+  cancelled,
 }
 

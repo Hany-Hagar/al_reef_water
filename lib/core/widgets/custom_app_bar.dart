@@ -4,6 +4,7 @@ import '../../../core/utils/nav_to.dart';
 import '../../../core/widgets/custom_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../features/settings/presentation/manager/settings_cubit.dart';
 import '../services/icon_broken.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -63,10 +64,11 @@ class _Start extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     bool isArabic = SettingsCubit.get(context).state.lang == 'ar';
     return GestureDetector(
       onTap: () => NavTo.pop(context),
       child: Icon(
-        leading ?? IconBroken.Arrow___Right,
+        leading ?? (isArabic ? IconBroken.Arrow___Right : IconBroken.Arrow___Left),
         size: 25.sp,
         color: iconColor ?? Theme.of(context).hintColor,
       ),
