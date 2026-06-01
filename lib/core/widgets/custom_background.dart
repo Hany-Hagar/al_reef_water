@@ -32,7 +32,7 @@ class CustomBackground extends StatelessWidget {
           drawer: drawer,
           body: Column(
             children: [
-              ?top,
+              if (top != null) top!,
               Expanded(child: body),
             ],
           ),

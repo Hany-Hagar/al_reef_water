@@ -8,7 +8,6 @@ abstract class ProfileRepo {
     required String firstName,
     required String lastName,
     required String phone,
-    required String location,
     required String email,
   });
 

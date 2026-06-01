@@ -14,7 +14,6 @@ class ProfileRepoImpl implements ProfileRepo {
     required String firstName,
     required String lastName,
     required String phone,
-    required String location,
     required String email,
   }) async {
     try {
@@ -22,7 +21,6 @@ class ProfileRepoImpl implements ProfileRepo {
         firstName: firstName,
         lastName: lastName,
         phone: phone,
-        location: location,
         email: email,
       );
       return Right(UserModel.fromMap(data.data() as Map<String, dynamic>));

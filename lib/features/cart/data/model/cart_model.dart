@@ -4,10 +4,12 @@ class CartModel {
   final String id;
   final int quantity;
   final ProductModel product;
+  final double totalPrice;
   CartModel({
     required this.id,
     required this.quantity,
     required this.product,
+    required this.totalPrice,
   });
 
   // Empty
@@ -15,6 +17,7 @@ class CartModel {
     return CartModel(
       id: '',
       quantity: 0,
+      totalPrice: 0.0,
       product: ProductModel.empty(),
     );
   }
@@ -24,6 +27,7 @@ class CartModel {
     return CartModel(
       id: data['id'] ?? '',
       quantity: data['quantity'] ?? 0,
+      totalPrice: data['totalPrice'] ?? 0.0,
       product: ProductModel.fromMap(
         (data['product'] as Map<String, dynamic>?) ?? <String, dynamic>{},
       ),
@@ -36,6 +40,7 @@ class CartModel {
       'id': id,
       'quantity': quantity,
       'product': product.toMap(),
+      'totalPrice': totalPrice,
     };
   }
 
@@ -44,11 +49,13 @@ class CartModel {
     String? id,
     int? quantity,
     ProductModel? product,
+    double? totalPrice,
   }) {
     return CartModel(
       id: id ?? this.id,
       quantity: quantity ?? this.quantity,
       product: product ?? this.product,
+      totalPrice: totalPrice ?? this.totalPrice,
     );
   }
 }

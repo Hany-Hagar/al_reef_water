@@ -13,7 +13,6 @@ class ProfileData {
     required String firstName,
     required String lastName,
     required String phone,
-    required String location,
     required String email,
   }) async {
     var uid = _auth.currentUser!.uid;
@@ -21,7 +20,6 @@ class ProfileData {
       'firstName': firstName,
       'lastName': lastName,
       'phone': phone,
-      'location': location,
       'email': email,
     }, SetOptions(merge: true));
 

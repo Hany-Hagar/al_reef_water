@@ -1,4 +1,3 @@
-
 import '../../../../const_data/firebase_assets.dart';
 import '../model/cart_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,7 +7,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class CartData {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
 
   String get userId => _auth.currentUser!.uid;
 
@@ -21,8 +19,9 @@ class CartData {
     final snapshot = await _cartItems.get();
 
     return snapshot.docs.map((doc) {
-      return CartModel.fromFirestore(doc.data() as Map<String, dynamic>)
-          .copyWith(id: doc.id);
+      return CartModel.fromFirestore(
+        doc.data() as Map<String, dynamic>,
+      ).copyWith(id: doc.id);
     }).toList();
   }
 
@@ -34,28 +33,31 @@ class CartData {
 
     if (query.docs.isNotEmpty) {
       final doc = query.docs.first;
-
       final model = CartModel.fromFirestore(doc.data() as Map<String, dynamic>);
-      final updated = model.copyWith(quantity: model.quantity + 1);
-
+      final updated = model.copyWith(
+        quantity: model.quantity + 1,
+        totalPrice: model.totalPrice + product.price,
+      );
       await doc.reference.update(updated.toFirestore());
       return updated;
     }
 
     final docRef = _cartItems.doc();
-
     final newItem = CartModel(
       id: docRef.id,
       quantity: 1,
       product: product,
+      totalPrice: product.price,
     );
-
     await docRef.set(newItem.toFirestore());
     return newItem;
   }
 
-  Future<void> updateCartQuantity(String cartId, int quantity) async {
-    await _cartItems.doc(cartId).update({'quantity': quantity});
+  Future<void> updateCartQuantity(String cartId, int quantity, double totalPrice) async {
+    await _cartItems.doc(cartId).update({
+      'quantity': quantity,
+      'totalPrice': totalPrice,
+    });
   }
 
   Future<void> removeFromCart(String cartId) async {

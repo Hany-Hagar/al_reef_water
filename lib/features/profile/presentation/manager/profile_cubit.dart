@@ -18,50 +18,22 @@ class ProfileCubit extends Cubit<ProfileState> {
   var phoneController = TextEditingController();
   var locationController = TextEditingController();
   var emailController = TextEditingController();
-  bool passwordObscure = true;
-  var passwordController = TextEditingController();
-  var confirmPasswordObscure = true;
-  var confirmPasswordController = TextEditingController();
-  var passwordAutoValidate = AutovalidateMode.disabled;
 
   void setTextFormFields() {
     firstNameController.text = user.firstName;
     lastNameController.text = user.lastName;
     phoneController.text = user.phone;
     emailController.text = user.email;
-    passwordController.text = "";
-    confirmPasswordController.text = "";
   }
 
-  bool havePasswordChanged() {
-    return passwordController.text.isNotEmpty ||
-        confirmPasswordController.text.isNotEmpty;
-  }
 
-  void togglePasswordObscure() {
-    passwordObscure = !passwordObscure;
-    emit(TogglePasswordObscureState());
-  }
-
-  void toggleConfirmPasswordObscure() {
-    confirmPasswordObscure = !confirmPasswordObscure;
-    emit(TogglePasswordObscureState());
-  }
 
   void saveProfile() async {
-    if (havePasswordChanged()) {
-      final isPasswordFormValid =
-          passwordValidationKey.currentState?.validate() ?? false;
-      if (!isPasswordFormValid) {
-        return;
-      }
-    }
     emit(UpdateProfileLoading());
     var result = await profileRepo.updateProfile(
       firstName: firstNameController.text,
       lastName: lastNameController.text,
       phone: phoneController.text,
-      location: locationController.text,
       email: emailController.text,
     );
     result.fold((failure) => emit(ProfileErrorState(failure.message)), (data) {

@@ -1,4 +1,3 @@
-
 import 'settings_item.dart';
 import 'app_preferences.dart';
 import '../views/about_us_view.dart';
@@ -15,6 +14,7 @@ import '../../../../auth/presentation/manager/auth_cubit.dart';
 import '../../../../auth/presentation/manager/auth_states.dart';
 import '../../../../orders/presentation/pages/views/orders_view.dart';
 import '../../../../profile/presentation/pages/views/profile_view.dart';
+import '../../../../locations/presentation/pages/views/locations_view.dart';
 
 class SettingsBody extends StatelessWidget {
   const SettingsBody({super.key});
@@ -33,7 +33,12 @@ class SettingsBody extends StatelessWidget {
           icon: IconBroken.User,
           nextScreen: ProfileView(),
         ),
-               SettingsItem(
+        SettingsItem(
+          title: "My Locations",
+          icon: IconBroken.Location,
+          nextScreen: LocationsView(),
+        ),
+        SettingsItem(
           title: s.ordersTitle,
           icon: IconBroken.Buy,
           nextScreen: OrdersView(),

@@ -14,6 +14,7 @@ class CustomAppBar extends StatelessWidget {
   final Widget? bottom;
   final Color? backgroundColor;
   final Widget? action;
+  final bool centerTitle;
   const CustomAppBar({
     super.key,
     this.leading,
@@ -22,6 +23,7 @@ class CustomAppBar extends StatelessWidget {
     this.bottom,
     this.backgroundColor,
     this.action,
+    this.centerTitle = false,
   });
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,8 @@ class CustomAppBar extends StatelessWidget {
           Row(
             children: [
               _Start(iconColor: iconColor, leading: leading),
-              SizedBox(width: 16.w),
+              if (centerTitle) Spacer(),
+              if (!centerTitle) SizedBox(width: 16.w),
               _Title(text: title),
               Spacer(),
               ?action,

@@ -52,27 +52,29 @@ class CartCubit extends Cubit<CartState> {
   void increaseCartQuantity(String cartId) async {
     final item = cartItems.firstWhere((item) => item.id == cartId);
     final newQuantity = item.quantity + 1;
+    final newTotalPrice = item.totalPrice + item.product.price;
     emit(IncreaseCartQuantityLoading(cartId: cartId));
-    _updateCartQuantity(cartId, newQuantity, IncreaseCartQuantitySuccess());
+    _updateCartQuantity(cartId, newQuantity, IncreaseCartQuantitySuccess(), newTotalPrice);
   }
 
   void decreaseCartQuantity(String cartId) async {
     final item = cartItems.firstWhere((item) => item.id == cartId);
     if (item.quantity > 1) {
       final newQuantity = item.quantity - 1;
+      final newTotalPrice = item.totalPrice - item.product.price;
       emit(DecreaseCartQuantityLoading(cartId: cartId));
-      _updateCartQuantity(cartId, newQuantity, DecreaseCartQuantitySuccess());
+      _updateCartQuantity(cartId, newQuantity, DecreaseCartQuantitySuccess(), newTotalPrice);
     } else {
       removeFromCart(cartId);
     }
   }
 
-  void _updateCartQuantity(String cartId, int quantity, CartState state) async {
-    final result = await cartRepo.updateCartQuantity(cartId, quantity);
+  void _updateCartQuantity(String cartId, int quantity, CartState state, double totalPrice) async {
+    final result = await cartRepo.updateCartQuantity(cartId, quantity, totalPrice);
     result.fold((failure) => emit(CartFailure(failure.message)), (_) {
       final index = cartItems.indexWhere((item) => item.id == cartId);
       if (index != -1) {
-        final updatedItem = cartItems[index].copyWith(quantity: quantity);
+        final updatedItem = cartItems[index].copyWith(quantity: quantity, totalPrice: totalPrice);
         cartItems[index] = updatedItem;
         emit(state);
       }

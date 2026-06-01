@@ -4,11 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class OrderModel {
   final String id;
   final String userId;
-  final CartModel cart;
+  final List<CartModel> cart;
   final DateTime orderDate;
   final double totalAmount;
   final OrderStatus status;
-  
+
   OrderModel({
     required this.id,
     required this.userId,
@@ -23,7 +23,7 @@ class OrderModel {
     return OrderModel(
       id: '',
       userId: '',
-      cart: CartModel.empty(),
+      cart: const [],
       orderDate: DateTime.now(),
       totalAmount: 0.0,
       status: OrderStatus.pending,
@@ -35,9 +35,13 @@ class OrderModel {
     return OrderModel(
       id: data['id'] ?? '',
       userId: data['userId'] ?? '',
-      cart: CartModel.fromFirestore(
-        (data['cart'] as Map<String, dynamic>?) ?? <String, dynamic>{},
-      ),
+      cart:
+          (data['cart'] as List<dynamic>?)
+              ?.map(
+                (item) => CartModel.fromFirestore(item as Map<String, dynamic>),
+              )
+              .toList() ??
+          const [],
       orderDate: (data['orderDate'] as Timestamp?)?.toDate() ?? DateTime.now(),
       totalAmount: (data['totalAmount'] as num?)?.toDouble() ?? 0.0,
       status: OrderStatus.values.firstWhere(
@@ -52,7 +56,7 @@ class OrderModel {
     return {
       'id': id,
       'userId': userId,
-      'cart': cart.toFirestore(),
+      'cart': cart.map((item) => item.toFirestore()).toList(),
       'orderDate': orderDate,
       'totalAmount': totalAmount,
       'status': status.toString().split('.').last,
@@ -60,11 +64,4 @@ class OrderModel {
   }
 }
 
-enum OrderStatus {
-  pending,
-  processing,
-  shipped,
-  delivered,
-  cancelled,
-}
-
+enum OrderStatus { pending, processing, shipped, delivered, cancelled }

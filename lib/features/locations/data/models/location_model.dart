@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LocationModel {
 
+  final String id;
+
   final String title; 
 
   final double latitude;
@@ -16,6 +18,7 @@ class LocationModel {
   final DateTime? createdAt;
 
   const LocationModel({
+    required this.id,
     required this.title,
     required this.latitude,
     required this.longitude,
@@ -29,6 +32,7 @@ class LocationModel {
   // Empty
   factory LocationModel.empty() {
     return LocationModel(
+      id: '',
       title: '',
       latitude: 0.0,
       longitude: 0.0,
@@ -42,6 +46,7 @@ class LocationModel {
   
   // CopyWith
   LocationModel copyWith({
+    String? id,
     String? title,
     double? latitude,
     double? longitude,
@@ -52,6 +57,7 @@ class LocationModel {
     DateTime? createdAt,
   }) {
     return LocationModel(
+      id: id ?? this.id,
       title: title ?? this.title,
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
@@ -65,6 +71,7 @@ class LocationModel {
 
   // FromOsm_search_and_pick
   LocationModel buildLocationFromOSM(Map data , String title) {
+
     final address = data['address'] ?? {};
     final city = address['city'] ?? address['town'] ?? address['village'] ?? '';
     final district = address['suburb'] ?? address['neighbourhood'] ?? '';
@@ -75,6 +82,7 @@ class LocationModel {
         .trim();
 
     return LocationModel(
+      id: '',
       title: title,
       latitude: (data['lat'] as num).toDouble(),
       longitude: (data['lon'] as num).toDouble(),
@@ -89,6 +97,7 @@ class LocationModel {
   // FromFirestore
   factory LocationModel.fromFirestore(Map<String, dynamic> data) {
     return LocationModel(
+      id: data['id'] ?? '',
       title: data['title'] ?? '',
       latitude: (data['latitude'] as num).toDouble(),
       longitude: (data['longitude'] as num).toDouble(),
@@ -103,6 +112,7 @@ class LocationModel {
   // ToFirestore
   Map<String, dynamic> toFirestore() {
     return {
+      'id': id,
       'title': title,
       'latitude': latitude,
       'longitude': longitude,

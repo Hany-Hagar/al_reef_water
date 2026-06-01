@@ -17,18 +17,22 @@ import '../../features/home/data/database/product_data.dart';
 import '../../features/home/data/repo/product_repo_impl.dart';
 import '../../features/orders/data/database/orders_data.dart';
 import '../../features/orders/data/repo/orders_repo_impl.dart';
+import '../../features/locations/data/repo/location_repo.dart';
 import '../../features/favourites/data/database/fav_data.dart';
 import '../../features/profile/data/database/profile_data.dart';
 import '../../features/favourites/data/repo/fav_repo_impl.dart';
 import '../../features/profile/data/repo/profile_repo_impl.dart';
 import '../../features/auth/presentation/manager/auth_cubit.dart';
 import '../../features/cart/presentation/manager/cart_cubit.dart';
+import '../../features/locations/data/database/location_data.dart';
+import '../../features/locations/data/repo/location_repo_impl.dart';
 import '../../features/home/presentation/manager/banner_cubit.dart';
 import '../../features/home/presentation/manager/product_cubit.dart';
 import '../../features/orders/presentation/manager/orders_cubit.dart';
 import '../../features/favourites/presentation/manager/fav_cubit.dart';
 import '../../features/profile/presentation/manager/profile_cubit.dart';
 import '../../features/settings/presentation/manager/settings_cubit.dart';
+import '../../features/locations/presentation/manager/location_cubit.dart';
 
 var getIt = GetIt.instance;
 
@@ -70,9 +74,16 @@ void setupLocator() {
   getIt.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl(profileData: getIt<ProfileData>()));
   getIt.registerLazySingleton<ProfileCubit>(() => ProfileCubit(profileRepo: getIt<ProfileRepo>()));
 
+  // Locations
+  getIt.registerLazySingleton<LocationData>(() => LocationData());
+  getIt.registerLazySingleton<LocationRepo>(() => LocationRepoImpl(locationData: getIt<LocationData>()));
+  getIt.registerLazySingleton<LocationCubit>(() => LocationCubit(locationRepo: getIt<LocationRepo>()));
+
   // Orders
   getIt.registerLazySingleton<OrdersData>(() => OrdersData());
   getIt.registerLazySingleton<OrdersRepo>(() => OrdersRepoImpl(ordersData: getIt<OrdersData>()));
   getIt.registerLazySingleton<OrdersCubit>(() => OrdersCubit(ordersRepo: getIt<OrdersRepo>()));
+
+  // 
 
 }

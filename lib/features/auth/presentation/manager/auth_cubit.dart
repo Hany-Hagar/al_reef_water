@@ -1,8 +1,6 @@
 // ignore_for_file: strict_top_level_inference
 
 import 'dart:async';
-import '../../../profile/presentation/manager/profile_states.dart';
-import '../../data/models/location_model.dart';
 import 'auth_states.dart';
 import 'package:flutter/material.dart';
 import '../../data/repo/auth_repo.dart';
@@ -11,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/server_locator.dart';
 import '../../../layout/manager/layout_cubit.dart';
 import '../../../profile/presentation/manager/profile_cubit.dart';
+import '../../../profile/presentation/manager/profile_states.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final AuthRepo authRepo;
@@ -95,7 +94,6 @@ class AuthCubit extends Cubit<AuthState> {
     phone: phoneController.text,
     email: registerEmailController.text,
     password: registerPasswordController.text,
-    location: [LocationModel.empty()],
     favorites: [],
   );
 

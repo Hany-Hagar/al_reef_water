@@ -94,7 +94,8 @@ class _Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
       var user = AuthCubit.get(context).user;
-      var name = "${user?.firstName} ${user?.lastName}";
+      var name = "${user?.firstName ?? ''} ${user?.lastName ?? ''}".trim();
+      var email = user?.email ?? '';
       return Row(
       children: [
         CircleAvatar(
@@ -108,13 +109,13 @@ class _Profile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText(
-                text: name,
+                text: name.isNotEmpty ? name : '',
                 size: 22.sp,
                 color: Colors.white,
                 type: Type.overMedium,
               ),
               CustomText(
-                text: user!.email,
+                text: email,
                 size: 15.sp,
                 color: Colors.white,
                 type: Type.overMedium,

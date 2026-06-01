@@ -21,7 +21,7 @@ import 'features/favourites/presentation/manager/fav_cubit.dart';
 import 'features/profile/presentation/manager/profile_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'features/settings/presentation/manager/settings_cubit.dart';
-
+import 'features/locations/presentation/manager/location_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,11 +60,14 @@ class MyApp extends StatelessWidget {
         // Settings
         BlocProvider(create: (context) => getIt<SettingsCubit>()),
 
+        // Profile
+        BlocProvider(create: (context) => getIt<ProfileCubit>()),
+
+        // Locations
+        BlocProvider(create: (context) => getIt<LocationCubit>()),
+
         // Orders
         BlocProvider(create: (context) => getIt<OrdersCubit>()),
-
-        // Profile
-        BlocProvider(create: (context) => getIt<ProfileCubit>()), 
       ],
       child: BlocBuilder<SettingsCubit, AppUserPref>(
         builder: (context, state) => ScreenUtilInit(
