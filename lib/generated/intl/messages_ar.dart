@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
         "cart": MessageLookupByLibrary.simpleMessage("السلة"),
         "cartTitle": MessageLookupByLibrary.simpleMessage("سلتك"),
+        "companiesDeals": MessageLookupByLibrary.simpleMessage("عروض الشركات"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "confirmPasswordHint":
@@ -101,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "مرحباً بك! الرجاء تسجيل الدخول إلى حسابك."),
         "loginTitle": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "mosqueDeals": MessageLookupByLibrary.simpleMessage("عروض المساجد"),
         "orLoginWith":
             MessageLookupByLibrary.simpleMessage("أو تسجيل الدخول باستخدام"),
         "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
@@ -113,8 +115,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "phoneNumberHint":
             MessageLookupByLibrary.simpleMessage("أدخل رقم هاتفك"),
-        "popularProducts": MessageLookupByLibrary.simpleMessage("أهم المنتجات"),
         "preferences": MessageLookupByLibrary.simpleMessage("التفضيلات"),
+        "price": MessageLookupByLibrary.simpleMessage("السعر:  "),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "privacyPolicyDescription": MessageLookupByLibrary.simpleMessage(
             "مرحباً بك في متجرنا الإلكتروني. فيما يلي الشروط والأحكام التي تنظم استخدامك للمتجر والآثار القانونية الناتجة عن استخدام خدماتنا. من خلال استخدام أي خدمة أو منتج، توافق على هذه الشروط."),
@@ -122,6 +124,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileFirstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
         "profileLastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("ملفي الشخصي"),
+        "quantity": MessageLookupByLibrary.simpleMessage("الكمية:  "),
         "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل جديد"),
         "registerNow": MessageLookupByLibrary.simpleMessage("تسجيل الآن"),
         "registerSubtitle":
@@ -129,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerSuccess": MessageLookupByLibrary.simpleMessage(
             "تم التسجيل بنجاح! الرجاء تسجيل الدخول إلى حسابك."),
         "registerTitle": MessageLookupByLibrary.simpleMessage("تسجيل جديد"),
+        "riyal": MessageLookupByLibrary.simpleMessage("ر.س"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "secondPolicy":
             MessageLookupByLibrary.simpleMessage("2. الأهلية القانونية"),
@@ -145,6 +149,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("3. طبيعة الالتزام"),
         "thirdPolicyDescription": MessageLookupByLibrary.simpleMessage(
             "يتعهد المتجر بتوفير الخدمة أو المنتج للعميل. قد يشمل ذلك خدمات послبيعية إضافية حسب نوع المنتج أو الخدمة."),
+        "todayDeals": MessageLookupByLibrary.simpleMessage("عروض اليوم"),
+        "total": MessageLookupByLibrary.simpleMessage("الإجمالي:  "),
         "visionDescription": MessageLookupByLibrary.simpleMessage(
             "الحفاظ على أعلى معايير الجودة لإنتاج مياه معبأة بأفضل الطرق الخاضعة لكافة قياسات الجودة وللتأكد من تقديم مياه صحية نقية بأفضل المواصفات العالمية."),
         "visionTitle": MessageLookupByLibrary.simpleMessage("رؤيتنا"),

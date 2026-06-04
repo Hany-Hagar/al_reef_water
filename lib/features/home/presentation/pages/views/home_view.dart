@@ -74,6 +74,7 @@ class _TabView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var s = S.of(context);
     var fontColor = Theme.of(context).hintColor;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.w),
@@ -90,10 +91,10 @@ class _TabView extends StatelessWidget {
           color: fontColor.withValues(alpha: 0.8),
           fontSize: 13.sp,
         ),
-        tabs: const [
-          Tab(text: "عروض اليوم"),
-          Tab(text: 'عروض المساجد'),
-          Tab(text: 'عروض الشركات'),
+        tabs:  [
+          Tab(text: s.todayDeals),
+          Tab(text: s.mosqueDeals),
+          Tab(text: s.companiesDeals),
         ],
       ),
     );

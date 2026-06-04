@@ -64,6 +64,7 @@ class _Item extends StatelessWidget {
     return Card(
       margin: EdgeInsets.zero,
       clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
       child: Row(
         children: [
           _Image(imageUrl: product.images.first, productId: product.id),
@@ -86,13 +87,12 @@ class _Image extends StatelessWidget {
     return Stack(
       children: [
         SizedBox(
-          width: 110.w,
+          width: 115.w,
           child: Container(
             color: Colors.white,
             child: Image.network(
               imageUrl,
-              width: 110.w,
-              height: 100.h,
+              width: MediaQuery.sizeOf(context).width * 0.3,
               fit: BoxFit.fill,
             ),
           ),
@@ -126,7 +126,7 @@ class _ItemBody extends StatelessWidget {
             type: Type.overMedium,
           ),
           CustomText(
-            text: "${product.price.toStringAsFixed(2)} ر.س",
+            text: "${product.price.toStringAsFixed(2)} ${S.of(context).riyal}",
             size: 12.sp,
             type: Type.overMedium,
           ),

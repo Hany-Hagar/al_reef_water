@@ -351,6 +351,16 @@ class S {
     );
   }
 
+  /// `SAR`
+  String get riyal {
+    return Intl.message(
+      'SAR',
+      name: 'riyal',
+      desc: 'Currency symbol for Saudi Riyal',
+      args: [],
+    );
+  }
+
   /// `Home`
   String get home {
     return Intl.message(
@@ -381,12 +391,35 @@ class S {
     );
   }
 
-  /// `Popular Products`
-  String get popularProducts {
+  /// `Today's Deals`
+  String get todayDeals {
     return Intl.message(
-      'Popular Products',
-      name: 'popularProducts',
-      desc: 'Title for the popular products section on the home screen',
+      'Today\'s Deals',
+      name: 'todayDeals',
+      desc:
+          'Title for the section that displays today\'s deals on the home screen',
+      args: [],
+    );
+  }
+
+  /// `Mosque Deals`
+  String get mosqueDeals {
+    return Intl.message(
+      'Mosque Deals',
+      name: 'mosqueDeals',
+      desc:
+          'Title for the section that displays mosque deals on the home screen',
+      args: [],
+    );
+  }
+
+  /// `Company Deals`
+  String get companiesDeals {
+    return Intl.message(
+      'Company Deals',
+      name: 'companiesDeals',
+      desc:
+          'Title for the section that displays company deals on the home screen',
       args: [],
     );
   }
@@ -448,6 +481,36 @@ class S {
       'Your Cart',
       name: 'cartTitle',
       desc: 'Title for the cart screen',
+      args: [],
+    );
+  }
+
+  /// `Price:  `
+  String get price {
+    return Intl.message(
+      'Price:  ',
+      name: 'price',
+      desc: 'تسمية السعر في عنصر منتج السلة',
+      args: [],
+    );
+  }
+
+  /// `Total:  `
+  String get total {
+    return Intl.message(
+      'Total:  ',
+      name: 'total',
+      desc: 'تسمية الإجمالي في عنصر منتج السلة',
+      args: [],
+    );
+  }
+
+  /// `Quantity:  `
+  String get quantity {
+    return Intl.message(
+      'Quantity:  ',
+      name: 'quantity',
+      desc: 'تسمية الكمية في عنصر منتج السلة',
       args: [],
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
-import '../widgets/privacy_policy_Body.dart';
+import '../widgets/privacy_policy_body.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/widgets/custom_background.dart';

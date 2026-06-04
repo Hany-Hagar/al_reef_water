@@ -1,3 +1,6 @@
+
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../const_data/app_data.dart';

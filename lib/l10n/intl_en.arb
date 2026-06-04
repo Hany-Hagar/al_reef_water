@@ -131,6 +131,13 @@
     },
 
 
+
+    "riyal": "SAR",
+    "@riyal": {
+        "description": "Currency symbol for Saudi Riyal"
+    },
+
+
     "home": "Home",
     "@home": {
         "description": "Label for the home screen in the bottom navigation bar"
@@ -143,9 +150,17 @@
     "@welcomeBack": {
         "description": "A message used to welcome the user back to the app"
     },
-    "popularProducts": "Popular Products",
-    "@popularProducts": {
-        "description": "Title for the popular products section on the home screen"
+    "todayDeals": "Today's Deals",
+    "@todayDeals": {
+        "description": "Title for the section that displays today's deals on the home screen"
+    },
+    "mosqueDeals": "Mosque Deals",
+    "@mosqueDeals": {
+        "description": "Title for the section that displays mosque deals on the home screen"
+    },
+    "companiesDeals": "Company Deals",
+    "@companiesDeals": {
+        "description": "Title for the section that displays company deals on the home screen"
     },
     "addProductToCartSuccess": "Product added to cart successfully!",
     "@addProductToCartSuccess": {
@@ -176,6 +191,18 @@
     "cartTitle": "Your Cart",
     "@cartTitle": {
         "description": "Title for the cart screen"
+    },
+    "price": "Price:  ",
+    "@price": {
+        "description": "تسمية السعر في عنصر منتج السلة"
+    },
+    "total": "Total:  ",
+    "@total": {
+        "description": "تسمية الإجمالي في عنصر منتج السلة"
+    },
+    "quantity": "Quantity:  ",
+    "@quantity": {
+        "description": "تسمية الكمية في عنصر منتج السلة"
     },
     "emptyCart": "Your cart is empty.",
     "@emptyCart": {

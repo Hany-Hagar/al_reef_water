@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "cartTitle": MessageLookupByLibrary.simpleMessage("Your Cart"),
+        "companiesDeals": MessageLookupByLibrary.simpleMessage("Company Deals"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "confirmPasswordHint":
@@ -102,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Welcome back! Please login to your account."),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "mosqueDeals": MessageLookupByLibrary.simpleMessage("Mosque Deals"),
         "orLoginWith": MessageLookupByLibrary.simpleMessage("Or login with"),
         "orders": MessageLookupByLibrary.simpleMessage("Orders"),
         "ordersTitle": MessageLookupByLibrary.simpleMessage("Your Orders"),
@@ -114,9 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "phoneNumberHint":
             MessageLookupByLibrary.simpleMessage("Enter your phone number"),
-        "popularProducts":
-            MessageLookupByLibrary.simpleMessage("Popular Products"),
         "preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
+        "price": MessageLookupByLibrary.simpleMessage("Price:  "),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "privacyPolicyDescription": MessageLookupByLibrary.simpleMessage(
             "Our online store welcomes you. Below are the terms and conditions governing your use of the store and the legal effects arising from using our services. By using any service or product, you agree to these terms."),
@@ -124,6 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileFirstName": MessageLookupByLibrary.simpleMessage("First Name"),
         "profileLastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "profileTitle": MessageLookupByLibrary.simpleMessage("Your Profile"),
+        "quantity": MessageLookupByLibrary.simpleMessage("Quantity:  "),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "registerNow": MessageLookupByLibrary.simpleMessage("Register now"),
         "registerSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -131,6 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerSuccess": MessageLookupByLibrary.simpleMessage(
             "Registration successful! Please login to your account."),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
+        "riyal": MessageLookupByLibrary.simpleMessage("SAR"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "secondPolicy":
             MessageLookupByLibrary.simpleMessage("2. Consumer Legal Capacity"),
@@ -147,6 +150,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("3. Nature of Commitment"),
         "thirdPolicyDescription": MessageLookupByLibrary.simpleMessage(
             "The store’s commitment is to provide the service or product to the customer. It may include additional after-sales services depending on the product or service type."),
+        "todayDeals": MessageLookupByLibrary.simpleMessage("Today\'s Deals"),
+        "total": MessageLookupByLibrary.simpleMessage("Total:  "),
         "visionDescription": MessageLookupByLibrary.simpleMessage(
             "Maintaining the highest quality standards to produce bottled water using best practices compliant with all quality measurements, ensuring pure, healthy water that meets top international specifications."),
         "visionTitle": MessageLookupByLibrary.simpleMessage("Our Vision"),

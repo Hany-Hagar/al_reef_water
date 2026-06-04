@@ -16,7 +16,7 @@ class BannerRepoImpl implements BannerRepo {
               ((doc.data() as Map<String, dynamic>?)?['image'] ?? '').toString())
           .where((s) => s.isNotEmpty)
           .toList();
-      return Right(banners);
+      return Right(banners.reversed.toList());
     } catch (e) {
       return Left(Failure.handle(e.toString()));
     }

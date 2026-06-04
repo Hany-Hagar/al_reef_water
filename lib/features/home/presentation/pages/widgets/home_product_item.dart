@@ -1,5 +1,6 @@
 import 'favourite_icon.dart';
 import 'package:flutter/material.dart';
+import '../../../../../generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/models/product_model.dart';
 import '../../../../../core/widgets/custom_text.dart';
@@ -7,7 +8,6 @@ import '../../../../../core/services/icon_broken.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../cart/presentation/manager/cart_cubit.dart';
 import '../../../../cart/presentation/manager/cart_states.dart';
-
 
 class HomeProductItem extends StatelessWidget {
   final ProductModel product;
@@ -90,7 +90,7 @@ class _ItemBody extends StatelessWidget {
             type: Type.overMedium,
           ),
           CustomText(
-            text: "${product.price.toStringAsFixed(2)} ر.س",
+            text: "${product.price.toStringAsFixed(2)} ${S.of(context).riyal}",
             size: 13.sp,
             type: Type.overMedium,
           ),

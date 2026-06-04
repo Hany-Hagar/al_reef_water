@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../manager/cart_cubit.dart';
 import '../../manager/cart_states.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/model/cart_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_text.dart';
@@ -20,7 +21,7 @@ class CartItem extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
       child: SizedBox(
-        height: 112.h,
+        height: 135.h,
         child: Row(
           children: [
             Expanded(
@@ -81,6 +82,8 @@ class _Body extends StatelessWidget {
           SizedBox(height: 5.h),
           _Price(price: cart.product.price),
           SizedBox(height: 5.h),
+          _TotalPrice(total: cart.totalPrice),
+          SizedBox(height: 5.h),
           _CountDetails(isLoading: isLoading, cartId: cart.id),
         ],
       ),
@@ -111,11 +114,30 @@ class _Price extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomText(text: "السعر: ", size: 13.sp, type: Type.overMedium),
+        CustomText(text: S.of(context).price, size: 13.sp, type: Type.overMedium),
         CustomText(
-          text: "${price.toStringAsFixed(2)} ر.س",
+          text: "${price.toStringAsFixed(2)} ${S.of(context).riyal}",
           size: 13.sp,
-          type: Type.overMedium,
+          type: Type.medium,
+        ),
+      ],
+    );
+  }
+}
+
+class _TotalPrice extends StatelessWidget {
+  final double total;
+  const _TotalPrice({required this.total});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        CustomText(text: S.of(context).total, size: 13.sp, type: Type.overMedium),
+        CustomText(
+          text: "${total.toStringAsFixed(2)} ${S.of(context).riyal}",
+          size: 13.sp,
+          type: Type.medium,
         ),
       ],
     );
@@ -133,7 +155,7 @@ class _CountDetails extends StatelessWidget {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) => Row(
         children: [
-          CustomText(text: "الكمية:  ", size: 13.sp, type: Type.overMedium),
+          CustomText(text: S.of(context).quantity, size: 13.sp, type: Type.overMedium),
           Expanded(
             child: Row(
               children: [

@@ -130,6 +130,13 @@
 
 
 
+    "riyal": "ر.س",
+    "@riyal": {
+        "description": "رمز العملة للريال السعودي"
+    },
+
+
+
     "home": "الرئيسية",
     "@home": {
         "description": "تسمية الشاشة الرئيسية في شريط التنقل السفلي"
@@ -142,9 +149,17 @@
     "@welcomeBack": {
         "description": "A message used to welcome the user back to the app"
     },
-    "popularProducts": "أهم المنتجات",
-    "@popularProducts": {
-        "description": "Title for the popular products section on the home screen"
+    "todayDeals": "عروض اليوم",
+    "@todayDeals": {
+        "description": "Title for the section that displays today's deals on the home screen"
+    },
+    "mosqueDeals": "عروض المساجد",
+    "@mosqueDeals": {
+        "description": "Title for the section that displays mosque deals on the home screen"
+    },
+    "companiesDeals": "عروض الشركات",
+    "@companiesDeals": {
+        "description": "Title for the section that displays company deals on the home screen"
     },
     "addProductToCartSuccess": "تم إضافة المنتج إلى السلة بنجاح!",
     "@addProductToCartSuccess": {
@@ -175,6 +190,18 @@
     "cartTitle": "سلتك",
     "@cartTitle": {
         "description": "عنوان شاشة السلة"
+    },
+    "price": "السعر:  ",
+    "@price": {
+        "description": "تسمية السعر في عنصر منتج السلة"
+    },
+    "total": "الإجمالي:  ",
+    "@total": {
+        "description": "تسمية الإجمالي في عنصر منتج السلة"
+    },
+    "quantity": "الكمية:  ",
+    "@quantity": {
+        "description": "تسمية الكمية في عنصر منتج السلة"
     },
     "emptyCart": "سلتك فارغة.",
     "@emptyCart": {
