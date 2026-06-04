@@ -4,7 +4,6 @@ import '../../manager/profile_cubit.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/services/icon_broken.dart';
 import '../../../../../core/widgets/profile_widget.dart';
-import '../../../../../core/services/location_service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileData extends StatelessWidget {
@@ -100,27 +99,4 @@ class _Email extends StatelessWidget {
   }
 }
 
-class _Location extends StatelessWidget {
-  const _Location();
 
-  @override
-  Widget build(BuildContext context) {
-    var s = S.of(context);
-    var cubit = ProfileCubit.get(context);
-    return ProfileItem(
-      title: s.address,
-      hint: s.addressHint,
-      suffixIcon: Icons.map,
-      prefixIcon: IconBroken.Location,
-      controller: cubit.locationController,
-      keyboardType: TextInputType.streetAddress,
-      onSuffixPressed: () {
-        LocationService.openLocationPicker(
-          context: context,
-          onLocationPicked: (pickedData) {},
-        );
-      },
-      textInputAction: TextInputAction.done,
-    );
-  }
-}

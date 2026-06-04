@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element_parameter
+
 import 'custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -5,17 +7,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomGrid extends StatelessWidget {
   final List items;
+  final bool? shrinkWrap;
   final bool isLoading;
   final bool isFailure;
   final List emptyItems;
+  final int crossAxisCount;
   final String? errorMessage;
+  final Axis? scrollDirection;
   final ScrollPhysics? physics;
+  final double mainAxisSpacing;
+  final double childAspectRatio;
+  final double crossAxisSpacing;
   final EdgeInsetsGeometry? padding;
   final Widget Function(BuildContext, dynamic) itemBuilder;
-  final int crossAxisCount;
-  final double childAspectRatio;
-  final double mainAxisSpacing;
-  final double crossAxisSpacing;
 
   const CustomGrid({
     super.key,
@@ -28,9 +32,11 @@ class CustomGrid extends StatelessWidget {
     required this.itemBuilder,
     this.emptyItems = const [],
     this.crossAxisCount = 2,
-    this.childAspectRatio =0.89 ,
+    this.childAspectRatio = 0.89,
     this.mainAxisSpacing = 10.0,
     this.crossAxisSpacing = 10.0,
+    this.scrollDirection,
+    this.shrinkWrap,
   });
 
   @override
@@ -41,14 +47,16 @@ class CustomGrid extends StatelessWidget {
     return Skeletonizer(
       enabled: isLoading,
       child: _Grid(
-        items: isLoading ? emptyItems : items,
+        shrinkWrap: shrinkWrap,
         physics: physics,
         padding: padding,
         itemBuilder: itemBuilder,
         crossAxisCount: crossAxisCount,
-        childAspectRatio: childAspectRatio,
         mainAxisSpacing: mainAxisSpacing,
+        scrollDirection: scrollDirection,
+        childAspectRatio: childAspectRatio,
         crossAxisSpacing: crossAxisSpacing,
+        items: isLoading ? emptyItems : items,
       ),
     );
   }
@@ -56,13 +64,15 @@ class CustomGrid extends StatelessWidget {
 
 class _Grid extends StatelessWidget {
   final List items;
+  final bool? shrinkWrap;
+  final int crossAxisCount;
+  final Axis? scrollDirection;
   final ScrollPhysics? physics;
+  final double mainAxisSpacing;
+  final double childAspectRatio;
+  final double crossAxisSpacing;
   final EdgeInsetsGeometry? padding;
   final Widget Function(BuildContext, dynamic) itemBuilder;
-  final int crossAxisCount;
-  final double childAspectRatio;
-  final double mainAxisSpacing;
-  final double crossAxisSpacing;
 
   const _Grid({
     required this.items,
@@ -73,6 +83,8 @@ class _Grid extends StatelessWidget {
     required this.childAspectRatio,
     required this.mainAxisSpacing,
     required this.crossAxisSpacing,
+    this.scrollDirection,
+    this.shrinkWrap,
   });
 
   @override
@@ -82,16 +94,18 @@ class _Grid extends StatelessWidget {
     }
     return GridView.builder(
       physics: physics,
-      padding:
-          padding ?? EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      shrinkWrap: shrinkWrap ?? false,
+      itemCount: items.length,
+      scrollDirection: scrollDirection ?? Axis.vertical,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
         childAspectRatio: childAspectRatio,
         mainAxisSpacing: mainAxisSpacing.h,
         crossAxisSpacing: crossAxisSpacing.w,
       ),
-      itemCount: items.length,
       itemBuilder: (context, index) => itemBuilder(context, items[index]),
+      padding:
+          padding ?? EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
     );
   }
 }

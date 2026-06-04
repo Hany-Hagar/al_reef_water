@@ -1,11 +1,9 @@
 import 'cart_item.dart';
-import '../views/cart_order_view.dart';
 import '../../manager/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import '../../manager/cart_states.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/model/cart_model.dart';
-import '../../../../../core/utils/nav_to.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../const_data/app_data.dart';
 import '../../../../../const_data/asset_data.dart';
@@ -32,13 +30,7 @@ class CartBody extends StatelessWidget {
               items: CartCubit.get(context).cartItems,
               errorMessage: state is CartFailure ? state.message : null,
               emptyItems: List.generate(5, (index) => CartModel.empty()),
-              itemBuilder: (context, cart) => GestureDetector(
-                onTap: () => NavTo.push(
-                  context: context,
-                  nextPage: CartOrderView(cartItem: cart),
-                ),
-                child: CartItem(isLoading: state is CartLoading, cart: cart),
-              ),
+              itemBuilder: (context, cart) => CartItem(isLoading: state is CartLoading, cart: cart),
             ),
           ),
         ],

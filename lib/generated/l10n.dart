@@ -642,6 +642,16 @@ class S {
     );
   }
 
+  /// `Manage Addresses`
+  String get addressTitle {
+    return Intl.message(
+      'Manage Addresses',
+      name: 'addressTitle',
+      desc: 'Title for the manage addresses screen',
+      args: [],
+    );
+  }
+
   /// `Language`
   String get Language {
     return Intl.message(

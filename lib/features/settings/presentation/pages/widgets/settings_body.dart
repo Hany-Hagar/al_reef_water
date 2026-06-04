@@ -34,7 +34,7 @@ class SettingsBody extends StatelessWidget {
           nextScreen: ProfileView(),
         ),
         SettingsItem(
-          title: "My Locations",
+          title: s.addressTitle,
           icon: IconBroken.Location,
           nextScreen: LocationsView(),
         ),

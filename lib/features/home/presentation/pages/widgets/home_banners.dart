@@ -56,7 +56,7 @@ class _Banners extends StatelessWidget {
       },
       options: CarouselOptions(
         height: 160.h,
-        autoPlay: true,
+        autoPlay: false,
         viewportFraction: 0.92,
         enlargeCenterPage: true,
         onPageChanged: (index, reason) {
@@ -86,7 +86,7 @@ class _Indicator extends StatelessWidget {
         cubit.updateCurrentBannerIndex(index);
       },
       effect: ExpandingDotsEffect(
-        dotHeight: 8.h,
+        dotHeight: 10.h,
         dotWidth: 8.w,
         expansionFactor: 3,
         activeDotColor: theme.primaryColor,

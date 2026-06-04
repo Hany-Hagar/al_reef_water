@@ -271,6 +271,14 @@
 
 
 
+    "addressTitle": "Manage Addresses",
+    "@addressTitle": {
+        "description": "Title for the manage addresses screen"
+    },
+
+
+
+
 
     "Language": "Language",
     "@Language": {

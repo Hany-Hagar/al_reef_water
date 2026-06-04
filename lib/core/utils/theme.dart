@@ -61,7 +61,7 @@ class AppTheme {
   static ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    hintColor: Colors.white70,
+    hintColor: const Color.fromARGB(230, 255, 255, 255),
     primaryColor: darkPrimary,
     scaffoldBackgroundColor: darkBackground,
 

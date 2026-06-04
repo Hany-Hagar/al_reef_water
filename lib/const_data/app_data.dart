@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 EdgeInsetsDirectional defaultHomeAppBarPadding(BuildContext context) {
   return EdgeInsetsDirectional.only(
-    top: MediaQuery.of(context).padding.top - 8.h,
-    start: 10.w,
-    end: 10.w,
+    top: MediaQuery.of(context).padding.top -3.h,
+    start: 16.w,
+    end: 16.w,
     bottom: 0.h,
   );
 }

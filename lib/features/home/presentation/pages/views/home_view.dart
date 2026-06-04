@@ -22,7 +22,6 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: getIt<ProductCubit>()
-        ..fetchProducts()
         ..fetchProducts(),
       child: BlocListener<CartCubit, CartState>(
         listener: (context, state) {
@@ -33,7 +32,9 @@ class HomeView extends StatelessWidget {
             );
           }
         },
-        child: CustomBackground(top: const _Top(), body: const HomeBody()),
+        child: CustomBackground(top: const _Top(), body: const SingleChildScrollView(
+          child: HomeBody()
+        )),
       ),
     );
   }
@@ -47,7 +48,7 @@ class _Top extends StatelessWidget {
     var s = S.of(context);
     var userName = getIt<AuthCubit>().user?.firstName;
     return ListTile(
-      contentPadding: defaultAppBarPadding(context),
+      contentPadding: defaultHomeAppBarPadding(context),
       title: CustomText(text: s.hi, size: 18.sp, type: Type.header),
       subtitle: CustomText(
         text: "${s.welcomeBack} $userName🌟",

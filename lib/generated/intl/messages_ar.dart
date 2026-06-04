@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "تم إضافة المنتج إلى السلة بنجاح!"),
         "address": MessageLookupByLibrary.simpleMessage("العنوان"),
         "addressHint": MessageLookupByLibrary.simpleMessage("أدخل عنوانك"),
+        "addressTitle": MessageLookupByLibrary.simpleMessage("إدارة العناوين"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
         "cart": MessageLookupByLibrary.simpleMessage("السلة"),

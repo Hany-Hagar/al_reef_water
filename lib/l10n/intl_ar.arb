@@ -270,6 +270,13 @@
 
 
 
+    "addressTitle": "إدارة العناوين",
+    "@addressTitle": {
+        "description": "عنوان شاشة إدارة العناوين"
+    },
+
+
+
     "Language": "اللغة",
     "@Language": {
         "description": "نص تسمية خيار إعدادات اللغة"

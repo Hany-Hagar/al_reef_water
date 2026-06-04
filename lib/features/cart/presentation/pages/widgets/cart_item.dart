@@ -20,15 +20,18 @@ class CartItem extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
       child: SizedBox(
-        height: 125.h,
+        height: 112.h,
         child: Row(
           children: [
             Expanded(
               flex: 2,
-              child: _Image(imageUrl: cart.product.images.first),
+              child: Padding(
+                padding: EdgeInsets.all(10.r),
+                child: _Image(imageUrl: cart.product.images.first),
+              ),
             ),
             Expanded(
-              flex: 3,
+              flex: 4,
               child: _Body(isLoading: isLoading, cart: cart),
             ),
           ],
@@ -45,8 +48,11 @@ class _Image extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
       alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(2.r),
+      ),
       child: Image.network(
         imageUrl,
         width: double.infinity,
@@ -65,15 +71,16 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.r),
+      padding: EdgeInsets.symmetric(vertical: 10.r),
       child: Column(
-        spacing: 10.h,
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(child: _Title(title: cart.product.title)),
+          _Title(title: cart.product.title),
+          SizedBox(height: 5.h),
           _Price(price: cart.product.price),
+          SizedBox(height: 5.h),
           _CountDetails(isLoading: isLoading, cartId: cart.id),
         ],
       ),
@@ -89,7 +96,7 @@ class _Title extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomText(
       text: title,
-      size: 14.sp,
+      size: 12.sp,
       maxLines: 3,
       type: Type.overMedium,
     );
@@ -126,14 +133,14 @@ class _CountDetails extends StatelessWidget {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) => Row(
         children: [
-          CustomText(text: "الكمية: ", size: 13.sp, type: Type.overMedium),
+          CustomText(text: "الكمية:  ", size: 13.sp, type: Type.overMedium),
           Expanded(
             child: Row(
               children: [
                 _CountButton(
                   isLoading: isLoading,
-                  icon: Icons.remove,
-                  onTap: () => cubit.decreaseCartQuantity(cartId),
+                  icon: Icons.add,
+                  onTap: () => cubit.increaseCartQuantity(cartId),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -145,13 +152,14 @@ class _CountDetails extends StatelessWidget {
                 ),
                 _CountButton(
                   isLoading: isLoading,
-                  icon: Icons.add,
-                  onTap: () => cubit.increaseCartQuantity(cartId),
+                  icon: Icons.remove,
+                  onTap: () => cubit.decreaseCartQuantity(cartId),
                 ),
               ],
             ),
           ),
           _DeleteIcon(cartId: cartId),
+          SizedBox(width: 10.w),
         ],
       ),
     );
@@ -175,10 +183,10 @@ class _CountButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(6.r),
       onTap: onTap,
       child: Container(
-        width: 28.w,
-        height: 28.h,
+        width: 26.w,
+        height: 26.h,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6.r),
+          shape: BoxShape.circle,
           color: isLoading
               ? Theme.of(context).disabledColor
               : Theme.of(context).primaryColor,

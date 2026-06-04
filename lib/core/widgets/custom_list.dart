@@ -1,4 +1,6 @@
 
+// ignore_for_file: unused_element_parameter
+
 import 'custom_text.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,7 @@ class CustomList extends StatelessWidget {
   final List emptyItems;
   final String? errorMessage;
   final ScrollPhysics? physics;
+  final Axis? scrollDirection;
   final EdgeInsetsGeometry? padding;
   final String? emptyAnimation;
   final Widget Function(BuildContext, dynamic) itemBuilder;
@@ -25,6 +28,7 @@ class CustomList extends StatelessWidget {
     this.padding,
     required this.itemBuilder,
     this.emptyAnimation,
+    this.scrollDirection,
     this.emptyItems = const [],
   });
 
@@ -40,6 +44,7 @@ class CustomList extends StatelessWidget {
         physics: physics,
         padding: padding,
         itemBuilder: itemBuilder,
+        scrollDirection: scrollDirection,
         emptyAnimation: emptyAnimation,
       ),
     );
@@ -95,6 +100,7 @@ class _List extends StatelessWidget {
   final ScrollPhysics? physics;
   final EdgeInsetsGeometry? padding;
   final String? emptyAnimation;
+  final Axis? scrollDirection;
   final Widget Function(BuildContext, dynamic) itemBuilder;
   const _List({
     required this.items,
@@ -102,6 +108,7 @@ class _List extends StatelessWidget {
     this.padding,
     this.emptyAnimation,
     required this.itemBuilder,
+    this.scrollDirection,
   });
 
   @override
@@ -112,6 +119,7 @@ class _List extends StatelessWidget {
     return ListView.separated(
       physics: physics,
       itemCount: items.length,
+      scrollDirection: scrollDirection ?? Axis.vertical,
       separatorBuilder: (context, index) => SizedBox(height: 10.h),
       itemBuilder: (context, index) => itemBuilder(context, items[index]),
       padding:

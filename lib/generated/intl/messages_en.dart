@@ -40,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "address": MessageLookupByLibrary.simpleMessage("Address"),
         "addressHint":
             MessageLookupByLibrary.simpleMessage("Enter your address"),
+        "addressTitle":
+            MessageLookupByLibrary.simpleMessage("Manage Addresses"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
