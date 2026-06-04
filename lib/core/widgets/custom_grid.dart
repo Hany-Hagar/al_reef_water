@@ -137,13 +137,17 @@ class _Empty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.inbox, size: 80),
-        const SizedBox(height: 16),
-        CustomText(text: "No items found", size: 16.sp, type: Type.overMedium),
-      ],
+    return SizedBox(
+      width: double.infinity,
+      height: 400.h,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.inbox, size: 80),
+          const SizedBox(height: 16),
+          CustomText(text: "No items found", size: 16.sp, type: Type.overMedium),
+        ],
+      )
     );
   }
 }

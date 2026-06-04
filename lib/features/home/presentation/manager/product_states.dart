@@ -11,5 +11,3 @@ class ProductFailure extends ProductStates {
 
   ProductFailure(this.errorMessage);
 }
-
-class ChangeProductImageIndexState extends ProductStates {}

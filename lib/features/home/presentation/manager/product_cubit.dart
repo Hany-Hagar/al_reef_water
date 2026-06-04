@@ -1,7 +1,4 @@
 // ignore_for_file: strict_top_level_inference
-
-import 'package:carousel_slider/carousel_slider.dart';
-
 import 'product_states.dart';
 import '../../data/repo/product_repo.dart';
 import '../../data/models/product_model.dart';
@@ -14,22 +11,19 @@ class ProductCubit extends Cubit<ProductStates> {
   static ProductCubit get(context) => BlocProvider.of(context);
 
   List<ProductModel> products = [];
+  List<ProductModel> userProducts = [];
+  List<ProductModel> mosqueProducts = [];
+  List<ProductModel> companyProducts = [];
 
   Future<void> fetchProducts() async {
     emit(ProductLoading());
     final result = await productRepo.getProducts();
     result.fold((failure) => emit(ProductFailure(failure.message)), (products) {
-      this.products = products;
+      userProducts = products.user;
+      mosqueProducts = products.mosque;
+      companyProducts = products.company;
+      this.products = [...userProducts, ...mosqueProducts, ...companyProducts];
       emit(ProductSuccess());
     });
-  }
-
-  // Product details
-  int currentProductImageIndex = 0;
-  CarouselSliderController carouselController = CarouselSliderController();
-
-  void updateCurrentProductImageIndex(int index) {
-    currentProductImageIndex = index;
-    emit(ChangeProductImageIndexState());
   }
 }

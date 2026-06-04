@@ -37,7 +37,6 @@ class CartModel {
   // ToFirestore
   Map<String, dynamic> toFirestore() {
     return {
-      'id': id,
       'quantity': quantity,
       'product': product.toMap(),
       'totalPrice': totalPrice,

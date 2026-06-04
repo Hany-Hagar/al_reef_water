@@ -25,33 +25,29 @@ class CartData {
     }).toList();
   }
 
-  Future<CartModel> addToCart(ProductModel product) async {
-    final query = await _cartItems
-        .where('product.id', isEqualTo: product.id)
-        .limit(1)
-        .get();
-
-    if (query.docs.isNotEmpty) {
-      final doc = query.docs.first;
-      final model = CartModel.fromFirestore(doc.data() as Map<String, dynamic>);
-      final updated = model.copyWith(
-        quantity: model.quantity + 1,
-        totalPrice: model.totalPrice + product.price,
-      );
-      await doc.reference.update(updated.toFirestore());
-      return updated;
-    }
-
-    final docRef = _cartItems.doc();
-    final newItem = CartModel(
-      id: docRef.id,
-      quantity: 1,
-      product: product,
-      totalPrice: product.price,
+Future<CartModel> addToCart(ProductModel product) async {
+  final docRef = _cartItems.doc(product.id);
+  final docSnapshot = await docRef.get();
+  if (docSnapshot.exists) {
+    final model = CartModel.fromFirestore(docSnapshot.data() as Map<String, dynamic>);
+    final updated = model.copyWith(
+      quantity: model.quantity + 1,
+      totalPrice: model.totalPrice + product.price,
     );
-    await docRef.set(newItem.toFirestore());
-    return newItem;
+    await docRef.update(updated.toFirestore());
+    return updated;
   }
+
+  final newItem = CartModel(
+    id: product.id, // الاعتماد على الـ ID الخاص بالمنتج
+    quantity: 1,
+    product: product,
+    totalPrice: product.price,
+  );
+  await docRef.set(newItem.toFirestore());
+  return newItem;
+}
+
 
   Future<void> updateCartQuantity(String cartId, int quantity, double totalPrice) async {
     await _cartItems.doc(cartId).update({
