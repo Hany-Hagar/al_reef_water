@@ -4,6 +4,16 @@ sealed class LocationState {}
 
 class LocationInitialState extends LocationState {}
 
+class RegionLoading extends LocationState {}
+
+class RegionLoaded extends LocationState {}
+
+class RegionError extends LocationState {
+  final String message;
+
+  RegionError(this.message);
+}
+
 class LocationLoading extends LocationState {}
 
 class LocationLoaded extends LocationState {
@@ -17,6 +27,14 @@ class LocationError extends LocationState {
 
   LocationError(this.message);
 }
+
+class RegionSelected extends LocationState {}
+
+class CitySelected extends LocationState {}
+
+class DistrictSelected extends LocationState {}
+
+class SetNewLocation extends LocationState {}
 
 class AddLocationLoading extends LocationState {}
 

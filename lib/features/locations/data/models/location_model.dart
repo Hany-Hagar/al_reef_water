@@ -1,96 +1,85 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:osm_search_and_pick/models/picked_data.dart';
 
 class LocationModel {
-
   final String id;
-
-  final String title; 
-
-  final double latitude;
-  final double longitude;
+  final String name;
 
   final String country;
+  final String region;
   final String city;
   final String district;
+  final String street;
+  final String buildingNumber;
+  final int floor;
 
-  final String fullAddress;
-
-  final DateTime? createdAt;
-
-  const LocationModel({
+  LocationModel({
     required this.id,
-    required this.title,
-    required this.latitude,
-    required this.longitude,
+    required this.name,
     required this.country,
+    required this.region,
     required this.city,
     required this.district,
-    required this.fullAddress,
-    this.createdAt,
+    required this.street,
+    required this.buildingNumber,
+    required this.floor,
   });
 
-  // Empty
+  // Empty Factory
   factory LocationModel.empty() {
     return LocationModel(
       id: '',
-      title: '',
-      latitude: 0.0,
-      longitude: 0.0,
+      name: '',
       country: '',
+      region: '',
       city: '',
       district: '',
-      fullAddress: '',
-      createdAt: null,
+      street: '',
+      buildingNumber: '',
+      floor: 0,
     );
   }
-  
+
   // CopyWith
   LocationModel copyWith({
     String? id,
-    String? title,
-    double? latitude,
-    double? longitude,
+    String? name,
     String? country,
+    String? region,
     String? city,
     String? district,
-    String? fullAddress,
-    DateTime? createdAt,
+    String? street,
+    String? buildingNumber,
+    int? floor,
   }) {
     return LocationModel(
       id: id ?? this.id,
-      title: title ?? this.title,
-      latitude: latitude ?? this.latitude,
-      longitude: longitude ?? this.longitude,
+      name: name ?? this.name,
       country: country ?? this.country,
+      region: region ?? this.region,
       city: city ?? this.city,
       district: district ?? this.district,
-      fullAddress: fullAddress ?? this.fullAddress,
-      createdAt: createdAt ?? this.createdAt,
+      street: street ?? this.street,
+      buildingNumber: buildingNumber ?? this.buildingNumber,
+      floor: floor ?? this.floor,
     );
   }
 
-  // FromOsm_search_and_pick
-  LocationModel buildLocationFromOSM(Map data , String title) {
-
-    final address = data['address'] ?? {};
-    final city = address['city'] ?? address['town'] ?? address['village'] ?? '';
-    final district = address['suburb'] ?? address['neighbourhood'] ?? '';
-    final country = address['country'] ?? '';
-    final fullAddress = '${address['road'] ?? ''}, $district, $city, $country'
-        .replaceAll(RegExp(r', ,'), ',')
-        .replaceAll(RegExp(r'^,|,$'), '')
-        .trim();
-
+  // From OSM
+  factory LocationModel.fromOSM({
+    required String title,
+    required int floor,
+    required PickedData pickedData,
+  }) {
     return LocationModel(
-      id: '',
-      title: title,
-      latitude: (data['lat'] as num).toDouble(),
-      longitude: (data['lon'] as num).toDouble(),
-      city: city,
-      district: district,
-      country: country,
-      fullAddress: fullAddress,
-      createdAt: DateTime.now(),
+      id: "",
+      name: title,
+      floor: floor,
+      country: pickedData.address['country'] ?? '',
+      region: pickedData.address['region'] ?? '',
+      city: pickedData.address['city'] ?? '',
+      district: pickedData.address['district'] ?? '',
+      street: pickedData.address['street'] ?? '',
+      buildingNumber: pickedData.address['buildingNumber'] ?? '',
     );
   }
 
@@ -98,29 +87,28 @@ class LocationModel {
   factory LocationModel.fromFirestore(Map<String, dynamic> data) {
     return LocationModel(
       id: data['id'] ?? '',
-      title: data['title'] ?? '',
-      latitude: (data['latitude'] as num).toDouble(),
-      longitude: (data['longitude'] as num).toDouble(),
+      name: data['name'] ?? '',
       country: data['country'] ?? '',
+      region: data['region'] ?? '',
       city: data['city'] ?? '',
       district: data['district'] ?? '',
-      fullAddress: data['fullAddress'] ?? '',
-      createdAt: (data['createdAt'] as Timestamp?)?.toDate(),
+      street: data['street'] ?? '',
+      buildingNumber: data['buildingNumber'] ?? '',
+      floor: data['floor'] ?? 0,
     );
   }
 
   // ToFirestore
   Map<String, dynamic> toFirestore() {
     return {
-      'id': id,
-      'title': title,
-      'latitude': latitude,
-      'longitude': longitude,
+      'name': name,
       'country': country,
+      'region': region,
       'city': city,
       'district': district,
-      'fullAddress': fullAddress,
-      'createdAt': createdAt,
+      'street': street,
+      'buildingNumber': buildingNumber,
+      'floor': floor,
     };
   }
 }

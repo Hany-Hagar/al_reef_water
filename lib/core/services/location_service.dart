@@ -20,9 +20,15 @@ class LocationService {
               hintText: 'ابحث عن الموقع...',
               buttonColor: Colors.blue,
               locationPinIconColor: Colors.blue,
+              showZoomButtons: true,
+              showCurrentLocationButton: true,
+              showSearchBar: true,
+              showSetLocationButton: true,
               onPicked: (pickedData) {
                 Navigator.pop(context, pickedData);
               },
+              onMapMoved: (latLong) {},
+              onSearchStatusChanged: (isSearching) {},
             ),
           ),
           fullscreenDialog: true,
@@ -31,10 +37,10 @@ class LocationService {
 
       if (result != null) {
         onLocationPicked(result);
+      } else {
       }
     } catch (e) {
-      // تم تصحيح الـ print هنا أيضاً
-      debugPrint("❌ Error opening location picker: $e");
+    ("❌ Error opening location picker: $e");
     }
   }
 }

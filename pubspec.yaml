@@ -16,7 +16,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   
-
   intl: ^0.20.0
   glass: ^2.0.0
   get_it: ^9.2.1
@@ -27,16 +26,17 @@ dependencies:
   flutter_bloc: ^8.1.0
   path_provider: ^2.1.5
   hydrated_bloc: ^9.0.0
-  firebase_core: ^2.32.0
-  firebase_auth: ^4.16.0
+  firebase_auth: ^5.5.4
+  firebase_core: ^3.13.1
   google_sign_in: ^6.2.1
+  cloud_firestore: ^5.0.0
   carousel_slider: ^5.1.2
   cupertino_icons: ^1.0.8
-  cloud_firestore: ^4.17.5
   flutter_screenutil: ^5.7.0
-  osm_search_and_pick: ^0.1.0
+  osm_search_and_pick: ^0.4.0
   cached_network_image: ^3.2.3
   smooth_page_indicator: ^1.0.0
+  dropdown_button2: ^3.1.0
 
 
 dev_dependencies:
@@ -55,7 +55,9 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+    - assets/icons/
     - assets/lotties/
+    - assets/jsons/
 
   fonts:
     - family: Cairo

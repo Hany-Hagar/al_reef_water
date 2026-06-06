@@ -5,8 +5,8 @@ import '../../../../../generated/l10n.dart';
 import '../../../data/model/cart_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_text.dart';
-import '../../../../../core/services/icon_broken.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/widgets/custom_delete_icon.dart';
 
 class CartItem extends StatelessWidget {
   final bool isLoading;
@@ -21,7 +21,7 @@ class CartItem extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
       child: SizedBox(
-        height: 135.h,
+        height: 150.h,
         child: Row(
           children: [
             Expanded(
@@ -99,7 +99,7 @@ class _Title extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomText(
       text: title,
-      size: 12.sp,
+      size: 14.sp,
       maxLines: 3,
       type: Type.overMedium,
     );
@@ -205,15 +205,15 @@ class _CountButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(6.r),
       onTap: onTap,
       child: Container(
-        width: 26.w,
-        height: 26.h,
+        width: 30.w,
+        height: 30.h,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: isLoading
               ? Theme.of(context).disabledColor
               : Theme.of(context).primaryColor,
         ),
-        child: Icon(icon, size: 18.sp),
+        child: Icon(icon, size: 20.sp),
       ),
     );
   }
@@ -226,19 +226,10 @@ class _DeleteIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartCubit, CartState>(
-      builder: (context, state) {
-        if (state is RemoveFromCartLoading && state.cartId == cartId) {
-          return SizedBox(
-            width: 24.w,
-            height: 24.h,
-            child: CircularProgressIndicator(),
-          );
-        }
-        return GestureDetector(
-          onTap: () => CartCubit.get(context).removeFromCart(cartId),
-          child: Icon(IconBroken.Delete, size: 24.sp, color: Colors.red),
-        );
-      },
+      builder:(context, state) => CustomDeleteIcon(
+        isLoading: state is RemoveFromCartLoading && state.cartId == cartId,
+        onTap: () => CartCubit.get(context).removeFromCart(cartId),
+      ),
     );
   }
 }

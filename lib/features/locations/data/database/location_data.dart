@@ -1,13 +1,28 @@
+import 'dart:convert';
+import '../models/region_model.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
+import '../../../../const_data/asset_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../../../const_data/firebase_assets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LocationData {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   String get userId => _auth.currentUser!.uid;
+
+  // Fetch Regions
+  Future<List<RegionModel>> loadRegions() async {
+    final String jsonString = await rootBundle.loadString(AssetData.regionFile);
+    return await compute(_parseAndConvertJson, jsonString);
+  }
+
+  List<RegionModel> _parseAndConvertJson(String rawJson) {
+    final List<dynamic> parsedData = json.decode(rawJson);
+    return parsedData.map((item) => RegionModel.fromJson(item)).toList();
+  }
 
   // Fetch user locations
   Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>>

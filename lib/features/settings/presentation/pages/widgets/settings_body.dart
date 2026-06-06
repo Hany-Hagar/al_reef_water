@@ -29,12 +29,12 @@ class SettingsBody extends StatelessWidget {
         SizedBox(height: 5.h),
         _Title(text: s.account),
         SettingsItem(
-          title: s.personalInformation,
+          title: s.profile,
           icon: IconBroken.User,
           nextScreen: ProfileView(),
         ),
         SettingsItem(
-          title: s.addressTitle,
+          title: s.manageLocations,
           icon: IconBroken.Location,
           nextScreen: LocationsView(),
         ),

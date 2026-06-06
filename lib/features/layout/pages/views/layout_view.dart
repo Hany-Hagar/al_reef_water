@@ -53,7 +53,7 @@ class _BottomNavigationBar extends StatelessWidget {
           _item(label: s.home, icon: IconBroken.Home),
           _item(label: s.favourites, icon: IconBroken.Heart),
           _item(label: s.cart, icon: IconBroken.Buy),
-          _item(label: s.profile, icon: IconBroken.Profile),
+          _item(label: s.account, icon: IconBroken.Profile),
         ],
       ),
     );

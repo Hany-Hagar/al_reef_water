@@ -22,27 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "Arabic": MessageLookupByLibrary.simpleMessage("العربية"),
-        "Dark": MessageLookupByLibrary.simpleMessage("داكن"),
-        "English": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
-        "Language": MessageLookupByLibrary.simpleMessage("اللغة"),
-        "Light": MessageLookupByLibrary.simpleMessage("فاتح"),
-        "System": MessageLookupByLibrary.simpleMessage("النظام"),
-        "Theme": MessageLookupByLibrary.simpleMessage("السمة"),
-        "UpdateProfileSuccess": MessageLookupByLibrary.simpleMessage(
-            "تم تحديث الملف الشخصي بنجاح!"),
         "aboutUsDescription": MessageLookupByLibrary.simpleMessage(
             "مرحبًا بكم في \"مياه الريف\"، المكان الذي تجدون فيه المياه الطبيعية المعبأة بعناية لتلبية احتياجاتكم اليومية بأعلى جودة. نحن نقدم مياه الريف المعبأة في زجاجات منخفضة الصوديوم، نقية تمامًا وخالية من أي إضافات غير ضرورية، مما يجعلها الخيار الأمثل لكل أفراد العائلة."),
         "aboutUsTitle":
             MessageLookupByLibrary.simpleMessage("معلومات عن المتجر"),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
+        "addLocationButton": MessageLookupByLibrary.simpleMessage("إضافة موقع"),
+        "addLocationSuccess":
+            MessageLookupByLibrary.simpleMessage("تمت إضافة الموقع بنجاح!"),
+        "addLocationTitle":
+            MessageLookupByLibrary.simpleMessage("إضافة موقع جديد"),
         "addProductToCartSuccess": MessageLookupByLibrary.simpleMessage(
             "تم إضافة المنتج إلى السلة بنجاح!"),
-        "address": MessageLookupByLibrary.simpleMessage("العنوان"),
-        "addressHint": MessageLookupByLibrary.simpleMessage("أدخل عنوانك"),
-        "addressTitle": MessageLookupByLibrary.simpleMessage("إدارة العناوين"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
+        "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "building": MessageLookupByLibrary.simpleMessage("المبنى : "),
         "cart": MessageLookupByLibrary.simpleMessage("السلة"),
         "cartTitle": MessageLookupByLibrary.simpleMessage("سلتك"),
         "companiesDeals": MessageLookupByLibrary.simpleMessage("عروض الشركات"),
@@ -53,11 +48,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactUsDescription": MessageLookupByLibrary.simpleMessage(
             "إذا كانت لديك أي أسئلة أو تحتاج إلى مساعدة، تواصل معنا عبر البريد الإلكتروني أو الهاتف. فريق دعم العملاء لدينا جاهز لمساعدتك فيما يتعلق بالطلبات والمنتجات والاستفسارات العامة."),
         "contactUsTitle": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+        "dark": MessageLookupByLibrary.simpleMessage("داكن"),
         "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
+        "deleteAccountConfirmation": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد أنك تريد حذف حسابك? لا يمكن التراجع عن هذا الإجراء."),
+        "deleteAccountSuccess":
+            MessageLookupByLibrary.simpleMessage("تم حذف حسابك بنجاح."),
         "didyouForgetPassword":
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
+        "district": MessageLookupByLibrary.simpleMessage("الحي : "),
         "dontHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "editLocationButton":
+            MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
+        "editLocationSuccess":
+            MessageLookupByLibrary.simpleMessage("تم تحديث الموقع بنجاح!"),
+        "editLocationTitle":
+            MessageLookupByLibrary.simpleMessage("تعديل الموقع"),
         "emailAddress":
             MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "emailAddressHint":
@@ -65,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "emptyCart": MessageLookupByLibrary.simpleMessage("سلتك فارغة."),
         "emptyFavourites":
             MessageLookupByLibrary.simpleMessage("قائمة مفضلاتك فارغة."),
+        "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
         "favourites": MessageLookupByLibrary.simpleMessage("المفضلة"),
         "favouritesTitle": MessageLookupByLibrary.simpleMessage("مفضلاتي"),
         "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
@@ -78,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "5. الحسابات وإلزامات التسجيل"),
         "fivthPolicyDescription": MessageLookupByLibrary.simpleMessage(
             "يتحمل العميل مسؤولية سرية بيانات حسابه وكلمة المرور، ويوافق على استخدام معلومات دقيقة ومحدثة، ويحتفظ المتجر بالحق في تعليق الحساب في حال حدوث مخالفة."),
+        "floor": MessageLookupByLibrary.simpleMessage("الطابق : "),
         "forgotButton":
             MessageLookupByLibrary.simpleMessage("إرسال رابط إعادة التعيين"),
         "forgotPasswordSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -93,25 +102,55 @@ class MessageLookup extends MessageLookupByLibrary {
         "helpSupport": MessageLookupByLibrary.simpleMessage("الدعم والمساعدة"),
         "hi": MessageLookupByLibrary.simpleMessage("مرحباً👋"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "lastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
         "lastNameHint":
             MessageLookupByLibrary.simpleMessage("أدخل اسمك الأخير"),
+        "light": MessageLookupByLibrary.simpleMessage("فاتح"),
+        "locationBuilding":
+            MessageLookupByLibrary.simpleMessage("اسم/رقم المبنى"),
+        "locationBuildingHint": MessageLookupByLibrary.simpleMessage(
+            "أدخل اسم/رقم المبنى (مثل برج المملكة، مبنى 456، إلخ)"),
+        "locationCity": MessageLookupByLibrary.simpleMessage("إسم المدينة"),
+        "locationCityHint": MessageLookupByLibrary.simpleMessage(
+            "أدخل إسم المدينة(مثل الرياض، جدة، إلخ)"),
+        "locationCountry": MessageLookupByLibrary.simpleMessage("البلد"),
+        "locationCountryHint": MessageLookupByLibrary.simpleMessage(
+            "أدخل إسم البلد(مثل السعودية، مصر، إلخ)"),
+        "locationDistrict":
+            MessageLookupByLibrary.simpleMessage("إسم/رقم الحي"),
+        "locationDistrictHint": MessageLookupByLibrary.simpleMessage(
+            "أدخل إسم الحي أو رقم الحي(مثل حي العليا، حي الروضة، حي 123، إلخ)"),
+        "locationFloor": MessageLookupByLibrary.simpleMessage("رقم الطابق"),
+        "locationFloorHint": MessageLookupByLibrary.simpleMessage(
+            "أدخل رقم الطابق (مثل 1، 2، إلخ)"),
+        "locationName": MessageLookupByLibrary.simpleMessage("اسم الموقع"),
+        "locationNameHint": MessageLookupByLibrary.simpleMessage(
+            "اسم الموقع (مثل المنزل، العمل، إلخ)"),
+        "locationRegion": MessageLookupByLibrary.simpleMessage("إسم المنطقة"),
+        "locationRegionHint": MessageLookupByLibrary.simpleMessage(
+            "أدخل إسم المنطقة(مثل الرياض، جدة، إلخ) "),
+        "locationStreet": MessageLookupByLibrary.simpleMessage("إسم الشارع"),
+        "locationStreetHint": MessageLookupByLibrary.simpleMessage(
+            "أدخل إسم الشارع (مثل شارع الملك فهد، شارع العليا، إلخ)"),
+        "locationsTitle": MessageLookupByLibrary.simpleMessage("مواقعك"),
         "loginButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "loginNow": MessageLookupByLibrary.simpleMessage("تسجيل الدخول الآن"),
         "loginSubtitle": MessageLookupByLibrary.simpleMessage(
             "مرحباً بك! الرجاء تسجيل الدخول إلى حسابك."),
         "loginTitle": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "manageLocations":
+            MessageLookupByLibrary.simpleMessage("إدارة المواقع"),
+        "manageOrders": MessageLookupByLibrary.simpleMessage("إدارة الطلبات"),
         "mosqueDeals": MessageLookupByLibrary.simpleMessage("عروض المساجد"),
         "orLoginWith":
             MessageLookupByLibrary.simpleMessage("أو تسجيل الدخول باستخدام"),
-        "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
+        "orderHistory": MessageLookupByLibrary.simpleMessage("سجل الطلبات"),
         "ordersTitle": MessageLookupByLibrary.simpleMessage("طلباتي"),
         "other": MessageLookupByLibrary.simpleMessage("أخرى"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordHint": MessageLookupByLibrary.simpleMessage("أدخل كلمة مرورك"),
-        "personalInformation":
-            MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "phoneNumberHint":
             MessageLookupByLibrary.simpleMessage("أدخل رقم هاتفك"),
@@ -120,10 +159,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "privacyPolicyDescription": MessageLookupByLibrary.simpleMessage(
             "مرحباً بك في متجرنا الإلكتروني. فيما يلي الشروط والأحكام التي تنظم استخدامك للمتجر والآثار القانونية الناتجة عن استخدام خدماتنا. من خلال استخدام أي خدمة أو منتج، توافق على هذه الشروط."),
-        "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
-        "profileFirstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
-        "profileLastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
-        "profileTitle": MessageLookupByLibrary.simpleMessage("ملفي الشخصي"),
+        "profile": MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
+        "profileTitle":
+            MessageLookupByLibrary.simpleMessage("معلوماتك الشخصية"),
         "quantity": MessageLookupByLibrary.simpleMessage("الكمية:  "),
         "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل جديد"),
         "registerNow": MessageLookupByLibrary.simpleMessage("تسجيل الآن"),
@@ -133,6 +171,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "تم التسجيل بنجاح! الرجاء تسجيل الدخول إلى حسابك."),
         "registerTitle": MessageLookupByLibrary.simpleMessage("تسجيل جديد"),
         "riyal": MessageLookupByLibrary.simpleMessage("ر.س"),
+        "saudiArabia": MessageLookupByLibrary.simpleMessage(
+            "🇸🇦 المملكة العربية السعودية"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "secondPolicy":
             MessageLookupByLibrary.simpleMessage("2. الأهلية القانونية"),
@@ -145,12 +185,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "يشمل هذا القسم تفاصيل حول الملكية الفكرية، وخدمات الدفع، والتعديلات على الاتفاقية، ومساءلة المتجر، وقيود الوصول، والقوانين المعمول بها—جميعها خاضعة للاتفاقية الأصلية الكاملة."),
         "signWithGoogle":
             MessageLookupByLibrary.simpleMessage("تسجيل الدخول باستخدام جوجل"),
+        "street": MessageLookupByLibrary.simpleMessage("الشارع : "),
+        "system": MessageLookupByLibrary.simpleMessage("النظام"),
+        "theme": MessageLookupByLibrary.simpleMessage("السمة"),
         "thirdPolicy":
             MessageLookupByLibrary.simpleMessage("3. طبيعة الالتزام"),
         "thirdPolicyDescription": MessageLookupByLibrary.simpleMessage(
             "يتعهد المتجر بتوفير الخدمة أو المنتج للعميل. قد يشمل ذلك خدمات послبيعية إضافية حسب نوع المنتج أو الخدمة."),
         "todayDeals": MessageLookupByLibrary.simpleMessage("عروض اليوم"),
         "total": MessageLookupByLibrary.simpleMessage("الإجمالي:  "),
+        "updateProfileSuccess": MessageLookupByLibrary.simpleMessage(
+            "تم تحديث الملف الشخصي بنجاح!"),
         "visionDescription": MessageLookupByLibrary.simpleMessage(
             "الحفاظ على أعلى معايير الجودة لإنتاج مياه معبأة بأفضل الطرق الخاضعة لكافة قياسات الجودة وللتأكد من تقديم مياه صحية نقية بأفضل المواصفات العالمية."),
         "visionTitle": MessageLookupByLibrary.simpleMessage("رؤيتنا"),

@@ -490,7 +490,7 @@ class S {
     return Intl.message(
       'Price:  ',
       name: 'price',
-      desc: 'تسمية السعر في عنصر منتج السلة',
+      desc: 'Label for the price in the cart items',
       args: [],
     );
   }
@@ -500,7 +500,7 @@ class S {
     return Intl.message(
       'Total:  ',
       name: 'total',
-      desc: 'تسمية الإجمالي في عنصر منتج السلة',
+      desc: 'Label for the total in the cart items',
       args: [],
     );
   }
@@ -510,7 +510,7 @@ class S {
     return Intl.message(
       'Quantity:  ',
       name: 'quantity',
-      desc: 'تسمية الكمية في عنصر منتج السلة',
+      desc: 'Label for the quantity in the cart items',
       args: [],
     );
   }
@@ -535,152 +535,34 @@ class S {
     );
   }
 
-  /// `Profile`
-  String get profile {
-    return Intl.message(
-      'Profile',
-      name: 'profile',
-      desc: 'Label for the profile screen in the bottom navigation bar',
-      args: [],
-    );
-  }
-
-  /// `Your Profile`
-  String get profileTitle {
-    return Intl.message(
-      'Your Profile',
-      name: 'profileTitle',
-      desc: 'Title for the profile screen',
-      args: [],
-    );
-  }
-
-  /// `First Name`
-  String get profileFirstName {
-    return Intl.message(
-      'First Name',
-      name: 'profileFirstName',
-      desc: 'Label for the first name field in the profile screen',
-      args: [],
-    );
-  }
-
-  /// `Last Name`
-  String get profileLastName {
-    return Intl.message(
-      'Last Name',
-      name: 'profileLastName',
-      desc: 'Label for the last name field in the profile screen',
-      args: [],
-    );
-  }
-
-  /// `Address`
-  String get address {
-    return Intl.message(
-      'Address',
-      name: 'address',
-      desc: 'Label for the address field in the profile screen',
-      args: [],
-    );
-  }
-
-  /// `Enter your address`
-  String get addressHint {
-    return Intl.message(
-      'Enter your address',
-      name: 'addressHint',
-      desc: 'Hint text for the address field in the profile screen',
-      args: [],
-    );
-  }
-
-  /// `Profile updated successfully!`
-  String get UpdateProfileSuccess {
-    return Intl.message(
-      'Profile updated successfully!',
-      name: 'UpdateProfileSuccess',
-      desc: 'Message displayed when the profile is successfully updated',
-      args: [],
-    );
-  }
-
-  /// `Orders`
-  String get orders {
-    return Intl.message(
-      'Orders',
-      name: 'orders',
-      desc: 'Label for the orders section in the settings screen',
-      args: [],
-    );
-  }
-
-  /// `Your Orders`
-  String get ordersTitle {
-    return Intl.message(
-      'Your Orders',
-      name: 'ordersTitle',
-      desc: 'Title for the orders screen',
-      args: [],
-    );
-  }
-
-  /// `Preferences`
-  String get preferences {
-    return Intl.message(
-      'Preferences',
-      name: 'preferences',
-      desc: 'Label for the preferences section in the settings screen',
-      args: [],
-    );
-  }
-
-  /// `Support & Help`
-  String get helpSupport {
-    return Intl.message(
-      'Support & Help',
-      name: 'helpSupport',
-      desc: 'Label for the support and help section in the settings screen',
-      args: [],
-    );
-  }
-
-  /// `Other`
-  String get other {
-    return Intl.message(
-      'Other',
-      name: 'other',
-      desc: 'Label for the other section in the settings screen',
-      args: [],
-    );
-  }
-
-  /// `Logout`
-  String get logout {
-    return Intl.message(
-      'Logout',
-      name: 'logout',
-      desc: 'Text for the logout option in the settings screen',
-      args: [],
-    );
-  }
-
   /// `Account`
   String get account {
     return Intl.message(
       'Account',
       name: 'account',
-      desc: 'Label for the account settings option',
+      desc: 'Label for the account section in the settings screen',
       args: [],
     );
   }
 
   /// `Personal Information`
-  String get personalInformation {
+  String get profile {
     return Intl.message(
       'Personal Information',
-      name: 'personalInformation',
-      desc: 'Label for the personal information settings option',
+      name: 'profile',
+      desc:
+          'Label for the personal information section in the account settings screen',
+      args: [],
+    );
+  }
+
+  /// `Your Personal Information`
+  String get profileTitle {
+    return Intl.message(
+      'Your Personal Information',
+      name: 'profileTitle',
+      desc:
+          'Title for the personal information section in the account settings screen',
       args: [],
     );
   }
@@ -705,82 +587,447 @@ class S {
     );
   }
 
-  /// `Manage Addresses`
-  String get addressTitle {
+  /// `Profile updated successfully!`
+  String get updateProfileSuccess {
     return Intl.message(
-      'Manage Addresses',
-      name: 'addressTitle',
-      desc: 'Title for the manage addresses screen',
+      'Profile updated successfully!',
+      name: 'updateProfileSuccess',
+      desc: 'Message displayed when the profile is successfully updated',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete your account? This action cannot be undone.`
+  String get deleteAccountConfirmation {
+    return Intl.message(
+      'Are you sure you want to delete your account? This action cannot be undone.',
+      name: 'deleteAccountConfirmation',
+      desc:
+          'Confirmation message displayed when the user attempts to delete their account',
+      args: [],
+    );
+  }
+
+  /// `Your account has been deleted successfully.`
+  String get deleteAccountSuccess {
+    return Intl.message(
+      'Your account has been deleted successfully.',
+      name: 'deleteAccountSuccess',
+      desc: 'Message displayed when the account is successfully deleted',
+      args: [],
+    );
+  }
+
+  /// `Manage Locations`
+  String get manageLocations {
+    return Intl.message(
+      'Manage Locations',
+      name: 'manageLocations',
+      desc: 'Label for the manage locations option in the settings screen',
+      args: [],
+    );
+  }
+
+  /// `Your Locations`
+  String get locationsTitle {
+    return Intl.message(
+      'Your Locations',
+      name: 'locationsTitle',
+      desc: 'Title for the locations screen in the settings section',
+      args: [],
+    );
+  }
+
+  /// `District : `
+  String get district {
+    return Intl.message(
+      'District : ',
+      name: 'district',
+      desc: 'Label for the district field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Street : `
+  String get street {
+    return Intl.message(
+      'Street : ',
+      name: 'street',
+      desc: 'Label for the street field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Building : `
+  String get building {
+    return Intl.message(
+      'Building : ',
+      name: 'building',
+      desc: 'Label for the building field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Floor : `
+  String get floor {
+    return Intl.message(
+      'Floor : ',
+      name: 'floor',
+      desc: 'Label for the floor field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Add New Location`
+  String get addLocationTitle {
+    return Intl.message(
+      'Add New Location',
+      name: 'addLocationTitle',
+      desc:
+          'Title for the add new location screen in the manage locations section',
+      args: [],
+    );
+  }
+
+  /// `Edit Location`
+  String get editLocationTitle {
+    return Intl.message(
+      'Edit Location',
+      name: 'editLocationTitle',
+      desc:
+          'Title for the edit location screen in the manage locations section',
+      args: [],
+    );
+  }
+
+  /// `Location Name`
+  String get locationName {
+    return Intl.message(
+      'Location Name',
+      name: 'locationName',
+      desc: 'Label for the location name field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Enter a name for this location (e.g., Home, Work, etc.)`
+  String get locationNameHint {
+    return Intl.message(
+      'Enter a name for this location (e.g., Home, Work, etc.)',
+      name: 'locationNameHint',
+      desc:
+          'Hint text for the location name field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Country`
+  String get locationCountry {
+    return Intl.message(
+      'Country',
+      name: 'locationCountry',
+      desc: 'Label for the country field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Enter the country for this location (e.g., Saudi Arabia, Egypt, etc.)`
+  String get locationCountryHint {
+    return Intl.message(
+      'Enter the country for this location (e.g., Saudi Arabia, Egypt, etc.)',
+      name: 'locationCountryHint',
+      desc: 'Hint text for the country field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `🇸🇦 Saudi Arabia`
+  String get saudiArabia {
+    return Intl.message(
+      '🇸🇦 Saudi Arabia',
+      name: 'saudiArabia',
+      desc:
+          'Option for Saudi Arabia in the country field of the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Region Name`
+  String get locationRegion {
+    return Intl.message(
+      'Region Name',
+      name: 'locationRegion',
+      desc: 'Label for the region field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Enter the region for this location (e.g., Riyadh, Jeddah, etc.)`
+  String get locationRegionHint {
+    return Intl.message(
+      'Enter the region for this location (e.g., Riyadh, Jeddah, etc.)',
+      name: 'locationRegionHint',
+      desc: 'Hint text for the region field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `City Name`
+  String get locationCity {
+    return Intl.message(
+      'City Name',
+      name: 'locationCity',
+      desc: 'Label for the city field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Enter the city for this location (e.g., Riyadh, Jeddah, etc.)`
+  String get locationCityHint {
+    return Intl.message(
+      'Enter the city for this location (e.g., Riyadh, Jeddah, etc.)',
+      name: 'locationCityHint',
+      desc: 'Hint text for the city field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `District Name/Number`
+  String get locationDistrict {
+    return Intl.message(
+      'District Name/Number',
+      name: 'locationDistrict',
+      desc: 'Label for the district field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Enter the district name or number for this location (e.g., Al-Olaya, Al-Rawdah, District 123, etc.)`
+  String get locationDistrictHint {
+    return Intl.message(
+      'Enter the district name or number for this location (e.g., Al-Olaya, Al-Rawdah, District 123, etc.)',
+      name: 'locationDistrictHint',
+      desc: 'Hint text for the district field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Street Name`
+  String get locationStreet {
+    return Intl.message(
+      'Street Name',
+      name: 'locationStreet',
+      desc: 'Label for the street field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Enter the street name for this location (e.g., King Fahd Road, Main Street, etc.)`
+  String get locationStreetHint {
+    return Intl.message(
+      'Enter the street name for this location (e.g., King Fahd Road, Main Street, etc.)',
+      name: 'locationStreetHint',
+      desc: 'Hint text for the street field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Building Name/Number`
+  String get locationBuilding {
+    return Intl.message(
+      'Building Name/Number',
+      name: 'locationBuilding',
+      desc: 'Label for the building field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Enter the building name or number for this location (e.g., Kingdom Tower, Building 456, etc.)`
+  String get locationBuildingHint {
+    return Intl.message(
+      'Enter the building name or number for this location (e.g., Kingdom Tower, Building 456, etc.)',
+      name: 'locationBuildingHint',
+      desc: 'Hint text for the building field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Floor Number`
+  String get locationFloor {
+    return Intl.message(
+      'Floor Number',
+      name: 'locationFloor',
+      desc: 'Label for the floor field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Enter the floor number for this location (e.g., 1, 2, etc.)`
+  String get locationFloorHint {
+    return Intl.message(
+      'Enter the floor number for this location (e.g., 1, 2, etc.)',
+      name: 'locationFloorHint',
+      desc: 'Hint text for the floor field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Add Location`
+  String get addLocationButton {
+    return Intl.message(
+      'Add Location',
+      name: 'addLocationButton',
+      desc: 'Text for the add location button in the add location screen',
+      args: [],
+    );
+  }
+
+  /// `Save Changes`
+  String get editLocationButton {
+    return Intl.message(
+      'Save Changes',
+      name: 'editLocationButton',
+      desc: 'Text for the save changes button in the edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Location added successfully!`
+  String get addLocationSuccess {
+    return Intl.message(
+      'Location added successfully!',
+      name: 'addLocationSuccess',
+      desc: 'Message displayed when a location is added successfully',
+      args: [],
+    );
+  }
+
+  /// `Location updated successfully!`
+  String get editLocationSuccess {
+    return Intl.message(
+      'Location updated successfully!',
+      name: 'editLocationSuccess',
+      desc: 'Message displayed when a location is updated successfully',
+      args: [],
+    );
+  }
+
+  /// `Manage Orders`
+  String get manageOrders {
+    return Intl.message(
+      'Manage Orders',
+      name: 'manageOrders',
+      desc: 'Label for the manage orders option in the settings screen',
+      args: [],
+    );
+  }
+
+  /// `Order History`
+  String get orderHistory {
+    return Intl.message(
+      'Order History',
+      name: 'orderHistory',
+      desc: 'Label for the order history option in the settings screen',
+      args: [],
+    );
+  }
+
+  /// `Your Orders`
+  String get ordersTitle {
+    return Intl.message(
+      'Your Orders',
+      name: 'ordersTitle',
+      desc: 'Title for the orders screen',
+      args: [],
+    );
+  }
+
+  /// `Preferences`
+  String get preferences {
+    return Intl.message(
+      'Preferences',
+      name: 'preferences',
+      desc: 'Label for the preferences section in the settings screen',
       args: [],
     );
   }
 
   /// `Language`
-  String get Language {
+  String get language {
     return Intl.message(
       'Language',
-      name: 'Language',
+      name: 'language',
       desc: 'Label for the language settings option',
       args: [],
     );
   }
 
   /// `English`
-  String get English {
+  String get english {
     return Intl.message(
       'English',
-      name: 'English',
+      name: 'english',
       desc: 'Option for selecting English language',
       args: [],
     );
   }
 
   /// `Arabic`
-  String get Arabic {
+  String get arabic {
     return Intl.message(
       'Arabic',
-      name: 'Arabic',
+      name: 'arabic',
       desc: 'Option for selecting Arabic language',
       args: [],
     );
   }
 
   /// `Theme`
-  String get Theme {
+  String get theme {
     return Intl.message(
       'Theme',
-      name: 'Theme',
+      name: 'theme',
       desc: 'Label for the theme settings option',
       args: [],
     );
   }
 
   /// `Light`
-  String get Light {
+  String get light {
     return Intl.message(
       'Light',
-      name: 'Light',
+      name: 'light',
       desc: 'Option for selecting light theme',
       args: [],
     );
   }
 
   /// `Dark`
-  String get Dark {
+  String get dark {
     return Intl.message(
       'Dark',
-      name: 'Dark',
+      name: 'dark',
       desc: 'Option for selecting dark theme',
       args: [],
     );
   }
 
   /// `System`
-  String get System {
+  String get system {
     return Intl.message(
       'System',
-      name: 'System',
+      name: 'system',
       desc: 'Option for selecting system default theme',
+      args: [],
+    );
+  }
+
+  /// `Support & Help`
+  String get helpSupport {
+    return Intl.message(
+      'Support & Help',
+      name: 'helpSupport',
+      desc: 'Label for the support and help section in the settings screen',
       args: [],
     );
   }
@@ -981,6 +1228,26 @@ class S {
       'If you have questions or need assistance, reach out to us via email or phone. Our customer support team is available to help you with orders, products, and general inquiries.',
       name: 'contactUsDescription',
       desc: 'Description paragraph used in the Contact Us screen',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get other {
+    return Intl.message(
+      'Other',
+      name: 'other',
+      desc: 'Label for the other section in the settings screen',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message(
+      'Logout',
+      name: 'logout',
+      desc: 'Text for the logout option in the settings screen',
       args: [],
     );
   }

@@ -48,6 +48,7 @@ class _Input extends StatelessWidget {
     var s = S.of(context);
     var cubit = AuthCubit.get(context);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
                   CustomText(text: s.emailAddress, size: 16.sp, type: Type.overMedium),
           SizedBox(height: 10.h),

@@ -22,9 +22,9 @@ class _Lang extends StatelessWidget {
     var cubit = SettingsCubit.get(context);
     return BlocBuilder<SettingsCubit,AppUserPref>(
       builder: (context, state) => _Item(
-        title: s.Language,
+        title: s.language,
         values: ['en', 'ar'],
-        items: [s.English, s.Arabic],
+        items: [s.english, s.arabic],
         icon: Icons.language_outlined,
         selectedValue: state.lang,
         onTap: (value) => cubit.updateLanguage(value),
@@ -43,8 +43,8 @@ class _Theme extends StatelessWidget {
     return BlocBuilder<SettingsCubit,AppUserPref>(
       builder: (context, state) => _Item(
         icon: Icons.brightness_4_outlined,
-        title: s.Theme,
-        items: [s.Light, s.Dark, s.System],
+        title: s.theme,
+        items: [s.light, s.dark, s.system],
         selectedValue: state.theme,
         onTap: (value) => cubit.updateTheme(value),
         values: [ThemeMode.light, ThemeMode.dark, ThemeMode.system],

@@ -194,15 +194,15 @@
     },
     "price": "Price:  ",
     "@price": {
-        "description": "تسمية السعر في عنصر منتج السلة"
+        "description": "Label for the price in the cart items"
     },
     "total": "Total:  ",
     "@total": {
-        "description": "تسمية الإجمالي في عنصر منتج السلة"
+        "description": "Label for the total in the cart items"
     },
     "quantity": "Quantity:  ",
     "@quantity": {
-        "description": "تسمية الكمية في عنصر منتج السلة"
+        "description": "Label for the quantity in the cart items"
     },
     "emptyCart": "Your cart is empty.",
     "@emptyCart": {
@@ -218,40 +218,172 @@
 
 
 
-    "profile": "Profile",
+    "account": "Account",
+    "@account": {
+        "description": "Label for the account section in the settings screen"
+    },
+
+
+    
+    "profile":"Personal Information",
     "@profile": {
-        "description": "Label for the profile screen in the bottom navigation bar"
+        "description": "Label for the personal information section in the account settings screen"
     },
-    "profileTitle": "Your Profile",
+    "profileTitle": "Your Personal Information",
     "@profileTitle": {
-        "description": "Title for the profile screen"
+        "description": "Title for the personal information section in the account settings screen"
     },
-    "profileFirstName": "First Name",
-    "@profileFirstName": {
-        "description": "Label for the first name field in the profile screen"
+    "save": "Save",
+    "@save": {
+        "description": "Text for the save button in the account settings screen"
     },
-    "profileLastName": "Last Name",
-    "@profileLastName": {
-        "description": "Label for the last name field in the profile screen"
+    "deleteAccount": "Delete Account",
+    "@deleteAccount": {
+        "description": "Text for the delete account button in the account settings screen"
     },
-    "address": "Address",
-    "@address": {
-        "description": "Label for the address field in the profile screen"
-    },
-    "addressHint": "Enter your address",
-    "@addressHint": {
-        "description": "Hint text for the address field in the profile screen"
-    },
-    "UpdateProfileSuccess": "Profile updated successfully!",
-    "@UpdateProfileSuccess": {
+    "updateProfileSuccess": "Profile updated successfully!",
+    "@updateProfileSuccess": {
         "description": "Message displayed when the profile is successfully updated"
     },
+    "deleteAccountConfirmation": "Are you sure you want to delete your account? This action cannot be undone.",
+    "@deleteAccountConfirmation": {
+        "description": "Confirmation message displayed when the user attempts to delete their account"
+    },
+    "deleteAccountSuccess": "Your account has been deleted successfully.",
+    "@deleteAccountSuccess": {
+        "description": "Message displayed when the account is successfully deleted"
+    },
 
 
 
-    "orders": "Orders",
-    "@orders": {
-        "description": "Label for the orders section in the settings screen"
+
+    "manageLocations": "Manage Locations",
+    "@manageLocations": {
+        "description": "Label for the manage locations option in the settings screen"
+    },
+    "locationsTitle": "Your Locations",
+    "@locationsTitle": {
+        "description": "Title for the locations screen in the settings section"
+    },
+    "district": "District : ",
+    "@district": {
+        "description": "Label for the district field in the add/edit location screen"
+    },
+    "street": "Street : ",
+    "@street": {
+        "description": "Label for the street field in the add/edit location screen"
+    },
+    "building": "Building : ",
+    "@building": {
+        "description": "Label for the building field in the add/edit location screen"
+    },
+    "floor": "Floor : ",
+    "@floor": {
+        "description": "Label for the floor field in the add/edit location screen"
+    },
+    "addLocationTitle": "Add New Location",
+    "@addLocationTitle": {
+        "description": "Title for the add new location screen in the manage locations section"
+    },
+    "editLocationTitle": "Edit Location",
+    "@editLocationTitle": {
+        "description": "Title for the edit location screen in the manage locations section"
+    },
+    "locationName": "Location Name",
+    "@locationName": {
+        "description": "Label for the location name field in the add/edit location screen"
+    },
+    "locationNameHint": "Enter a name for this location (e.g., Home, Work, etc.)",
+    "@locationNameHint": {
+        "description": "Hint text for the location name field in the add/edit location screen"
+    },
+    "locationCountry": "Country",
+    "@locationCountry": {
+        "description": "Label for the country field in the add/edit location screen"
+    },
+    "locationCountryHint": "Enter the country for this location (e.g., Saudi Arabia, Egypt, etc.)",
+    "@locationCountryHint": {
+        "description": "Hint text for the country field in the add/edit location screen"
+    },
+    "saudiArabia": "🇸🇦 Saudi Arabia",
+    "@saudiArabia": {
+        "description": "Option for Saudi Arabia in the country field of the add/edit location screen"
+    },
+    "locationRegion": "Region Name",
+    "@locationRegion": {
+        "description": "Label for the region field in the add/edit location screen"
+    },
+    "locationRegionHint": "Enter the region for this location (e.g., Riyadh, Jeddah, etc.)",
+    "@locationRegionHint": {
+        "description": "Hint text for the region field in the add/edit location screen"
+    },
+    "locationCity": "City Name",
+    "@locationCity": {
+        "description": "Label for the city field in the add/edit location screen"
+    },
+    "locationCityHint": "Enter the city for this location (e.g., Riyadh, Jeddah, etc.)",
+    "@locationCityHint": {
+        "description": "Hint text for the city field in the add/edit location screen"
+    },
+    "locationDistrict": "District Name/Number",
+    "@locationDistrict": {
+        "description": "Label for the district field in the add/edit location screen"
+    },
+    "locationDistrictHint": "Enter the district name or number for this location (e.g., Al-Olaya, Al-Rawdah, District 123, etc.)",
+    "@locationDistrictHint": {
+        "description": "Hint text for the district field in the add/edit location screen"
+    },
+    "locationStreet": "Street Name",
+    "@locationStreet": {
+        "description": "Label for the street field in the add/edit location screen"
+    },
+    "locationStreetHint": "Enter the street name for this location (e.g., King Fahd Road, Main Street, etc.)",
+    "@locationStreetHint": {
+        "description": "Hint text for the street field in the add/edit location screen"
+    },
+    "locationBuilding": "Building Name/Number",
+    "@locationBuilding": {
+        "description": "Label for the building field in the add/edit location screen"
+    },
+    "locationBuildingHint": "Enter the building name or number for this location (e.g., Kingdom Tower, Building 456, etc.)",
+    "@locationBuildingHint": {
+        "description": "Hint text for the building field in the add/edit location screen"
+    },
+    "locationFloor": "Floor Number",
+    "@locationFloor": {
+        "description": "Label for the floor field in the add/edit location screen"
+    },
+    "locationFloorHint": "Enter the floor number for this location (e.g., 1, 2, etc.)",
+    "@locationFloorHint": {
+        "description": "Hint text for the floor field in the add/edit location screen"
+    },
+    "addLocationButton": "Add Location",
+    "@addLocationButton": {
+        "description": "Text for the add location button in the add location screen"
+    },
+    "editLocationButton": "Save Changes",
+    "@editLocationButton": {
+        "description": "Text for the save changes button in the edit location screen"
+    },
+    "addLocationSuccess": "Location added successfully!",
+    "@addLocationSuccess": {
+        "description": "Message displayed when a location is added successfully"
+    },
+    "editLocationSuccess": "Location updated successfully!",
+    "@editLocationSuccess": {
+        "description": "Message displayed when a location is updated successfully"
+    },
+
+
+
+
+    "manageOrders": "Manage Orders",
+    "@manageOrders": {
+        "description": "Label for the manage orders option in the settings screen"
+    },
+    "orderHistory": "Order History",
+    "@orderHistory": {
+        "description": "Label for the order history option in the settings screen"
     },
     "ordersTitle": "Your Orders",
     "@ordersTitle": {
@@ -264,80 +396,49 @@
     "@preferences": {
         "description": "Label for the preferences section in the settings screen"
     },
-    "helpSupport": "Support & Help",
-    "@helpSupport": {
-        "description": "Label for the support and help section in the settings screen"
-    },
-    "other": "Other",
-    "@other": {
-        "description": "Label for the other section in the settings screen"
-    },
-    "logout": "Logout",
-    "@logout": {
-        "description": "Text for the logout option in the settings screen"
-    },
 
 
 
-    "account": "Account",
-    "@account": {
-        "description": "Label for the account settings option"
-    },
-    "personalInformation": "Personal Information",
-    "@personalInformation": {
-        "description": "Label for the personal information settings option"
-    },    
-    "save": "Save",
-    "@save": {
-        "description": "Text for the save button in the account settings screen"
-    },
-    "deleteAccount": "Delete Account",
-    "@deleteAccount": {
-        "description": "Text for the delete account button in the account settings screen"
-    },
-
-
-
-    "addressTitle": "Manage Addresses",
-    "@addressTitle": {
-        "description": "Title for the manage addresses screen"
-    },
-
-
-
-
-
-    "Language": "Language",
-    "@Language": {
+    "language": "Language",
+    "@language": {
         "description": "Label for the language settings option"
     },
-    "English": "English",
-    "@English": {
+    "english": "English",
+    "@english": {
         "description": "Option for selecting English language"
     },
-    "Arabic": "Arabic",
-    "@Arabic": {
+    "arabic": "Arabic",
+    "@arabic": {
         "description": "Option for selecting Arabic language"
     },
 
 
 
-    "Theme": "Theme",
-    "@Theme": {
+    "theme": "Theme",
+    "@theme": {
         "description": "Label for the theme settings option"
     },
-    "Light": "Light",
-    "@Light": {
+    "light": "Light",
+    "@light": {
         "description": "Option for selecting light theme"
     },
-    "Dark": "Dark",
-    "@Dark": {
+    "dark": "Dark",
+    "@dark": {
         "description": "Option for selecting dark theme"
     },
-    "System": "System",
-    "@System": {
+    "system": "System",
+    "@system": {
         "description": "Option for selecting system default theme"
     },
+
+
+
+    "helpSupport": "Support & Help",
+    "@helpSupport": {
+        "description": "Label for the support and help section in the settings screen"
+    },
+
+
 
     "privacyPolicy": "Privacy Policy",
     "@privacyPolicy": {
@@ -414,6 +515,9 @@
     "@visionDescription": {
         "description": "Description for the Vision section in About Us"
     }
+
+
+
     ,
     "contactUsTitle": "Contact Us",
     "@contactUsTitle": {
@@ -422,5 +526,19 @@
     "contactUsDescription": "If you have questions or need assistance, reach out to us via email or phone. Our customer support team is available to help you with orders, products, and general inquiries.",
     "@contactUsDescription": {
         "description": "Description paragraph used in the Contact Us screen"
+    },
+
+
+
+    "other": "Other",
+    "@other": {
+        "description": "Label for the other section in the settings screen"
+    },
+
+
+
+    "logout": "Logout",
+    "@logout": {
+        "description": "Text for the logout option in the settings screen"
     }
 }

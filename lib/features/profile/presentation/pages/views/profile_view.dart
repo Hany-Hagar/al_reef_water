@@ -25,7 +25,7 @@ class ProfileView extends StatelessWidget {
           } else if (state is UpdateProfileSuccess) {
             SnackBarService.success(
               context: context,
-              message: s.UpdateProfileSuccess,
+              message: s.updateProfileSuccess,
             );
           }
         },

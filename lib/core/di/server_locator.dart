@@ -45,45 +45,75 @@ void setupLocator() {
 
   // Auth
   getIt.registerLazySingleton<AuthData>(() => AuthData());
-  getIt.registerLazySingleton<AuthRepo>(() => AuthRepoImpl(authData: getIt<AuthData>()));
-  getIt.registerLazySingleton<AuthCubit>(() => AuthCubit(authRepo: getIt<AuthRepo>()));
+  getIt.registerLazySingleton<AuthRepo>(
+    () => AuthRepoImpl(authData: getIt<AuthData>()),
+  );
+  getIt.registerLazySingleton<AuthCubit>(
+    () => AuthCubit(authRepo: getIt<AuthRepo>()),
+  );
 
   // Home
   getIt.registerLazySingleton<ProductData>(() => ProductData());
-  getIt.registerLazySingleton<ProductRepo>(() => ProductRepoImpl(productData: getIt<ProductData>()));
-  getIt.registerLazySingleton<ProductCubit>(() => ProductCubit(productRepo: getIt<ProductRepo>()));
+  getIt.registerLazySingleton<ProductRepo>(
+    () => ProductRepoImpl(productData: getIt<ProductData>()),
+  );
+  getIt.registerLazySingleton<ProductCubit>(
+    () => ProductCubit(productRepo: getIt<ProductRepo>()),
+  );
 
   // Banner
   getIt.registerLazySingleton<BannerData>(() => BannerData());
-  getIt.registerLazySingleton<BannerRepo>(() => BannerRepoImpl(bannerData: getIt<BannerData>()));
-  getIt.registerLazySingleton<BannerCubit>(() => BannerCubit(bannerRepo: getIt<BannerRepo>()));
+  getIt.registerLazySingleton<BannerRepo>(
+    () => BannerRepoImpl(bannerData: getIt<BannerData>()),
+  );
+  getIt.registerLazySingleton<BannerCubit>(
+    () => BannerCubit(bannerRepo: getIt<BannerRepo>()),
+  );
 
   // Fav
   getIt.registerLazySingleton<FavData>(() => FavData());
-  getIt.registerLazySingleton<FavRepo>(() => FavRepoImpl(favData: getIt<FavData>()));
-  getIt.registerLazySingleton<FavCubit>(() => FavCubit(favRepo: getIt<FavRepo>()));
+  getIt.registerLazySingleton<FavRepo>(
+    () => FavRepoImpl(favData: getIt<FavData>()),
+  );
+  getIt.registerLazySingleton<FavCubit>(
+    () => FavCubit(favRepo: getIt<FavRepo>()),
+  );
 
   // Cart
   getIt.registerLazySingleton<CartData>(() => CartData());
-  getIt.registerLazySingleton<CartRepo>(() => CartRepoImpl(cartData: getIt<CartData>()));
-  getIt.registerLazySingleton<CartCubit>(() => CartCubit(cartRepo: getIt<CartRepo>()));
-
+  getIt.registerLazySingleton<CartRepo>(
+    () => CartRepoImpl(cartData: getIt<CartData>()),
+  );
+  getIt.registerLazySingleton<CartCubit>(
+    () => CartCubit(cartRepo: getIt<CartRepo>()),
+  );
 
   // Profile
   getIt.registerLazySingleton<ProfileData>(() => ProfileData());
-  getIt.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl(profileData: getIt<ProfileData>()));
-  getIt.registerLazySingleton<ProfileCubit>(() => ProfileCubit(profileRepo: getIt<ProfileRepo>()));
+  getIt.registerLazySingleton<ProfileRepo>(
+    () => ProfileRepoImpl(profileData: getIt<ProfileData>()),
+  );
+  getIt.registerLazySingleton<ProfileCubit>(
+    () => ProfileCubit(profileRepo: getIt<ProfileRepo>()),
+  );
 
   // Locations
-  getIt.registerLazySingleton<LocationData>(() => LocationData());
-  getIt.registerLazySingleton<LocationRepo>(() => LocationRepoImpl(locationData: getIt<LocationData>()));
-  getIt.registerLazySingleton<LocationCubit>(() => LocationCubit(locationRepo: getIt<LocationRepo>()));
+  getIt.registerSingleton<LocationData>(LocationData());
+  getIt.registerSingleton<LocationRepo>(
+    LocationRepoImpl(locationData: getIt<LocationData>()),
+  );
+  getIt.registerSingleton<LocationCubit>(
+    LocationCubit(locationRepo: getIt<LocationRepo>())..loadRegions(),
+  );
 
   // Orders
   getIt.registerLazySingleton<OrdersData>(() => OrdersData());
-  getIt.registerLazySingleton<OrdersRepo>(() => OrdersRepoImpl(ordersData: getIt<OrdersData>()));
-  getIt.registerLazySingleton<OrdersCubit>(() => OrdersCubit(ordersRepo: getIt<OrdersRepo>()));
+  getIt.registerLazySingleton<OrdersRepo>(
+    () => OrdersRepoImpl(ordersData: getIt<OrdersData>()),
+  );
+  getIt.registerLazySingleton<OrdersCubit>(
+    () => OrdersCubit(ordersRepo: getIt<OrdersRepo>()),
+  );
 
-  // 
-
+  //
 }
