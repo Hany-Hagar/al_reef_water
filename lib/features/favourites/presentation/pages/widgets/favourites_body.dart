@@ -1,14 +1,9 @@
+import '../../../../../generated/l10n.dart';
 import '../../manager/fav_cubit.dart';
 import '../../manager/fav_states.dart';
 import 'package:flutter/material.dart';
-import '../../../../../generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../const_data/asset_data.dart';
-import '../../../../../core/widgets/custom_list.dart';
-import '../../../../../core/widgets/custom_text.dart';
-import '../../../../home/data/models/product_model.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../home/presentation/pages/widgets/favourite_icon.dart';
+import '../../../../../core/widgets/product_items.dart';
 
 class FavouritesBody extends StatelessWidget {
   const FavouritesBody({super.key});
@@ -16,104 +11,15 @@ class FavouritesBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavCubit, FavState>(
-      builder: (context, state) => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: CustomList(
-              isLoading: state is FavLoading,
-              isFailure: state is FavFailure,
-              emptyAnimation: AssetData.emptyFav,
-              items: FavCubit.get(context).favoriteProducts,
-              errorMessage: state is FavFailure ? state.message : null,
-              itemBuilder: (context, product) => _Item(product: product),
-              emptyItems: List.generate(5, (index) => ProductModel.empty()),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-
-class _Item extends StatelessWidget {
-  final ProductModel product;
-  const _Item({required this.product});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.zero,
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
-      child: Row(
-        children: [
-          _Image(imageUrl: product.images.first, productId: product.id),
-          SizedBox(height: 8.h),
-          Expanded(child: _ItemBody(product: product)),
-          SizedBox(height: 8.h),
-        ],
-      ),
-    );
-  }
-}
-
-class _Image extends StatelessWidget {
-  final String imageUrl;
-  final String productId;
-  const _Image({required this.imageUrl, required this.productId});
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SizedBox(
-          width: 115.w,
-          child: Container(
-            color: Colors.white,
-            child: Image.network(
-              imageUrl,
-              width: MediaQuery.sizeOf(context).width * 0.3,
-              fit: BoxFit.fill,
-            ),
-          ),
-        ),
-        Positioned(
-          top: 8.h,
-          right: 8.w,
-          child: FavouriteIcon(productId: productId),
-        ),
-      ],
-    );
-  }
-}
-
-class _ItemBody extends StatelessWidget {
-  final ProductModel product;
-  const _ItemBody({required this.product});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomText(
-            text: product.title,
-            size: 14.sp,
-            maxLines: 4,
-            type: Type.overMedium,
-          ),
-          CustomText(
-            text: "${product.price.toStringAsFixed(2)} ${S.of(context).riyal}",
-            size: 12.sp,
-            type: Type.overMedium,
-          ),
-        ],
+      builder: (context, state) => ProductItems(
+        isLoading: state is FavLoading,
+        isFailure: state is FavFailure,
+        products: FavCubit.get(context).favoriteProducts,
+        emptyMessage: S.of(context).noFavouritesYet,
+        emptyAnimation: "assets/lotties/emptyFav.json",
+        failureMessage: FavState is FavFailure
+            ? (state as FavFailure).message
+            : null,
       ),
     );
   }

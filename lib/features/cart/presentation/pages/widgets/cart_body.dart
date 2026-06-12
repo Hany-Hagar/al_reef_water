@@ -15,6 +15,7 @@ class CartBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenHeight = MediaQuery.of(context).size.height;
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,12 +34,14 @@ class CartBody extends StatelessWidget {
             isFailure: state is CartFailure,
             emptyAnimation: AssetData.emptyCart,
             items: CartCubit.get(context).cartItems,
-            errorMessage: state is CartFailure ? state.message : null,
+            animationTopPadding: screenHeight * 0.26,
+            emptyMessage: S.of(context).noProductsInCart,
             emptyItems: List.generate(5, (index) => CartModel.empty()),
+            failureMessage: (state is CartFailure) ? state.message : null,
             itemBuilder: (context, cart) =>
                 CartItem(isLoading: state is CartLoading, cart: cart),
           ),
-          if (CartCubit.get(context).cartItems.isNotEmpty) _OrderSummary(),
+          if (CartCubit.get(context).totalItems > 0) _OrderSummary(),
           SizedBox(height: 100.h),
         ],
       ),

@@ -1,13 +1,58 @@
-import 'favourite_icon.dart';
+import 'custom_grid.dart';
 import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../data/models/product_model.dart';
 import '../../../../../core/widgets/custom_text.dart';
 import '../../../../../core/services/icon_broken.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../cart/presentation/manager/cart_cubit.dart';
-import '../../../../cart/presentation/manager/cart_states.dart';
+import '../../features/home/data/models/product_model.dart';
+import '../../features/cart/presentation/manager/cart_cubit.dart';
+import '../../features/cart/presentation/manager/cart_states.dart';
+import '../../features/home/presentation/pages/widgets/favourite_icon.dart';
+
+class ProductItems extends StatelessWidget {
+  final bool isLoading;
+  final bool isFailure;
+  final List<ProductModel> products;
+  final double? animationTopPadding;
+  final String? emptyAnimation;
+  final String? emptyMessage;
+  final String? failureAnimation;
+  final String? failureMessage;
+  const ProductItems({
+    super.key,
+    required this.isLoading,
+    required this.isFailure,
+    required this.products,
+    this.animationTopPadding,
+    this.emptyAnimation,
+    this.emptyMessage,
+    this.failureAnimation,
+    this.failureMessage,    
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomGrid(
+      shrinkWrap: true,
+      items: products,
+      crossAxisCount: 2,
+      isFailure: isFailure,
+      isLoading: isLoading,
+      childAspectRatio: 0.9,
+      scrollDirection: Axis.vertical,
+      emptyMessage: emptyMessage,
+      failureMessage: failureMessage,
+      emptyAnimation: emptyAnimation,
+      failureAnimation: failureAnimation,
+      animationTopPadding: animationTopPadding,
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
+      emptyItems: List.generate(5, (index) => ProductModel.empty()),
+      itemBuilder: (context, item) =>
+          HomeProductItem(product: item as ProductModel),
+    );
+  }
+}
 
 class HomeProductItem extends StatelessWidget {
   final ProductModel product;
@@ -117,7 +162,7 @@ class _Carticon extends StatelessWidget {
           );
         }
         return GestureDetector(
-          onTap: () => CartCubit.get(context).addToCart(product),
+          onTap: () => CartCubit.get(context).addToCart(product: product),
           child: Icon(IconBroken.Buy, size: 24.sp),
         );
       },

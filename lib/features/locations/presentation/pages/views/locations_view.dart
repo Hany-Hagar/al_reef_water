@@ -1,3 +1,4 @@
+import '../../../../../core/services/location_service.dart';
 import 'add_edit_location_view.dart';
 import 'package:flutter/material.dart';
 import '../widgets/locations_body.dart';
@@ -33,9 +34,18 @@ class _AddLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: (){
+      onPressed: () {
         LocationCubit.get(context).clearControllers();
-        NavTo.push(context: context, nextPage: const AddEditLocationView(isEdit: false));
+        LocationService.openLocationPicker(
+          context: context,
+          onLocationPicked: (pickedData) {
+            LocationCubit.get(context).setLocationData(pickedData: pickedData);
+            NavTo.push(
+              context: context,
+              nextPage: const AddEditLocationView(isEdit: false),
+            );
+          },
+        );
       },
       child: Icon(size: 34.r, Icons.add_location_alt_outlined),
     );

@@ -5,7 +5,7 @@ import '../../../home/data/models/product_model.dart';
 
 abstract class CartRepo {
   Future<Either<Failure, ({List<CartModel> items, double total , int totalItems})>> getCartItems();
-  Future<Either<Failure, CartModel>> addToCart(ProductModel product);
-  Future<Either<Failure, void>> updateCartQuantity(String cartId, int quantity, double totalPrice);
-  Future<Either<Failure, void>> removeFromCart(String cartId);
+  Future<Either<Failure, CartModel>> addToCart({required ProductModel product});
+  Future<Either<Failure, void>> updateCartQuantity({required String cartId, required int quantity, required double totalPrice});
+  Future<Either<Failure, void>> removeFromCart({required String cartId});
 }

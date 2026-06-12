@@ -1,4 +1,6 @@
 // ignore_for_file: strict_top_level_inference
+import 'dart:developer';
+
 import 'location_states.dart';
 import 'package:flutter/material.dart';
 import '../../data/models/city_model.dart';
@@ -7,6 +9,7 @@ import '../../data/models/region_model.dart';
 import '../../data/models/location_model.dart';
 import '../../data/models/district_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:osm_search_and_pick/models/picked_data.dart';
 
 class LocationCubit extends Cubit<LocationState> {
   final LocationRepo locationRepo;
@@ -48,24 +51,6 @@ class LocationCubit extends Cubit<LocationState> {
     });
   }
 
-  void onRegionSelected(RegionModel region) {
-    selectedRegion = region;
-    selectedCity = selectedRegion?.cities.first;
-    selectedDistrict = selectedCity?.districts.first;
-    emit(RegionSelected());
-  }
-
-  void onCitySelected(CityModel city) {
-    selectedCity = city;
-    selectedDistrict = selectedCity?.districts.first;
-    emit(CitySelected());
-  }
-
-  void onDistrictSelected(DistrictModel district) {
-    selectedDistrict = district;
-    emit(DistrictSelected());
-  }
-
   void setControllers(LocationModel location) {
     editId = location.id;
     titleController.text = location.name;
@@ -104,6 +89,72 @@ class LocationCubit extends Cubit<LocationState> {
     floorController = TextEditingController(text: "1");
   }
 
+Future<void> setLocationData({required PickedData pickedData}) async {
+    clearControllers();
+
+    String fullAddress = pickedData.addressName;
+    String buildingNumber = pickedData.address['house_number'] ?? 
+                            pickedData.address['building'] ?? 
+                            ""; 
+
+    String roadName = pickedData.address['road'] ?? 
+                      pickedData.address['street'] ?? 
+                      "";
+
+    if (roadName.isEmpty) {
+      roadName = pickedData.address['amenity'] ?? 
+                 pickedData.address['hotel'] ?? 
+                 "";
+    }
+    if (roadName.isEmpty && fullAddress.isNotEmpty) {
+      roadName = fullAddress.split(',').first.trim();
+    }
+
+    String districtName = pickedData.address['neighbourhood'] ?? 
+                         pickedData.address['suburb'] ?? 
+                         "";
+                         
+    String cityName = pickedData.address['city'] ?? 
+                      pickedData.address['town'] ?? 
+                      "";
+
+    var location = LocationModel.fromOSM(
+      title: "",
+      floor: 1,
+      pickedData: pickedData,
+    );
+
+
+    log("RAW DATA: $pickedData");
+    log("MAP DATA: ${pickedData.address}");
+    log("FULL ADDRESS: $fullAddress");
+    log("BUILDING: $buildingNumber");
+    log("STREET: $roadName");
+    log("DISTRICT: $districtName");
+    log("CITY: $cityName");
+    
+    setControllers(location);
+}
+
+
+  void onRegionSelected(RegionModel region) {
+    selectedRegion = region;
+    selectedCity = selectedRegion?.cities.first;
+    selectedDistrict = selectedCity?.districts.first;
+    emit(RegionSelected());
+  }
+
+  void onCitySelected(CityModel city) {
+    selectedCity = city;
+    selectedDistrict = selectedCity?.districts.first;
+    emit(CitySelected());
+  }
+
+  void onDistrictSelected(DistrictModel district) {
+    selectedDistrict = district;
+    emit(DistrictSelected());
+  }
+
   LocationModel getLocationFromInput() {
     return LocationModel(
       id: "",
@@ -133,14 +184,15 @@ class LocationCubit extends Cubit<LocationState> {
     });
   }
 
-  Future<void> updateLocation({
-    required GlobalKey<FormState> formKey,
-  }) async {
+  Future<void> updateLocation({required GlobalKey<FormState> formKey}) async {
     if (!formKey.currentState!.validate()) {
       return;
     }
     emit(UpdateLocationLoading());
-    var result = await locationRepo.updateLocation(editId, getLocationFromInput());
+    var result = await locationRepo.updateLocation(
+      editId,
+      getLocationFromInput(),
+    );
     result.fold((failure) => emit(LocationError(failure.message)), (
       updatedLocation,
     ) {

@@ -28,7 +28,7 @@ class CartCubit extends Cubit<CartState> {
     });
   }
 
-  String getItemCount(String cartId) {
+  String getItemCount({required String cartId}) {
     final item = cartItems.firstWhere(
       (item) => item.id == cartId,
       orElse: () => CartModel.empty(),
@@ -36,84 +36,80 @@ class CartCubit extends Cubit<CartState> {
     return item.quantity.toString();
   }
 
-  void addToCart(ProductModel product) async {
+  void addToCart({required ProductModel product}) async {
     emit(AddToCartLoading(productId: product.id));
-    final result = await cartRepo.addToCart(product);
+    final result = await cartRepo.addToCart(product: product);
     result.fold((failure) => emit(CartFailure(failure.message)), (cartItem) {
       cartItems.add(cartItem);
-      totalPrice += cartItem.totalPrice;
-      totalItems += cartItem.quantity;
+      totalPrice += product.price;
+      totalItems += 1;
       emit(AddToCartSuccess());
     });
   }
 
-  void removeFromCart(String cartId) async {
-    emit(RemoveFromCartLoading(cartId: cartId));
-    final result = await cartRepo.removeFromCart(cartId);
+  void removeFromCart({required String cartId, CartState? loadingState}) async {
+    emit(loadingState ?? RemoveFromCartLoading(cartId: cartId));
+    final result = await cartRepo.removeFromCart(cartId: cartId);
     result.fold((failure) => emit(CartFailure(failure.message)), (_) {
-      cartItems.removeWhere((item) {
-        totalPrice -= item.totalPrice * item.quantity;
-        totalItems -= item.quantity;
-        return item.id == cartId;
-      });
+      final removedItem = cartItems.firstWhere((item) => item.id == cartId);
+      cartItems.removeWhere((item) => item.id == cartId);
+      totalPrice -= removedItem.totalPrice;
+      totalItems -= removedItem.quantity;
       emit(RemoveFromCartSuccess());
     });
   }
 
-  void increaseCartQuantity(String cartId) async {
-    final item = cartItems.firstWhere((item) => item.id == cartId);
-    final newQuantity = item.quantity + 1;
-    final newTotalPrice = item.totalPrice + item.product.price;
-    totalItems += 1;
-    emit(IncreaseCartQuantityLoading(cartId: cartId));
+  Future<void> _updateCartQuantity({
+    required CartModel item,
+    required int newQuantity,
+    required double newTotalPrice,
+    required CartState state,
+  }) async {
+    var data = await cartRepo.updateCartQuantity(
+      cartId: item.id,
+      quantity: newQuantity,
+      totalPrice: newTotalPrice,
+    );
+    data.fold((l) => emit(CartFailure(l.message)), (r) {
+      cartItems = cartItems.map((cartItem) {
+        if (cartItem.id == item.id) {
+          return cartItem.copyWith(
+            quantity: newQuantity,
+            totalPrice: newTotalPrice,
+          );
+        }
+        return cartItem;
+      }).toList();
+      totalPrice += newTotalPrice - item.totalPrice;
+      totalItems += newQuantity - item.quantity;
+      emit(state);
+    });
+  }
+
+  void increaseQuantity({required CartModel item}) {
+    emit(IncreaseCartQuantityLoading(cartId: item.id));
     _updateCartQuantity(
-      cartId,
-      newQuantity,
-      IncreaseCartQuantitySuccess(),
-      newTotalPrice,
+      item: item,
+      newQuantity: item.quantity + 1,
+      newTotalPrice: item.totalPrice + (item.totalPrice / item.quantity),
+      state: IncreaseCartQuantitySuccess(),
     );
   }
 
-  void decreaseCartQuantity(String cartId) async {
-    final item = cartItems.firstWhere((item) => item.id == cartId);
+  void decreaseQuantity({required CartModel item}) {
     if (item.quantity > 1) {
-      totalItems -= 1;
-      final newQuantity = item.quantity - 1;
-      final newTotalPrice = item.totalPrice - item.product.price;
-      emit(DecreaseCartQuantityLoading(cartId: cartId));
+      emit(DecreaseCartQuantityLoading(cartId: item.id));
       _updateCartQuantity(
-        cartId,
-        newQuantity,
-        DecreaseCartQuantitySuccess(),
-        newTotalPrice,
+        item: item,
+        newQuantity: item.quantity - 1,
+        newTotalPrice: item.totalPrice - (item.totalPrice / item.quantity),
+        state: DecreaseCartQuantitySuccess(),
       );
     } else {
-      totalItems -= 1;
-      removeFromCart(cartId);
+      removeFromCart(
+        cartId: item.id,
+        loadingState: DecreaseCartQuantityLoading(cartId: item.id),
+      );
     }
-  }
-
-  void _updateCartQuantity(
-    String cartId,
-    int quantity,
-    CartState state,
-    double updateTotalPrice,
-  ) async {
-    final result = await cartRepo.updateCartQuantity(
-      cartId,
-      quantity,
-      updateTotalPrice,
-    );
-    result.fold((failure) => emit(CartFailure(failure.message)), (_) {
-      final index = cartItems.indexWhere((item) => item.id == cartId);
-      if (index != -1) {
-        final updatedItem = cartItems[index].copyWith(
-          quantity: quantity,
-          totalPrice: updateTotalPrice,
-        );
-        cartItems[index] = updatedItem;
-        emit(state);
-      }
-    });
   }
 }

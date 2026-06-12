@@ -1,8 +1,8 @@
-import 'home_products.dart';
 import 'package:flutter/material.dart';
 import '../../manager/product_cubit.dart';
 import '../../manager/product_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/widgets/product_items.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -15,17 +15,18 @@ class HomeBody extends StatelessWidget {
         var isFailure = state is ProductFailure;
         var cubit = ProductCubit.get(context);
         return TabBarView(children: [
-          HomeProducts(
+          ProductItems(
             isLoading: isLoading,
             isFailure: isFailure,
             products: cubit.userProducts,
+
           ),
-          HomeProducts(
+          ProductItems(
             isLoading: isLoading,
             isFailure: isFailure,
             products: cubit.mosqueProducts,
           ),
-          HomeProducts(
+          ProductItems(
             isLoading: isLoading,
             isFailure: isFailure,
             products: cubit.companyProducts,

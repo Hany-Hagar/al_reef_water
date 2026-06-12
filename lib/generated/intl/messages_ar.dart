@@ -74,8 +74,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailAddressHint":
             MessageLookupByLibrary.simpleMessage("أدخل عنوان بريدك الإلكتروني"),
         "emptyCart": MessageLookupByLibrary.simpleMessage("سلتك فارغة."),
-        "emptyFavourites":
-            MessageLookupByLibrary.simpleMessage("قائمة مفضلاتك فارغة."),
         "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
         "favourites": MessageLookupByLibrary.simpleMessage("المفضلة"),
         "favouritesTitle": MessageLookupByLibrary.simpleMessage("مفضلاتي"),
@@ -148,6 +146,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("إدارة المواقع"),
         "manageOrders": MessageLookupByLibrary.simpleMessage("إدارة الطلبات"),
         "mosqueDeals": MessageLookupByLibrary.simpleMessage("عروض المساجد"),
+        "noFavouritesYet": MessageLookupByLibrary.simpleMessage(
+            "لم تقم بإضافة أي منتجات إلى المفضلة بعد."),
+        "noLocationsYet":
+            MessageLookupByLibrary.simpleMessage("لم تقم بإضافة أي مواقع بعد."),
+        "noOrdersYet":
+            MessageLookupByLibrary.simpleMessage("لم تقم بوضع أي طلبات بعد."),
+        "noProductsFound":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على منتجات."),
+        "noProductsInCart": MessageLookupByLibrary.simpleMessage(
+            "ليس لديك أي منتجات في سلتك للطلب."),
         "orLoginWith":
             MessageLookupByLibrary.simpleMessage("أو تسجيل الدخول باستخدام"),
         "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),

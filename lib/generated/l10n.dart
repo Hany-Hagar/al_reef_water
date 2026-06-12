@@ -435,6 +435,17 @@ class S {
     );
   }
 
+  /// `No products found.`
+  String get noProductsFound {
+    return Intl.message(
+      'No products found.',
+      name: 'noProductsFound',
+      desc:
+          'Message displayed when no products are found in a search or category',
+      args: [],
+    );
+  }
+
   /// `Favourites`
   String get favourites {
     return Intl.message(
@@ -455,12 +466,13 @@ class S {
     );
   }
 
-  /// `Your favourites list is empty.`
-  String get emptyFavourites {
+  /// `You haven't added any products to your favourites yet.`
+  String get noFavouritesYet {
     return Intl.message(
-      'Your favourites list is empty.',
-      name: 'emptyFavourites',
-      desc: 'Message displayed when the user\'s favourites list is empty',
+      'You haven\'t added any products to your favourites yet.',
+      name: 'noFavouritesYet',
+      desc:
+          'Message displayed when the user has not added any products to their favourites',
       args: [],
     );
   }
@@ -616,6 +628,16 @@ class S {
     );
   }
 
+  /// `You have no products in your cart to order.`
+  String get noProductsInCart {
+    return Intl.message(
+      'You have no products in your cart to order.',
+      name: 'noProductsInCart',
+      desc: 'Message displayed when the user tries to order with an empty cart',
+      args: [],
+    );
+  }
+
   /// `Settings`
   String get settings {
     return Intl.message(
@@ -725,6 +747,17 @@ class S {
       'Your Locations',
       name: 'locationsTitle',
       desc: 'Title for the locations screen in the settings section',
+      args: [],
+    );
+  }
+
+  /// `You haven't added any locations yet.`
+  String get noLocationsYet {
+    return Intl.message(
+      'You haven\'t added any locations yet.',
+      name: 'noLocationsYet',
+      desc:
+          'Message displayed when the user has not added any locations in the manage locations section of the settings screen',
       args: [],
     );
   }
@@ -1029,6 +1062,16 @@ class S {
       'Your Orders',
       name: 'ordersTitle',
       desc: 'Title for the orders screen',
+      args: [],
+    );
+  }
+
+  /// `You haven't placed any orders yet.`
+  String get noOrdersYet {
+    return Intl.message(
+      'You haven\'t placed any orders yet.',
+      name: 'noOrdersYet',
+      desc: 'Message displayed when the user has not placed any orders',
       args: [],
     );
   }

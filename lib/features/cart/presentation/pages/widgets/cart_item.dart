@@ -85,7 +85,7 @@ class _Body extends StatelessWidget {
         children: [
           _Title(title: cart.product.title),
           SizedBox(height: 5.h),
-          _CountDetails(isLoading: isLoading, cartId: cart.id),
+          _CountDetails(isLoading: isLoading, cart: cart),
           SizedBox(height: 5.h),
           _TotalPrice(cartId: cart.id, total: cart.totalPrice),
           SizedBox(height: 5.h),
@@ -140,8 +140,8 @@ class _TotalPrice extends StatelessWidget {
 
 class _CountDetails extends StatelessWidget {
   final bool isLoading;
-  final String cartId;
-  const _CountDetails({required this.isLoading, required this.cartId});
+  final CartModel cart;
+  const _CountDetails({required this.isLoading, required this.cart});
 
   @override
   Widget build(BuildContext context) {
@@ -160,12 +160,12 @@ class _CountDetails extends StatelessWidget {
                 _CountButton(
                   isLoading: isLoading,
                   icon: Icons.add,
-                  onTap: () => cubit.increaseCartQuantity(cartId),
+                  onTap: () => cubit.increaseQuantity(item: cart),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                   child: CustomText(
-                    text: CartCubit.get(context).getItemCount(cartId),
+                    text: CartCubit.get(context).getItemCount(cartId: cart.id),
                     size: 14.sp,
                     type: Type.overMedium,
                   ),
@@ -173,7 +173,7 @@ class _CountDetails extends StatelessWidget {
                 _CountButton(
                   isLoading: isLoading,
                   icon: Icons.remove,
-                  onTap: () => cubit.decreaseCartQuantity(cartId),
+                  onTap: () => cubit.decreaseQuantity(item: cart),
                 ),
               ],
             ),
@@ -224,7 +224,7 @@ class _DeleteIcon extends StatelessWidget {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) => CustomDeleteIcon(
         isLoading: state is RemoveFromCartLoading && state.cartId == cartId,
-        onTap: () => CartCubit.get(context).removeFromCart(cartId),
+        onTap: () => CartCubit.get(context).removeFromCart(cartId: cartId,),
       ),
     );
   }

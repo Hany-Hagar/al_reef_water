@@ -1,6 +1,8 @@
 // ignore_for_file: unused_element_parameter
 
+import '../../generated/l10n.dart';
 import 'custom_text.dart';
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,11 +10,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomGrid extends StatelessWidget {
   final List items;
   final bool? shrinkWrap;
+  final double? animationTopPadding;
   final bool isLoading;
+  final String? emptyAnimation;
+  final String? emptyMessage;
   final bool isFailure;
+  final String? failureAnimation;
+  final String? failureMessage;
   final List emptyItems;
   final int crossAxisCount;
-  final String? errorMessage;
   final Axis? scrollDirection;
   final ScrollPhysics? physics;
   final double mainAxisSpacing;
@@ -24,8 +30,12 @@ class CustomGrid extends StatelessWidget {
   const CustomGrid({
     super.key,
     required this.isLoading,
+    this.animationTopPadding,
+    this.emptyAnimation,
+    this.emptyMessage,
     required this.isFailure,
-    this.errorMessage,
+    this.failureAnimation,
+    this.failureMessage,
     required this.items,
     this.physics,
     this.padding,
@@ -42,7 +52,11 @@ class CustomGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isFailure) {
-      return _Failure(errorMessage: errorMessage ?? "An error occurred");
+      return _Failure(
+        animationTopPadding: animationTopPadding,
+        failureAnimation: failureAnimation,
+        failureMessage: failureMessage,
+      );
     }
     return Skeletonizer(
       enabled: isLoading,
@@ -57,6 +71,9 @@ class CustomGrid extends StatelessWidget {
         childAspectRatio: childAspectRatio,
         crossAxisSpacing: crossAxisSpacing,
         items: isLoading ? emptyItems : items,
+        animationTopPadding: animationTopPadding,
+        emptyAnimation: emptyAnimation,
+        emptyMessage: emptyMessage,
       ),
     );
   }
@@ -73,6 +90,9 @@ class _Grid extends StatelessWidget {
   final double crossAxisSpacing;
   final EdgeInsetsGeometry? padding;
   final Widget Function(BuildContext, dynamic) itemBuilder;
+  final double? animationTopPadding;
+  final String? emptyAnimation;
+  final String? emptyMessage;
 
   const _Grid({
     required this.items,
@@ -85,12 +105,19 @@ class _Grid extends StatelessWidget {
     required this.crossAxisSpacing,
     this.scrollDirection,
     this.shrinkWrap,
+    this.animationTopPadding,
+    this.emptyAnimation,
+    this.emptyMessage,
   });
 
   @override
   Widget build(BuildContext context) {
     if (items.isEmpty) {
-      return const _Empty();
+      return _Empty(
+        animationTopPadding: animationTopPadding,
+        emptyAnimation: emptyAnimation,
+        emptyMessage: emptyMessage,
+      );
     }
     return GridView.builder(
       physics: physics,
@@ -111,43 +138,80 @@ class _Grid extends StatelessWidget {
 }
 
 class _Failure extends StatelessWidget {
-  final String errorMessage;
-  const _Failure({required this.errorMessage});
+  final double? animationTopPadding;
+  final String? failureAnimation;
+  final String? failureMessage;
+  const _Failure({
+    this.animationTopPadding,
+    this.failureAnimation,
+    this.failureMessage,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(Icons.error_outline, size: 80, color: Colors.red),
-        const SizedBox(height: 16),
-        CustomText(
-          text: errorMessage,
-          size: 16.sp,
-          type: Type.overMedium,
-          color: Colors.red,
-        ),
-      ],
+    return Padding(
+      padding: EdgeInsetsDirectional.only(
+        top: animationTopPadding ?? 16.w,
+        start: 16.w,
+        end: 16.w,
+        bottom: 16.h,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Lottie.asset(
+            failureAnimation ?? "assets/lotties/failure.json",
+            width:double.infinity,
+            height: 200.h,
+          ),
+          const SizedBox(height: 16),
+          CustomText(
+            text: failureMessage ?? "Something went wrong",
+            size: 16.sp,
+            type: Type.overMedium,
+            color: Colors.red,
+          ),
+        ],
+      ),
     );
   }
 }
 
 class _Empty extends StatelessWidget {
-  const _Empty();
+  final double? animationTopPadding;
+  final String? emptyAnimation;
+  final String? emptyMessage;
+  const _Empty({
+    this.emptyAnimation,
+    this.emptyMessage,
+    this.animationTopPadding,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 400.h,
+    return Padding(
+      padding: EdgeInsetsDirectional.only(
+        top: animationTopPadding ?? 16.w,
+        start: 16.w,
+        end: 16.w,
+        bottom: 16.h,
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.inbox, size: 80),
+          Lottie.asset(
+            emptyAnimation ?? "assets/lotties/emptyProducts.json",
+            width:double.infinity,
+            height: 200.h,
+          ),
           const SizedBox(height: 16),
-          CustomText(text: "No items found", size: 16.sp, type: Type.overMedium),
+          CustomText(
+            text: emptyMessage ?? S.of(context).noProductsFound,
+            size: 16.sp,
+            type: Type.overMedium,
+          ),
         ],
-      )
+      ),
     );
   }
 }

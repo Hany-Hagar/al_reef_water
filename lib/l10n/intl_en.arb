@@ -166,6 +166,10 @@
     "@addProductToCartSuccess": {
         "description": "Message displayed when a product is successfully added to the cart"
     },
+    "noProductsFound": "No products found.",
+    "@noProductsFound": {
+        "description": "Message displayed when no products are found in a search or category"
+    },
 
     
 
@@ -177,9 +181,9 @@
     "@favouritesTitle": {
         "description": "Title for the favourites screen"
     },
-    "emptyFavourites": "Your favourites list is empty.",
-    "@emptyFavourites": {
-        "description": "Message displayed when the user's favourites list is empty"
+    "noFavouritesYet": "You haven't added any products to your favourites yet.",
+    "@noFavouritesYet": {
+        "description": "Message displayed when the user has not added any products to their favourites"
     },
 
 
@@ -244,6 +248,10 @@
     "@completeOrder": {
         "description": "Text for the complete order button in the order details screen"
     },
+    "noProductsInCart": "You have no products in your cart to order.",
+    "@noProductsInCart": {
+        "description": "Message displayed when the user tries to order with an empty cart"
+    },
 
 
     
@@ -300,6 +308,10 @@
     "locationsTitle": "Your Locations",
     "@locationsTitle": {
         "description": "Title for the locations screen in the settings section"
+    },
+    "noLocationsYet": "You haven't added any locations yet.",
+    "@noLocationsYet": {    
+        "description": "Message displayed when the user has not added any locations in the manage locations section of the settings screen"
     },
     "district": "District : ",
     "@district": {
@@ -424,6 +436,10 @@
     "ordersTitle": "Your Orders",
     "@ordersTitle": {
         "description": "Title for the orders screen"
+    },
+    "noOrdersYet": "You haven't placed any orders yet.",
+    "@noOrdersYet": {
+        "description": "Message displayed when the user has not placed any orders"
     },
 
 

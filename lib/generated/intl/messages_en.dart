@@ -74,8 +74,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your email address"),
         "emptyCart":
             MessageLookupByLibrary.simpleMessage("Your cart is empty."),
-        "emptyFavourites": MessageLookupByLibrary.simpleMessage(
-            "Your favourites list is empty."),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "favourites": MessageLookupByLibrary.simpleMessage("Favourites"),
         "favouritesTitle":
@@ -149,6 +147,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Manage Locations"),
         "manageOrders": MessageLookupByLibrary.simpleMessage("Manage Orders"),
         "mosqueDeals": MessageLookupByLibrary.simpleMessage("Mosque Deals"),
+        "noFavouritesYet": MessageLookupByLibrary.simpleMessage(
+            "You haven\'t added any products to your favourites yet."),
+        "noLocationsYet": MessageLookupByLibrary.simpleMessage(
+            "You haven\'t added any locations yet."),
+        "noOrdersYet": MessageLookupByLibrary.simpleMessage(
+            "You haven\'t placed any orders yet."),
+        "noProductsFound":
+            MessageLookupByLibrary.simpleMessage("No products found."),
+        "noProductsInCart": MessageLookupByLibrary.simpleMessage(
+            "You have no products in your cart to order."),
         "orLoginWith": MessageLookupByLibrary.simpleMessage("Or login with"),
         "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
         "orderDetailsSubtitle": MessageLookupByLibrary.simpleMessage(

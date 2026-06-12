@@ -1,3 +1,4 @@
+import '../../../../../generated/l10n.dart';
 import 'order_item.dart';
 import 'package:flutter/material.dart';
 import '../../manager/orders_cubit.dart';
@@ -19,7 +20,10 @@ class OrdersBody extends StatelessWidget {
           isLoading: state is OrdersLoading,
           isFailure: state is OrdersFailure,
           emptyItems: List.generate(5, (index) => OrderModel.empty()),
-          errorMessage: state is OrdersFailure ? state.message : null,
+          emptyAnimation: "assets/lotties/emptyCart.json",
+          emptyMessage: S.of(context).noOrdersYet,
+          failureMessage: state is OrdersFailure ? state.message : null,
+
           itemBuilder: (context, order) => OrderItem(order: order),
         );
       }

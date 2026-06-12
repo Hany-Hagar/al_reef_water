@@ -168,6 +168,10 @@
     "@addProductToCartSuccess": {
         "description": "Message displayed when a product is successfully added to the cart"
     },
+    "noProductsFound": "لم يتم العثور على منتجات.",
+    "@noProductsFound": {
+        "description": "Message displayed when no products are found in a search or category"
+    },
 
     
 
@@ -179,9 +183,9 @@
     "@favouritesTitle": {
         "description": "عنوان شاشة المفضلة"
     },
-    "emptyFavourites": "قائمة مفضلاتك فارغة.",
-    "@emptyFavourites": {
-        "description": "رسالة تعرض عندما تكون قائمة المفضلات فارغة"
+    "noFavouritesYet": "لم تقم بإضافة أي منتجات إلى المفضلة بعد.",
+    "@noFavouritesYet": {
+        "description": "Message displayed when the user has not added any products to their favourites"
     },
 
 
@@ -246,6 +250,10 @@
     "@completeOrder": {
         "description": "نص زر إكمال الطلب في شاشة تفاصيل الطلب"
     },
+    "noProductsInCart": "ليس لديك أي منتجات في سلتك للطلب.",
+    "@noProductsInCart": {
+        "description": "رسالة تعرض عندما يحاول المستخدم الطلب بسلة فارغة"
+    },
 
 
 
@@ -301,6 +309,10 @@
     "locationsTitle": "مواقعك",
     "@locationsTitle": {
         "description": "عنوان شاشة المواقع في قسم إدارة المواقع في شاشة الإعدادات"
+    },
+    "noLocationsYet": "لم تقم بإضافة أي مواقع بعد.",
+    "@noLocationsYet": {
+        "description": "رسالة تعرض عندما لا يكون لدى المستخدم أي مواقع مضافة في قسم إدارة المواقع في شاشة الإعدادات"
     },
     "district": "الحي : ",
     "@district": {
@@ -424,6 +436,10 @@
     "ordersTitle": "طلباتي",
     "@ordersTitle": {
         "description": "عنوان شاشة طلباتي في قسم الطلبات في شاشة الإعدادات"
+    },
+    "noOrdersYet": "لم تقم بوضع أي طلبات بعد.",
+    "@noOrdersYet": {
+        "description": "رسالة تعرض عندما لا يكون لدى المستخدم أي طلبات في سجل الطلبات في قسم الطلبات في شاشة الإعدادات"
     },
 
 

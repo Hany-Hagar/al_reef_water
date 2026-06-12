@@ -1,3 +1,4 @@
+import '../../../../../generated/l10n.dart';
 import 'location_item.dart';
 import 'package:flutter/material.dart';
 import '../../manager/location_cubit.dart';
@@ -19,7 +20,9 @@ class LocationsBody extends StatelessWidget {
           isFailure: state is LocationError,
           isLoading: state is LocationLoading,
           itemBuilder: (context, item) => LocationItem(location: item),
-          errorMessage: (state is LocationError) ? state.message : null,
+          emptyAnimation: "assets/lotties/emptyLocations.json",
+          emptyMessage: S.of(context).noLocationsYet,
+          failureMessage: (state is LocationError) ? state.message : null,
           emptyItems: List.generate(5, (index) => LocationModel.empty()),
         );
       },
