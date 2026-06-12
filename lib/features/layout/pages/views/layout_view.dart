@@ -27,6 +27,7 @@ class LayoutView extends StatelessWidget {
       child: CustomBackground(
         body: LayoutBody(),
         bottom: _BottomNavigationBar(),
+
       ),
     );
   }
@@ -63,3 +64,5 @@ class _BottomNavigationBar extends StatelessWidget {
 BottomNavigationBarItem _item({required String label, required IconData icon}) {
   return BottomNavigationBarItem(label: label, icon: Icon(icon));
 }
+
+

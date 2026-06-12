@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تمت إضافة الموقع بنجاح!"),
         "addLocationTitle":
             MessageLookupByLibrary.simpleMessage("إضافة موقع جديد"),
+        "addNew": MessageLookupByLibrary.simpleMessage("+ إضافة جديد"),
         "addProductToCartSuccess": MessageLookupByLibrary.simpleMessage(
             "تم إضافة المنتج إلى السلة بنجاح!"),
         "alreadyHaveAnAccount":
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cart": MessageLookupByLibrary.simpleMessage("السلة"),
         "cartTitle": MessageLookupByLibrary.simpleMessage("سلتك"),
         "companiesDeals": MessageLookupByLibrary.simpleMessage("عروض الشركات"),
+        "completeOrder": MessageLookupByLibrary.simpleMessage("إكمال الطلب"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "confirmPasswordHint":
@@ -54,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "هل أنت متأكد أنك تريد حذف حسابك? لا يمكن التراجع عن هذا الإجراء."),
         "deleteAccountSuccess":
             MessageLookupByLibrary.simpleMessage("تم حذف حسابك بنجاح."),
+        "deliveryAddress":
+            MessageLookupByLibrary.simpleMessage("عنوان التوصيل"),
         "didyouForgetPassword":
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
         "district": MessageLookupByLibrary.simpleMessage("الحي : "),
@@ -146,7 +150,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "mosqueDeals": MessageLookupByLibrary.simpleMessage("عروض المساجد"),
         "orLoginWith":
             MessageLookupByLibrary.simpleMessage("أو تسجيل الدخول باستخدام"),
+        "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
+        "orderDetailsSubtitle": MessageLookupByLibrary.simpleMessage(
+            "مراجعة تفاصيل طلبك قبل المتابعة إلى الدفع."),
         "orderHistory": MessageLookupByLibrary.simpleMessage("سجل الطلبات"),
+        "orderNow": MessageLookupByLibrary.simpleMessage("اطلب الآن"),
+        "orderSummary": MessageLookupByLibrary.simpleMessage("ملخص الطلب"),
         "ordersTitle": MessageLookupByLibrary.simpleMessage("طلباتي"),
         "other": MessageLookupByLibrary.simpleMessage("أخرى"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
@@ -159,6 +168,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "privacyPolicyDescription": MessageLookupByLibrary.simpleMessage(
             "مرحباً بك في متجرنا الإلكتروني. فيما يلي الشروط والأحكام التي تنظم استخدامك للمتجر والآثار القانونية الناتجة عن استخدام خدماتنا. من خلال استخدام أي خدمة أو منتج، توافق على هذه الشروط."),
+        "productsPrice":
+            MessageLookupByLibrary.simpleMessage("سعر المنتجات:  "),
+        "productsTotal":
+            MessageLookupByLibrary.simpleMessage("إجمالي المنتجات:  "),
         "profile": MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
         "profileTitle":
             MessageLookupByLibrary.simpleMessage("معلوماتك الشخصية"),

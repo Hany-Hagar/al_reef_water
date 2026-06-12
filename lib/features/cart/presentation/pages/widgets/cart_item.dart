@@ -21,7 +21,7 @@ class CartItem extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
       child: SizedBox(
-        height: 150.h,
+        height: 130.h,
         child: Row(
           children: [
             Expanded(
@@ -72,7 +72,12 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.r),
+      padding: EdgeInsetsDirectional.only(
+        start: 0.w,
+        top: 10.h,
+        bottom: 10.h,
+        end: 5.w,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,11 +85,10 @@ class _Body extends StatelessWidget {
         children: [
           _Title(title: cart.product.title),
           SizedBox(height: 5.h),
-          _Price(price: cart.product.price),
-          SizedBox(height: 5.h),
-          _TotalPrice(total: cart.totalPrice),
-          SizedBox(height: 5.h),
           _CountDetails(isLoading: isLoading, cartId: cart.id),
+          SizedBox(height: 5.h),
+          _TotalPrice(cartId: cart.id, total: cart.totalPrice),
+          SizedBox(height: 5.h),
         ],
       ),
     );
@@ -106,39 +110,29 @@ class _Title extends StatelessWidget {
   }
 }
 
-class _Price extends StatelessWidget {
-  final double price;
-  const _Price({required this.price});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CustomText(text: S.of(context).price, size: 13.sp, type: Type.overMedium),
-        CustomText(
-          text: "${price.toStringAsFixed(2)} ${S.of(context).riyal}",
-          size: 13.sp,
-          type: Type.medium,
-        ),
-      ],
-    );
-  }
-}
-
 class _TotalPrice extends StatelessWidget {
+  final String cartId;
   final double total;
-  const _TotalPrice({required this.total});
+  const _TotalPrice({required this.cartId, required this.total});
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        CustomText(text: S.of(context).total, size: 13.sp, type: Type.overMedium),
+        CustomText(
+          text: S.of(context).total,
+          size: 13.sp,
+          type: Type.overMedium,
+        ),
         CustomText(
           text: "${total.toStringAsFixed(2)} ${S.of(context).riyal}",
           size: 13.sp,
           type: Type.medium,
         ),
+        Spacer(),
+        _DeleteIcon(cartId: cartId),
+        SizedBox(width: 5.w),
       ],
     );
   }
@@ -155,7 +149,11 @@ class _CountDetails extends StatelessWidget {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) => Row(
         children: [
-          CustomText(text: S.of(context).quantity, size: 13.sp, type: Type.overMedium),
+          CustomText(
+            text: S.of(context).quantity,
+            size: 13.sp,
+            type: Type.overMedium,
+          ),
           Expanded(
             child: Row(
               children: [
@@ -180,8 +178,6 @@ class _CountDetails extends StatelessWidget {
               ],
             ),
           ),
-          _DeleteIcon(cartId: cartId),
-          SizedBox(width: 10.w),
         ],
       ),
     );
@@ -226,7 +222,7 @@ class _DeleteIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartCubit, CartState>(
-      builder:(context, state) => CustomDeleteIcon(
+      builder: (context, state) => CustomDeleteIcon(
         isLoading: state is RemoveFromCartLoading && state.cartId == cartId,
         onTap: () => CartCubit.get(context).removeFromCart(cartId),
       ),

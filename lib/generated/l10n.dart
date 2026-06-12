@@ -525,6 +525,97 @@ class S {
     );
   }
 
+  /// `Order Details`
+  String get orderDetails {
+    return Intl.message(
+      'Order Details',
+      name: 'orderDetails',
+      desc: 'Title for the order details screen',
+      args: [],
+    );
+  }
+
+  /// `Review your order details before proceeding to payment.`
+  String get orderDetailsSubtitle {
+    return Intl.message(
+      'Review your order details before proceeding to payment.',
+      name: 'orderDetailsSubtitle',
+      desc: 'Subtitle for the order details screen',
+      args: [],
+    );
+  }
+
+  /// `Delivery Address`
+  String get deliveryAddress {
+    return Intl.message(
+      'Delivery Address',
+      name: 'deliveryAddress',
+      desc:
+          'Label for the delivery address section in the order details screen',
+      args: [],
+    );
+  }
+
+  /// `+ Add New`
+  String get addNew {
+    return Intl.message(
+      '+ Add New',
+      name: 'addNew',
+      desc: 'Text for the add new address option in the order details screen',
+      args: [],
+    );
+  }
+
+  /// `Order Now`
+  String get orderNow {
+    return Intl.message(
+      'Order Now',
+      name: 'orderNow',
+      desc: 'Text for the order now button in the order details screen',
+      args: [],
+    );
+  }
+
+  /// `Order Summary`
+  String get orderSummary {
+    return Intl.message(
+      'Order Summary',
+      name: 'orderSummary',
+      desc: 'Title for the order summary section in the order details screen',
+      args: [],
+    );
+  }
+
+  /// `Product Total:  `
+  String get productsTotal {
+    return Intl.message(
+      'Product Total:  ',
+      name: 'productsTotal',
+      desc: 'Label for the product total in the order summary section',
+      args: [],
+    );
+  }
+
+  /// `Products Price:  `
+  String get productsPrice {
+    return Intl.message(
+      'Products Price:  ',
+      name: 'productsPrice',
+      desc: 'Label for the products price in the order summary section',
+      args: [],
+    );
+  }
+
+  /// `Complete Order`
+  String get completeOrder {
+    return Intl.message(
+      'Complete Order',
+      name: 'completeOrder',
+      desc: 'Text for the complete order button in the order details screen',
+      args: [],
+    );
+  }
+
   /// `Settings`
   String get settings {
     return Intl.message(

@@ -27,6 +27,7 @@ class LocationCubit extends Cubit<LocationState> {
   var buildingNumberController = TextEditingController();
   var floorController = TextEditingController();
 
+  String editId = "";
   String deleteId = "";
 
   Future<void> loadRegions() async {
@@ -66,6 +67,7 @@ class LocationCubit extends Cubit<LocationState> {
   }
 
   void setControllers(LocationModel location) {
+    editId = location.id;
     titleController.text = location.name;
     countryController.text = location.country;
     streetController.text = location.street;
@@ -88,6 +90,7 @@ class LocationCubit extends Cubit<LocationState> {
   }
 
   void clearControllers() {
+    editId = "";
     selectedRegion = regions.isNotEmpty ? regions.first : null;
     selectedCity = selectedRegion?.cities.isNotEmpty == true
         ? selectedRegion!.cities.first
@@ -131,18 +134,17 @@ class LocationCubit extends Cubit<LocationState> {
   }
 
   Future<void> updateLocation({
-    required String id,
     required GlobalKey<FormState> formKey,
   }) async {
     if (!formKey.currentState!.validate()) {
       return;
     }
     emit(UpdateLocationLoading());
-    var result = await locationRepo.updateLocation(id, getLocationFromInput());
+    var result = await locationRepo.updateLocation(editId, getLocationFromInput());
     result.fold((failure) => emit(LocationError(failure.message)), (
       updatedLocation,
     ) {
-      int index = locations.indexWhere((loc) => loc.id == id);
+      int index = locations.indexWhere((loc) => loc.id == editId);
       if (index != -1) {
         locations[index] = updatedLocation;
         emit(UpdateLocationSuccess(updatedLocation));

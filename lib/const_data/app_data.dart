@@ -17,7 +17,7 @@ EdgeInsetsDirectional defaultAppBarPadding(BuildContext context) {
     top: MediaQuery.of(context).padding.top + 5.h,
     start: 16.w,
     end: 16.w,
-    bottom: 6.h,
+    bottom: 12.h,
   );
 }
 

@@ -210,6 +210,42 @@
     "@emptyCart": {
         "description": "رسالة تعرض عندما تكون سلة المستخدم فارغة"
     },
+    "orderDetails": "تفاصيل الطلب",
+    "@orderDetails": {
+        "description": "عنوان شاشة تفاصيل الطلب"
+    },
+    "orderDetailsSubtitle": "مراجعة تفاصيل طلبك قبل المتابعة إلى الدفع.",
+    "@orderDetailsSubtitle": {
+        "description": "العنوان الفرعي لشاشة تفاصيل الطلب"
+    },
+    "deliveryAddress": "عنوان التوصيل",
+    "@deliveryAddress": {
+        "description": "تسمية قسم عنوان التوصيل في شاشة تفاصيل الطلب"
+    },
+    "addNew":"+ إضافة جديد",
+    "@addNew": {
+        "description": "نص خيار إضافة عنوان جديد في قسم عنوان التوصيل في شاشة تفاصيل الطلب"
+    },
+    "orderNow": "اطلب الآن",
+    "@orderNow": {
+        "description": "نص زر اطلب الآن في شاشة تفاصيل الطلب"
+    },
+    "orderSummary": "ملخص الطلب",
+    "@orderSummary": {
+        "description": "عنوان قسم ملخص الطلب في شاشة تفاصيل الطلب"
+    },
+    "productsTotal": "إجمالي المنتجات:  ",
+    "@productsTotal": {
+        "description": "تسمية إجمالي المنتجات في قسم ملخص الطلب في شاشة تفاصيل الطلب"
+    },
+    "productsPrice": "سعر المنتجات:  ",
+    "@productsPrice": {
+        "description": "تسمية سعر المنتجات في قسم ملخص الطلب في شاشة تفاصيل الطلب"
+    },
+    "completeOrder": "إكمال الطلب",
+    "@completeOrder": {
+        "description": "نص زر إكمال الطلب في شاشة تفاصيل الطلب"
+    },
 
 
 

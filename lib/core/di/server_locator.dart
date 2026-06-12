@@ -103,7 +103,9 @@ void setupLocator() {
     LocationRepoImpl(locationData: getIt<LocationData>()),
   );
   getIt.registerSingleton<LocationCubit>(
-    LocationCubit(locationRepo: getIt<LocationRepo>())..loadRegions(),
+    LocationCubit(locationRepo: getIt<LocationRepo>())
+      ..loadRegions()
+      ..fetchLocations(),
   );
 
   // Orders

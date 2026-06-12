@@ -1,10 +1,11 @@
-
 import '../../manager/fav_cubit.dart';
 import '../../manager/fav_states.dart';
 import 'package:flutter/material.dart';
 import '../widgets/favourites_body.dart';
+import '../../../../../generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/di/server_locator.dart';
+import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/services/snack_bar_service.dart';
 
 class FavouritesView extends StatelessWidget {
@@ -20,7 +21,18 @@ class FavouritesView extends StatelessWidget {
             SnackBarService.failure(context: context, message: state.message);
           }
         },
-        child: FavouritesBody(),
+        child: Column(
+          children: [
+            CustomAppBar(
+              centerTitle: true,
+              leadingWidget: SizedBox.shrink(),
+              title: S.of(context).favouritesTitle,
+            ),
+            Expanded(
+              child: FavouritesBody()
+            ),
+          ],
+        ),
       ),
     );
   }

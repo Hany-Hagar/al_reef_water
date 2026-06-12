@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Location added successfully!"),
         "addLocationTitle":
             MessageLookupByLibrary.simpleMessage("Add New Location"),
+        "addNew": MessageLookupByLibrary.simpleMessage("+ Add New"),
         "addProductToCartSuccess": MessageLookupByLibrary.simpleMessage(
             "Product added to cart successfully!"),
         "alreadyHaveAnAccount":
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "cartTitle": MessageLookupByLibrary.simpleMessage("Your Cart"),
         "companiesDeals": MessageLookupByLibrary.simpleMessage("Company Deals"),
+        "completeOrder": MessageLookupByLibrary.simpleMessage("Complete Order"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "confirmPasswordHint":
@@ -54,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to delete your account? This action cannot be undone."),
         "deleteAccountSuccess": MessageLookupByLibrary.simpleMessage(
             "Your account has been deleted successfully."),
+        "deliveryAddress":
+            MessageLookupByLibrary.simpleMessage("Delivery Address"),
         "didyouForgetPassword": MessageLookupByLibrary.simpleMessage(
             "Did you forget your password?"),
         "district": MessageLookupByLibrary.simpleMessage("District : "),
@@ -146,7 +150,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "manageOrders": MessageLookupByLibrary.simpleMessage("Manage Orders"),
         "mosqueDeals": MessageLookupByLibrary.simpleMessage("Mosque Deals"),
         "orLoginWith": MessageLookupByLibrary.simpleMessage("Or login with"),
+        "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
+        "orderDetailsSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Review your order details before proceeding to payment."),
         "orderHistory": MessageLookupByLibrary.simpleMessage("Order History"),
+        "orderNow": MessageLookupByLibrary.simpleMessage("Order Now"),
+        "orderSummary": MessageLookupByLibrary.simpleMessage("Order Summary"),
         "ordersTitle": MessageLookupByLibrary.simpleMessage("Your Orders"),
         "other": MessageLookupByLibrary.simpleMessage("Other"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -160,6 +169,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "privacyPolicyDescription": MessageLookupByLibrary.simpleMessage(
             "Our online store welcomes you. Below are the terms and conditions governing your use of the store and the legal effects arising from using our services. By using any service or product, you agree to these terms."),
+        "productsPrice":
+            MessageLookupByLibrary.simpleMessage("Products Price:  "),
+        "productsTotal":
+            MessageLookupByLibrary.simpleMessage("Product Total:  "),
         "profile": MessageLookupByLibrary.simpleMessage("Personal Information"),
         "profileTitle":
             MessageLookupByLibrary.simpleMessage("Your Personal Information"),

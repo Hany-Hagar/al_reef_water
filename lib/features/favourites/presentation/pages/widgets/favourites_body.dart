@@ -3,7 +3,6 @@ import '../../manager/fav_states.dart';
 import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../const_data/app_data.dart';
 import '../../../../../const_data/asset_data.dart';
 import '../../../../../core/widgets/custom_list.dart';
 import '../../../../../core/widgets/custom_text.dart';
@@ -21,7 +20,6 @@ class FavouritesBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _Title(),
           Expanded(
             child: CustomList(
               isLoading: state is FavLoading,
@@ -39,21 +37,6 @@ class FavouritesBody extends StatelessWidget {
   }
 }
 
-class _Title extends StatelessWidget {
-  const _Title();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: defaultAppBarPadding(context),
-      child: CustomText(
-        text: S.of(context).favouritesTitle,
-        size: 24.sp,
-        type: Type.header,
-      ),
-    );
-  }
-}
 
 class _Item extends StatelessWidget {
   final ProductModel product;

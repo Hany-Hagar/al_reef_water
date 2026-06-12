@@ -1,4 +1,3 @@
-
 // ignore_for_file: unused_element_parameter
 
 import 'custom_text.dart';
@@ -8,6 +7,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomList extends StatelessWidget {
+  final bool shrinkWrap;
   final List items;
   final bool isLoading;
   final bool isFailure;
@@ -20,6 +20,7 @@ class CustomList extends StatelessWidget {
   final Widget Function(BuildContext, dynamic) itemBuilder;
   const CustomList({
     super.key,
+     this.shrinkWrap = false,
     required this.isLoading,
     required this.isFailure,
     this.errorMessage,
@@ -40,6 +41,7 @@ class CustomList extends StatelessWidget {
     return Skeletonizer(
       enabled: isLoading,
       child: _List(
+        shrinkWrap: shrinkWrap,
         items: isLoading ? emptyItems : items,
         physics: physics,
         padding: padding,
@@ -72,7 +74,7 @@ class _Failure extends StatelessWidget {
             maxLines: 10,
           ),
         ],
-      )
+      ),
     );
   }
 }
@@ -86,9 +88,13 @@ class _Empty extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (emptyAnimation != null) Lottie.asset(emptyAnimation!, width: MediaQuery.sizeOf(context).width * 0.5),
-        if (emptyAnimation == null) const Icon(Icons.inbox, size: 80), 
-         SizedBox(height: 16 , width: double.infinity,),
+        if (emptyAnimation != null)
+          Lottie.asset(
+            emptyAnimation!,
+            width: MediaQuery.sizeOf(context).width * 0.5,
+          ),
+        if (emptyAnimation == null) const Icon(Icons.inbox, size: 80),
+        SizedBox(height: 16, width: double.infinity),
         CustomText(text: "No items found", size: 16.sp, type: Type.overMedium),
       ],
     );
@@ -96,6 +102,7 @@ class _Empty extends StatelessWidget {
 }
 
 class _List extends StatelessWidget {
+  final bool shrinkWrap;
   final List items;
   final ScrollPhysics? physics;
   final EdgeInsetsGeometry? padding;
@@ -103,6 +110,7 @@ class _List extends StatelessWidget {
   final Axis? scrollDirection;
   final Widget Function(BuildContext, dynamic) itemBuilder;
   const _List({
+    required this.shrinkWrap,
     required this.items,
     this.physics,
     this.padding,
@@ -114,9 +122,10 @@ class _List extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (items.isEmpty) {
-      return  _Empty(emptyAnimation: emptyAnimation,);
+      return _Empty(emptyAnimation: emptyAnimation);
     }
     return ListView.separated(
+      shrinkWrap: shrinkWrap,
       physics: physics,
       itemCount: items.length,
       scrollDirection: scrollDirection ?? Axis.vertical,

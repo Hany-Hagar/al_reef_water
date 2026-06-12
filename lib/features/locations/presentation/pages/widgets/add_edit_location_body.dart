@@ -309,7 +309,8 @@ class _Edit extends StatelessWidget {
     return CustomButton(
       isLoading: isLoading,
       text: s.editLocationButton,
-      onPressed: () => LocationCubit.get(context).addLocation(formKey: formKey),
+      onPressed: () =>
+          LocationCubit.get(context).updateLocation(formKey: formKey),
     );
   }
 }

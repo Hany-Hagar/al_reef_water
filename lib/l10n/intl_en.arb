@@ -208,6 +208,42 @@
     "@emptyCart": {
         "description": "Message displayed when the user's cart is empty"
     },
+    "orderDetails": "Order Details",
+    "@orderDetails": {
+        "description": "Title for the order details screen"
+    },
+    "orderDetailsSubtitle": "Review your order details before proceeding to payment.",
+    "@orderDetailsSubtitle": {
+        "description": "Subtitle for the order details screen"
+    },
+    "deliveryAddress": "Delivery Address",
+    "@deliveryAddress": {
+        "description": "Label for the delivery address section in the order details screen"
+    },
+    "addNew": "+ Add New",
+    "@addNew": {
+        "description": "Text for the add new address option in the order details screen"
+    },
+    "orderNow": "Order Now",
+    "@orderNow": {
+        "description": "Text for the order now button in the order details screen"
+    },
+    "orderSummary": "Order Summary",
+    "@orderSummary": {
+        "description": "Title for the order summary section in the order details screen"
+    },
+    "productsTotal": "Product Total:  ",
+    "@productsTotal": {
+        "description": "Label for the product total in the order summary section"
+    },
+    "productsPrice": "Products Price:  ",
+    "@productsPrice": {
+        "description": "Label for the products price in the order summary section"
+    },
+    "completeOrder": "Complete Order",
+    "@completeOrder": {
+        "description": "Text for the complete order button in the order details screen"
+    },
 
 
     

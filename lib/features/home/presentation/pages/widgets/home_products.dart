@@ -62,7 +62,7 @@ class _List extends StatelessWidget {
       crossAxisCount: crossAxisCount ?? 1,
       childAspectRatio: childAspectRatio ?? 1.2,
       scrollDirection: scrollDirection ?? Axis.horizontal,
-      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
       emptyItems: List.generate(4, (index) => ProductModel.empty()),
       itemBuilder: (context, item) =>
           HomeProductItem(product: item as ProductModel),

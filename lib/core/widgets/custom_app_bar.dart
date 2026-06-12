@@ -9,6 +9,7 @@ import '../services/icon_broken.dart';
 
 class CustomAppBar extends StatelessWidget {
   final IconData? leading;
+  final Widget? leadingWidget;
   final Color? iconColor;
   final String title;
   final Widget? bottom;
@@ -18,6 +19,7 @@ class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
     this.leading,
+    this.leadingWidget,
     this.iconColor,
     required this.title,
     this.bottom,
@@ -43,7 +45,9 @@ class CustomAppBar extends StatelessWidget {
         children: [
           Row(
             children: [
-              _Start(iconColor: iconColor, leading: leading),
+              ?leadingWidget,
+              if (leadingWidget == null)
+                _Start(iconColor: iconColor, leading: leading),
               if (centerTitle) Spacer(),
               if (!centerTitle) SizedBox(width: 16.w),
               _Title(text: title),
@@ -62,16 +66,16 @@ class _Start extends StatelessWidget {
   final Color? iconColor;
   final IconData? leading;
 
-
   const _Start({required this.iconColor, required this.leading});
 
   @override
   Widget build(BuildContext context) {
-     bool isArabic = SettingsCubit.get(context).state.lang == 'ar';
+    bool isArabic = SettingsCubit.get(context).state.lang == 'ar';
     return GestureDetector(
       onTap: () => NavTo.pop(context),
       child: Icon(
-        leading ?? (isArabic ? IconBroken.Arrow___Right : IconBroken.Arrow___Left),
+        leading ??
+            (isArabic ? IconBroken.Arrow___Right : IconBroken.Arrow___Left),
         size: 25.sp,
         color: iconColor ?? Theme.of(context).hintColor,
       ),

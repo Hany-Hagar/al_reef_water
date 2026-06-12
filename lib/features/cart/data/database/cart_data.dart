@@ -15,41 +15,40 @@ class CartData {
       .doc(userId)
       .collection(FirebaseAssets.cartCollection);
 
-  Future<List<CartModel>> fetchCartProducts() async {
-    final snapshot = await _cartItems.get();
-
-    return snapshot.docs.map((doc) {
-      return CartModel.fromFirestore(
-        doc.data() as Map<String, dynamic>,
-      ).copyWith(id: doc.id);
-    }).toList();
+  Future<QuerySnapshot> fetchCartProducts() async {
+    return await _cartItems.get();
   }
 
-Future<CartModel> addToCart(ProductModel product) async {
-  final docRef = _cartItems.doc(product.id);
-  final docSnapshot = await docRef.get();
-  if (docSnapshot.exists) {
-    final model = CartModel.fromFirestore(docSnapshot.data() as Map<String, dynamic>);
-    final updated = model.copyWith(
-      quantity: model.quantity + 1,
-      totalPrice: model.totalPrice + product.price,
+  Future<CartModel> addToCart(ProductModel product) async {
+    final docRef = _cartItems.doc(product.id);
+    final docSnapshot = await docRef.get();
+    if (docSnapshot.exists) {
+      final model = CartModel.fromFirestore(
+        docSnapshot.data() as Map<String, dynamic>,
+      );
+      final updated = model.copyWith(
+        quantity: model.quantity + 1,
+        totalPrice: model.totalPrice + product.price,
+      );
+      await docRef.update(updated.toFirestore());
+      return updated;
+    }
+
+    final newItem = CartModel(
+      id: product.id, // الاعتماد على الـ ID الخاص بالمنتج
+      quantity: 1,
+      product: product,
+      totalPrice: product.price,
     );
-    await docRef.update(updated.toFirestore());
-    return updated;
+    await docRef.set(newItem.toFirestore());
+    return newItem;
   }
 
-  final newItem = CartModel(
-    id: product.id, // الاعتماد على الـ ID الخاص بالمنتج
-    quantity: 1,
-    product: product,
-    totalPrice: product.price,
-  );
-  await docRef.set(newItem.toFirestore());
-  return newItem;
-}
-
-
-  Future<void> updateCartQuantity(String cartId, int quantity, double totalPrice) async {
+  Future<void> updateCartQuantity(
+    String cartId,
+    int quantity,
+    double totalPrice,
+  ) async {
     await _cartItems.doc(cartId).update({
       'quantity': quantity,
       'totalPrice': totalPrice,

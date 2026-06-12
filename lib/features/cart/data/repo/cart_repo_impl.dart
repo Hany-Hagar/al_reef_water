@@ -8,13 +8,24 @@ import '../../../home/data/models/product_model.dart';
 class CartRepoImpl implements CartRepo {
   final CartData cartData;
 
-  CartRepoImpl({ required this.cartData });
+  CartRepoImpl({required this.cartData});
 
   @override
-  Future<Either<Failure, List<CartModel>>> getCartItems() async {
+  Future<Either<Failure, ({List<CartModel> items, double total , int totalItems})>>
+  getCartItems() async {
     try {
-      final cartItems = await cartData.fetchCartProducts();
-      return Right(cartItems);
+      final data = await cartData.fetchCartProducts();
+      var total = 0.0;
+      var totalItems = 0;
+      final cartItems = data.docs.map((doc) {
+        final item = CartModel.fromFirestore(
+          doc.data() as Map<String, dynamic>,
+        ).copyWith(id: doc.id);
+        total += item.totalPrice * item.quantity;
+        totalItems += item.quantity;
+        return item;
+      }).toList();
+      return Right((items: cartItems, total: total, totalItems: totalItems));
     } catch (e) {
       return Left(Failure.handle(e.toString()));
     }
@@ -31,7 +42,11 @@ class CartRepoImpl implements CartRepo {
   }
 
   @override
-  Future<Either<Failure, void>> updateCartQuantity(String cartId, int quantity , double totalPrice) async {
+  Future<Either<Failure, void>> updateCartQuantity(
+    String cartId,
+    int quantity,
+    double totalPrice,
+  ) async {
     try {
       await cartData.updateCartQuantity(cartId, quantity, totalPrice);
       return const Right(null);
