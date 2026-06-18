@@ -1,6 +1,5 @@
 // ignore_for_file: strict_top_level_inference
 
-
 import 'banner_states.dart';
 import '../../data/repo/banner_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +15,7 @@ class BannerCubit extends Cubit<BannerStates> {
   List<String> banners = [];
 
   Future<void> fetchBanners() async {
+    if (banners.isNotEmpty) return;
     emit(BannerLoading());
     final result = await bannerRepo.getBanners();
     result.fold((failure) => emit(BannerFailure(failure.message)), (banners) {
@@ -25,7 +25,7 @@ class BannerCubit extends Cubit<BannerStates> {
   }
 
   int currentBannerIndex = 0;
-final CarouselSliderController carouselController =
+  final CarouselSliderController carouselController =
       CarouselSliderController();
 
   void updateCurrentBannerIndex(int index) {

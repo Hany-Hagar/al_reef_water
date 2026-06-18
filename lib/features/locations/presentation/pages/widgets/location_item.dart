@@ -20,7 +20,10 @@ class LocationItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        LocationCubit.get(context).setControllers(location);
+        LocationCubit.get(context).setControllers(
+          isEditing: true,
+          location: location,
+        );
         NavTo.push(
           context: context,
           nextPage: AddEditLocationView(isEdit: true),

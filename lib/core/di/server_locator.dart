@@ -98,14 +98,12 @@ void setupLocator() {
   );
 
   // Locations
-  getIt.registerSingleton<LocationData>(LocationData());
-  getIt.registerSingleton<LocationRepo>(
-    LocationRepoImpl(locationData: getIt<LocationData>()),
+  getIt.registerLazySingleton<LocationData>(() => LocationData());
+  getIt.registerLazySingleton<LocationRepo>(
+    () => LocationRepoImpl(locationData: getIt<LocationData>()),
   );
-  getIt.registerSingleton<LocationCubit>(
-    LocationCubit(locationRepo: getIt<LocationRepo>())
-      ..loadRegions()
-      ..fetchLocations(),
+  getIt.registerLazySingleton<LocationCubit>(
+    () => LocationCubit(locationRepo: getIt<LocationRepo>()),
   );
 
   // Orders

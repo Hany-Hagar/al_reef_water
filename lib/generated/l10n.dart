@@ -1076,6 +1076,80 @@ class S {
     );
   }
 
+  /// `Delivery Information`
+  String get orderDeliveryInfo {
+    return Intl.message(
+      'Delivery Information',
+      name: 'orderDeliveryInfo',
+      desc:
+          'Label for the delivery information section in the order details screen in the order history',
+      args: [],
+    );
+  }
+
+  /// `Products`
+  String get orderProducts {
+    return Intl.message(
+      'Products',
+      name: 'orderProducts',
+      desc:
+          'Label for the products section in the order details screen in the order history',
+      args: [],
+    );
+  }
+
+  /// `Add Order`
+  String get addOrder {
+    return Intl.message(
+      'Add Order',
+      name: 'addOrder',
+      desc: 'Text for the add order button in the orders screen',
+      args: [],
+    );
+  }
+
+  /// `Order added successfully!`
+  String get addOrderSuccess {
+    return Intl.message(
+      'Order added successfully!',
+      name: 'addOrderSuccess',
+      desc: 'Message displayed when an order is added successfully',
+      args: [],
+    );
+  }
+
+  /// `Delete Order`
+  String get deleteOrder {
+    return Intl.message(
+      'Delete Order',
+      name: 'deleteOrder',
+      desc:
+          'Text for the delete order button in the order details screen in the order history',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this order? This action cannot be undone.`
+  String get areYouSureYouWantToDeleteThisOrder {
+    return Intl.message(
+      'Are you sure you want to delete this order? This action cannot be undone.',
+      name: 'areYouSureYouWantToDeleteThisOrder',
+      desc:
+          'Confirmation message displayed when the user attempts to delete an order',
+      args: [],
+    );
+  }
+
+  /// `Order deleted successfully!`
+  String get deleteOrderSuccess {
+    return Intl.message(
+      'Order deleted successfully!',
+      name: 'deleteOrderSuccess',
+      desc: 'Message displayed when an order is deleted successfully',
+      args: [],
+    );
+  }
+
   /// `Preferences`
   String get preferences {
     return Intl.message(

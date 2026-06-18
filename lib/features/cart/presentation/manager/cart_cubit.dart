@@ -18,7 +18,7 @@ class CartCubit extends Cubit<CartState> {
   List<CartModel> cartItems = [];
 
   void fetchCartItems() async {
-    emit(CartLoading());
+    if (cartItems.isEmpty) emit(CartLoading());
     final result = await cartRepo.getCartItems();
     result.fold((failure) => emit(CartFailure(failure.message)), (data) {
       cartItems = data.items;

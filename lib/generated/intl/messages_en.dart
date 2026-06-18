@@ -33,11 +33,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "addLocationTitle":
             MessageLookupByLibrary.simpleMessage("Add New Location"),
         "addNew": MessageLookupByLibrary.simpleMessage("+ Add New"),
+        "addOrder": MessageLookupByLibrary.simpleMessage("Add Order"),
+        "addOrderSuccess":
+            MessageLookupByLibrary.simpleMessage("Order added successfully!"),
         "addProductToCartSuccess": MessageLookupByLibrary.simpleMessage(
             "Product added to cart successfully!"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "areYouSureYouWantToDeleteThisOrder": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this order? This action cannot be undone."),
         "building": MessageLookupByLibrary.simpleMessage("Building : "),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "cartTitle": MessageLookupByLibrary.simpleMessage("Your Cart"),
@@ -56,6 +61,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to delete your account? This action cannot be undone."),
         "deleteAccountSuccess": MessageLookupByLibrary.simpleMessage(
             "Your account has been deleted successfully."),
+        "deleteOrder": MessageLookupByLibrary.simpleMessage("Delete Order"),
+        "deleteOrderSuccess":
+            MessageLookupByLibrary.simpleMessage("Order deleted successfully!"),
         "deliveryAddress":
             MessageLookupByLibrary.simpleMessage("Delivery Address"),
         "didyouForgetPassword": MessageLookupByLibrary.simpleMessage(
@@ -158,11 +166,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "noProductsInCart": MessageLookupByLibrary.simpleMessage(
             "You have no products in your cart to order."),
         "orLoginWith": MessageLookupByLibrary.simpleMessage("Or login with"),
+        "orderDeliveryInfo":
+            MessageLookupByLibrary.simpleMessage("Delivery Information"),
         "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
         "orderDetailsSubtitle": MessageLookupByLibrary.simpleMessage(
             "Review your order details before proceeding to payment."),
         "orderHistory": MessageLookupByLibrary.simpleMessage("Order History"),
         "orderNow": MessageLookupByLibrary.simpleMessage("Order Now"),
+        "orderProducts": MessageLookupByLibrary.simpleMessage("Products"),
         "orderSummary": MessageLookupByLibrary.simpleMessage("Order Summary"),
         "ordersTitle": MessageLookupByLibrary.simpleMessage("Your Orders"),
         "other": MessageLookupByLibrary.simpleMessage("Other"),

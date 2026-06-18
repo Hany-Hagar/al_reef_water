@@ -1,16 +1,19 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../core/widgets/custom_text.dart';
 import '../widgets/cart_body.dart';
 import 'package:flutter/material.dart';
 import '../../manager/cart_cubit.dart';
 import '../../manager/cart_states.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../../core/utils/nav_to.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/di/server_locator.dart';
+import '../../../../../core/widgets/custom_text.dart';
+import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/services/snack_bar_service.dart';
+import '../../../../locations/presentation/manager/location_cubit.dart';
+import '../../../../orders/presentation/pages/views/add_order_view.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -89,7 +92,14 @@ class _AddOrder extends StatelessWidget {
             height: 45.h,
             text: s.completeOrder,
             textSize: 18.sp,
-            onPressed: () {},
+            onPressed: () async {
+              await getIt<LocationCubit>().fetchLocations();
+              // ignore: use_build_context_synchronously
+              NavTo.push(context: context, nextPage:  AddOrderView(
+                totalPrice: cubit.totalPrice,
+                cartItems: cubit.cartItems,
+              ));
+            },
           ),
         ],
       ),

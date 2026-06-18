@@ -1,25 +1,25 @@
-// ignore_for_file: unused_element_parameter
-
 import 'package:flutter/material.dart';
-import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../core/services/icon_broken.dart';
 import '../../manager/location_cubit.dart';
 import '../../../../../generated/l10n.dart';
 import '../../manager/location_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:al_reef_app/core/utils/styles.dart';
 import '../../../../../core/widgets/custom_text.dart';
-import '../../../../../core/widgets/custom_drop_menu.dart';
+import '../../../../../core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class AddEditLocationBody extends StatelessWidget {
   final bool isEdit;
   final GlobalKey<FormState> formKey;
+
   const AddEditLocationBody({
     super.key,
     required this.isEdit,
     required this.formKey,
   });
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocationCubit, LocationState>(
@@ -39,6 +39,7 @@ class AddEditLocationBody extends StatelessWidget {
               _BuildingNumber(),
               _Floor(),
               SizedBox(height: 12.h),
+
               BlocBuilder<LocationCubit, LocationState>(
                 builder: (context, state) {
                   if (isEdit) {
@@ -54,6 +55,7 @@ class AddEditLocationBody extends StatelessWidget {
                   }
                 },
               ),
+
               SizedBox(height: 20.h),
             ],
           ),
@@ -70,6 +72,7 @@ class _Item extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
   final TextInputType? keyboardType;
+
   const _Item({
     required this.title,
     required this.icon,
@@ -83,10 +86,10 @@ class _Item extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       spacing: 10.h,
-      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomText(text: title, type: Type.overMedium, size: 18.sp),
+
         MTextFormField(
           readOnly: readOnly,
           hintText: hintText,
@@ -108,41 +111,6 @@ class _Item extends StatelessWidget {
   }
 }
 
-class _DropDownItem extends StatelessWidget {
-  final String title;
-  final String hintText;
-  final List<dynamic> items;
-  final dynamic initialItem;
-  final void Function(dynamic)? onChanged;
-  const _DropDownItem({
-    required this.title,
-    required this.hintText,
-    required this.items,
-    this.initialItem,
-    this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    var isArabic = Localizations.localeOf(context).languageCode == 'ar';
-    return Column(
-      spacing: 10.h,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomText(text: title, type: Type.overMedium, size: 18.sp),
-        CustomDropMenu(
-          hintText: hintText,
-          items: items,
-          value: initialItem,
-          onChanged: onChanged,
-          itemLabel: (item) => item.names[isArabic ? 1 : 0],
-        ),
-      ],
-    );
-  }
-}
-
 class _Country extends StatelessWidget {
   const _Country();
 
@@ -151,7 +119,7 @@ class _Country extends StatelessWidget {
     return _Item(
       title: S.of(context).locationCountry,
       readOnly: true,
-      icon: Icons.flag,
+      icon: IconBroken.Location,
       hintText: S.of(context).locationCountryHint,
       controller: TextEditingController(text: S.of(context).saudiArabia),
     );
@@ -164,9 +132,10 @@ class _Name extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var s = S.of(context);
+
     return _Item(
       title: s.locationName,
-      icon: Icons.title,
+      icon: IconBroken.Document,
       hintText: s.locationNameHint,
       controller: LocationCubit.get(context).titleController,
     );
@@ -180,16 +149,13 @@ class _Regions extends StatelessWidget {
   Widget build(BuildContext context) {
     var s = S.of(context);
     final cubit = LocationCubit.get(context);
-    return _DropDownItem(
+
+    return _Item(
       title: s.locationRegion,
+      icon: IconBroken.Location,
       hintText: s.locationRegionHint,
-      items: cubit.regions,
-      initialItem: cubit.selectedRegion,
-      onChanged: (value) {
-        if (value != null) {
-          cubit.onRegionSelected(value);
-        }
-      },
+      keyboardType: TextInputType.text,
+      controller: cubit.regionController,
     );
   }
 }
@@ -201,16 +167,13 @@ class _City extends StatelessWidget {
   Widget build(BuildContext context) {
     var s = S.of(context);
     final cubit = LocationCubit.get(context);
-    return _DropDownItem(
+
+    return _Item(
       title: s.locationCity,
       hintText: s.locationCityHint,
-      items: cubit.selectedRegion?.cities ?? [],
-      initialItem: cubit.selectedCity,
-      onChanged: (value) {
-        if (value != null) {
-          cubit.onCitySelected(value);
-        }
-      },
+      icon: IconBroken.Home,
+      controller: cubit.cityController,
+      keyboardType: TextInputType.text,
     );
   }
 }
@@ -221,17 +184,13 @@ class _District extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var s = S.of(context);
-    final cubit = LocationCubit.get(context);
-    return _DropDownItem(
+
+    return _Item(
+      icon: IconBroken.Location,
       title: s.locationDistrict,
       hintText: s.locationDistrictHint,
-      items: cubit.selectedCity?.districts ?? [],
-      initialItem: cubit.selectedDistrict,
-      onChanged: (value) {
-        if (value != null) {
-          cubit.onDistrictSelected(value);
-        }
-      },
+      keyboardType: TextInputType.text,
+      controller: LocationCubit.get(context).districtController,
     );
   }
 }
@@ -242,9 +201,10 @@ class _Street extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var s = S.of(context);
+
     return _Item(
       title: s.locationStreet,
-      icon: Icons.streetview,
+      icon: IconBroken.Location,
       hintText: s.locationStreetHint,
       controller: LocationCubit.get(context).streetController,
     );
@@ -257,9 +217,10 @@ class _BuildingNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var s = S.of(context);
+
     return _Item(
       title: s.locationBuilding,
-      icon: Icons.format_list_numbered,
+      icon: IconBroken.Document,
       hintText: s.locationBuildingHint,
       controller: LocationCubit.get(context).buildingNumberController,
     );
@@ -272,9 +233,10 @@ class _Floor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var s = S.of(context);
+
     return _Item(
       title: s.locationFloor,
-      icon: Icons.layers,
+      icon: IconBroken.Category,
       hintText: s.locationFloorHint,
       keyboardType: TextInputType.number,
       controller: LocationCubit.get(context).floorController,
@@ -285,14 +247,14 @@ class _Floor extends StatelessWidget {
 class _Add extends StatelessWidget {
   final bool isLoading;
   final GlobalKey<FormState> formKey;
-  const _Add({super.key, required this.isLoading, required this.formKey});
+
+  const _Add({required this.isLoading, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
-    var s = S.of(context);
     return CustomButton(
       isLoading: isLoading,
-      text: s.addLocationButton,
+      text: S.of(context).addLocationButton,
       onPressed: () => LocationCubit.get(context).addLocation(formKey: formKey),
     );
   }
@@ -301,14 +263,14 @@ class _Add extends StatelessWidget {
 class _Edit extends StatelessWidget {
   final bool isLoading;
   final GlobalKey<FormState> formKey;
-  const _Edit({super.key, required this.isLoading, required this.formKey});
+
+  const _Edit({required this.isLoading, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
-    var s = S.of(context);
     return CustomButton(
       isLoading: isLoading,
-      text: s.editLocationButton,
+      text: S.of(context).editLocationButton,
       onPressed: () =>
           LocationCubit.get(context).updateLocation(formKey: formKey),
     );

@@ -58,4 +58,13 @@ class CartData {
   Future<void> removeFromCart(String cartId) async {
     await _cartItems.doc(cartId).delete();
   }
+
+  Future<void> clearCart() async {
+    final batch = _firestore.batch();
+    final cartSnapshot = await _cartItems.get();
+    for (var doc in cartSnapshot.docs) {
+      batch.delete(doc.reference);
+    }
+    await batch.commit();
+  }
 }

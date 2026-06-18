@@ -43,3 +43,7 @@ class RemoveFromCartLoading extends CartState {
 }
 
 class RemoveFromCartSuccess extends CartState {}
+
+class ClearCartLoading extends CartState {}
+
+class ClearCartSuccess extends CartState {}

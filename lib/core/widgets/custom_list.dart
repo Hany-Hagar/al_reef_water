@@ -1,5 +1,7 @@
 // ignore_for_file: unused_element_parameter
 
+import 'dart:developer';
+
 import '../../generated/l10n.dart';
 import 'custom_text.dart';
 import 'package:lottie/lottie.dart';
@@ -124,6 +126,7 @@ class _Failure extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log("Failure: $failureMessage");
     return Padding(
       padding: EdgeInsetsDirectional.only(
         top: animationTopPadding ?? 16.w,
@@ -145,6 +148,7 @@ class _Failure extends StatelessWidget {
             size: 16.sp,
             type: Type.overMedium,
             color: Colors.red,
+            maxLines: 10,
           ),
         ],
       ),

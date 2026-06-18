@@ -441,6 +441,34 @@
     "@noOrdersYet": {
         "description": "Message displayed when the user has not placed any orders"
     },
+    "orderDeliveryInfo": "Delivery Information",
+    "@orderDeliveryInfo": {
+        "description": "Label for the delivery information section in the order details screen in the order history"
+    },
+    "orderProducts": "Products",
+    "@orderProducts": {
+        "description": "Label for the products section in the order details screen in the order history"
+    },
+    "addOrder": "Add Order",
+    "@addOrder": {
+        "description": "Text for the add order button in the orders screen"
+    },
+    "addOrderSuccess": "Order added successfully!",
+    "@addOrderSuccess": {
+        "description": "Message displayed when an order is added successfully"
+    },
+    "deleteOrder": "Delete Order",
+    "@deleteOrder": {
+        "description": "Text for the delete order button in the order details screen in the order history"
+    },
+    "areYouSureYouWantToDeleteThisOrder": "Are you sure you want to delete this order? This action cannot be undone.",
+    "@areYouSureYouWantToDeleteThisOrder": {
+        "description": "Confirmation message displayed when the user attempts to delete an order"
+    },
+    "deleteOrderSuccess": "Order deleted successfully!",
+    "@deleteOrderSuccess": {
+        "description": "Message displayed when an order is deleted successfully"
+    },
 
 
 

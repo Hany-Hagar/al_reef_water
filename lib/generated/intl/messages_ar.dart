@@ -33,11 +33,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "addLocationTitle":
             MessageLookupByLibrary.simpleMessage("إضافة موقع جديد"),
         "addNew": MessageLookupByLibrary.simpleMessage("+ إضافة جديد"),
+        "addOrder": MessageLookupByLibrary.simpleMessage("إضافة طلب"),
+        "addOrderSuccess":
+            MessageLookupByLibrary.simpleMessage("تم إضافة الطلب بنجاح!"),
         "addProductToCartSuccess": MessageLookupByLibrary.simpleMessage(
             "تم إضافة المنتج إلى السلة بنجاح!"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "areYouSureYouWantToDeleteThisOrder": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد أنك تريد حذف هذا الطلب؟ لا يمكن التراجع عن هذا الإجراء."),
         "building": MessageLookupByLibrary.simpleMessage("المبنى : "),
         "cart": MessageLookupByLibrary.simpleMessage("السلة"),
         "cartTitle": MessageLookupByLibrary.simpleMessage("سلتك"),
@@ -56,6 +61,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "هل أنت متأكد أنك تريد حذف حسابك? لا يمكن التراجع عن هذا الإجراء."),
         "deleteAccountSuccess":
             MessageLookupByLibrary.simpleMessage("تم حذف حسابك بنجاح."),
+        "deleteOrder": MessageLookupByLibrary.simpleMessage("حذف الطلب"),
+        "deleteOrderSuccess":
+            MessageLookupByLibrary.simpleMessage("تم حذف الطلب بنجاح."),
         "deliveryAddress":
             MessageLookupByLibrary.simpleMessage("عنوان التوصيل"),
         "didyouForgetPassword":
@@ -158,11 +166,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "ليس لديك أي منتجات في سلتك للطلب."),
         "orLoginWith":
             MessageLookupByLibrary.simpleMessage("أو تسجيل الدخول باستخدام"),
+        "orderDeliveryInfo":
+            MessageLookupByLibrary.simpleMessage("معلومات التسليم"),
         "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
         "orderDetailsSubtitle": MessageLookupByLibrary.simpleMessage(
             "مراجعة تفاصيل طلبك قبل المتابعة إلى الدفع."),
         "orderHistory": MessageLookupByLibrary.simpleMessage("سجل الطلبات"),
         "orderNow": MessageLookupByLibrary.simpleMessage("اطلب الآن"),
+        "orderProducts": MessageLookupByLibrary.simpleMessage("المنتجات"),
         "orderSummary": MessageLookupByLibrary.simpleMessage("ملخص الطلب"),
         "ordersTitle": MessageLookupByLibrary.simpleMessage("طلباتي"),
         "other": MessageLookupByLibrary.simpleMessage("أخرى"),

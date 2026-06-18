@@ -9,16 +9,17 @@ class OrdersRepoImpl extends OrdersRepo {
   OrdersRepoImpl({required this.ordersData});
 
   @override
-  Stream<Either<Failure, List<OrderModel>>> getOrders() {
+  Future<Either<Failure, List<OrderModel>>> getOrders() async {
     try {
-      return ordersData.getOrders().map((querySnapshot) {
-        final orders = querySnapshot.docs
-            .map((doc) => OrderModel.fromFirestore(doc.data()))
-            .toList();
-        return Right(orders);
-      });
+      final data = await ordersData.getOrders();
+      final orders = data.docs.map((doc) {
+       var order = OrderModel.fromFirestore(doc.data());
+       return order.copyWith(id: doc.id);
+      }).toList();
+
+      return Right(orders);
     } catch (e) {
-      return Stream.value(Left(Failure.handle(e)));
+      return Left(Failure.handle(e));
     }
   }
 
@@ -27,7 +28,7 @@ class OrdersRepoImpl extends OrdersRepo {
     required OrderModel order,
   }) async {
     try {
-      final docRef = await ordersData.addOrder(order.toFirestore());
+      final docRef = await ordersData.addOrder(order);
       final docSnapshot = await docRef.get();
       final newOrder = OrderModel.fromFirestore(docSnapshot.data()!);
       return Right(newOrder);

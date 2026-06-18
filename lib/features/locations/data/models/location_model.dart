@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:osm_search_and_pick/models/picked_data.dart';
 
 class LocationModel {
@@ -65,22 +67,37 @@ class LocationModel {
   }
 
   // From OSM
-  factory LocationModel.fromOSM({
-    required String title,
-    required int floor,
-    required PickedData pickedData,
-  }) {
-    return LocationModel(
+  factory LocationModel.fromOSM({required PickedData pickedData}) {
+    final address = pickedData.address;
+
+    String pick(List<String> keys) {
+      for (final key in keys) {
+        final value = address[key];
+        if (value != null && value.toString().trim().isNotEmpty) {
+          return value.toString();
+        }
+      }
+      return '';
+    }
+
+    final region = pick(['state', 'region', 'province']);
+    final city = pick(['city', 'town', 'village', 'municipality']);
+    final district = pick(['suburb', 'district', 'neighbourhood']);
+    final street = pick(['road', 'street']);
+
+    final location = LocationModel(
       id: "",
-      name: title,
-      floor: floor,
-      country: pickedData.address['country'] ?? '',
-      region: pickedData.address['region'] ?? '',
-      city: pickedData.address['city'] ?? '',
-      district: pickedData.address['district'] ?? '',
-      street: pickedData.address['street'] ?? '',
-      buildingNumber: pickedData.address['buildingNumber'] ?? '',
+      name: "",
+      floor: 1,
+      country: pick(['country']),
+      region: region,
+      city: city,
+      district: district,
+      street: street,
+      buildingNumber: address['buildingNumber']?.toString() ?? '',
     );
+    log(location.toFirestore().toString());
+    return location;
   }
 
   // FromFirestore

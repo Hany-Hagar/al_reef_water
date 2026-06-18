@@ -3,7 +3,7 @@ import '../models/order_model.dart';
 import '../../../../core/failure/failure.dart';
 
 abstract class OrdersRepo {
-  Stream<Either<Failure, List<OrderModel>>> getOrders();
+  Future<Either<Failure, List<OrderModel>>> getOrders();
 
   Future<Either<Failure, OrderModel>> addOrder({required OrderModel order});
 

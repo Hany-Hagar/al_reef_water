@@ -21,7 +21,7 @@ class CartItem extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
       child: SizedBox(
-        height: 130.h,
+        height: 135.h,
         child: Row(
           children: [
             Expanded(
@@ -83,8 +83,9 @@ class _Body extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _Title(title: cart.product.title),
-          SizedBox(height: 5.h),
+          Expanded(
+            child: _Title(title: cart.product.title),
+          ),
           _CountDetails(isLoading: isLoading, cart: cart),
           SizedBox(height: 5.h),
           _TotalPrice(cartId: cart.id, total: cart.totalPrice),

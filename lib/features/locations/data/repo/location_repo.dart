@@ -1,11 +1,8 @@
 import 'package:dartz/dartz.dart';
-import '../models/region_model.dart';
 import '../models/location_model.dart';
 import '../../../../core/failure/failure.dart';
 
 abstract class LocationRepo {
-
-  Future<Either<Failure,List<RegionModel>>> loadRegions();
 
   Future<Either<Failure, List<LocationModel>>> getLocations();
 

@@ -1,4 +1,3 @@
-import '../models/region_model.dart';
 import 'location_repo.dart';
 import 'package:dartz/dartz.dart';
 import '../models/location_model.dart';
@@ -8,16 +7,6 @@ import '../../../../core/failure/failure.dart';
 class LocationRepoImpl extends LocationRepo {
   final LocationData locationData;
   LocationRepoImpl({required this.locationData});
-
-  @override
-  Future<Either<Failure, List<RegionModel>>> loadRegions() async {
-    try {
-      final regions = await locationData.loadRegions();
-      return Right(regions);
-    } catch (e) {
-      return Left(Failure.handle(e.toString()));
-    }
-  }
 
   @override
   Future<Either<Failure, List<LocationModel>>> getLocations() async {

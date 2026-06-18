@@ -17,7 +17,7 @@ class FavCubit extends Cubit<FavState> {
   List<ProductModel> get products => getIt<ProductCubit>().products;
   List<ProductModel> favoriteProducts = [];
 
-  void fetchFavoriteProduct() async {
+  Future<void> fetchFavoriteProduct() async {
     if(favoriteProducts.isNotEmpty) return;
     emit(FavLoading());
     final result = await favRepo.getFavoriteProductIds();
