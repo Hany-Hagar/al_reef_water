@@ -12,5 +12,7 @@ abstract class ProfileRepo {
   });
 
 
-  Future<Either<Failure, void>> deleteProfile();
+  Future<Either<Failure, void>> deleteProfile({
+    required bool isGoogleUser,
+  });
 }

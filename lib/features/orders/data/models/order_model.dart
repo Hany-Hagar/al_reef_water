@@ -119,4 +119,11 @@ class OrderModel {
   }
 }
 
-enum OrderStatus { pending, processing, shipped, delivered, cancelled }
+enum OrderStatus {
+  pending,
+  confirmed,
+  preparing,
+  outForDelivery,
+  delivered,
+  cancelled,
+}

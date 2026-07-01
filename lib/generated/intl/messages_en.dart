@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "OrderStatus": MessageLookupByLibrary.simpleMessage("Order Status"),
         "aboutUsDescription": MessageLookupByLibrary.simpleMessage(
             "Welcome to \"Al-Reef Water\", where you’ll find naturally bottled water carefully prepared to meet your daily needs with top quality. We offer low-sodium bottled water, pure and free from unnecessary additives—an ideal choice for everyone, from children to seniors. Al-Reef Water is a healthy choice thanks to advanced production methods that preserve essential minerals your body needs. We put your health first by providing mineral-rich water that supports your overall well-being and balance."),
         "aboutUsTitle": MessageLookupByLibrary.simpleMessage("About Us"),
@@ -38,12 +39,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Order added successfully!"),
         "addProductToCartSuccess": MessageLookupByLibrary.simpleMessage(
             "Product added to cart successfully!"),
+        "addToCart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "areYouSureYouWantToDeleteThisOrder": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this order? This action cannot be undone."),
         "building": MessageLookupByLibrary.simpleMessage("Building : "),
+        "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "cartTitle": MessageLookupByLibrary.simpleMessage("Your Cart"),
         "companiesDeals": MessageLookupByLibrary.simpleMessage("Company Deals"),
@@ -52,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "confirmPasswordHint":
             MessageLookupByLibrary.simpleMessage("Re-enter your password"),
+        "confirmed": MessageLookupByLibrary.simpleMessage("Confirmed"),
         "contactUsDescription": MessageLookupByLibrary.simpleMessage(
             "If you have questions or need assistance, reach out to us via email or phone. Our customer support team is available to help you with orders, products, and general inquiries."),
         "contactUsTitle": MessageLookupByLibrary.simpleMessage("Contact Us"),
@@ -64,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteOrder": MessageLookupByLibrary.simpleMessage("Delete Order"),
         "deleteOrderSuccess":
             MessageLookupByLibrary.simpleMessage("Order deleted successfully!"),
+        "delivered": MessageLookupByLibrary.simpleMessage("Delivered"),
         "deliveryAddress":
             MessageLookupByLibrary.simpleMessage("Delivery Address"),
         "didyouForgetPassword": MessageLookupByLibrary.simpleMessage(
@@ -177,13 +182,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "orderSummary": MessageLookupByLibrary.simpleMessage("Order Summary"),
         "ordersTitle": MessageLookupByLibrary.simpleMessage("Your Orders"),
         "other": MessageLookupByLibrary.simpleMessage("Other"),
+        "outForDelivery":
+            MessageLookupByLibrary.simpleMessage("Out for Delivery"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordHint":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "pending": MessageLookupByLibrary.simpleMessage("Pending"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "phoneNumberHint":
             MessageLookupByLibrary.simpleMessage("Enter your phone number"),
         "preferences": MessageLookupByLibrary.simpleMessage("Preferences"),
+        "preparing": MessageLookupByLibrary.simpleMessage("Preparing"),
         "price": MessageLookupByLibrary.simpleMessage("Price:  "),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "privacyPolicyDescription": MessageLookupByLibrary.simpleMessage(

@@ -207,9 +207,10 @@ class _TextWithIcon extends StatelessWidget {
         icon: icon != null
             ? Icon(
                 icon,
+                size: 24.sp,
                 color: enableBorderColor
                     ? color ?? theme.primaryColor
-                    : theme.hintColor,
+                    : theme.scaffoldBackgroundColor,
               )
             : const SizedBox.shrink(),
         label: CustomText(

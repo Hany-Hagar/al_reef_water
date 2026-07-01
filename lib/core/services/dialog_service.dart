@@ -10,7 +10,26 @@ class DialogServices {
     required BuildContext context,
     required Widget dialog,
   }) async {
-    await showDialog(context: context, builder: (context) => dialog);
+    await showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return ConstrainedBox(
+              constraints: BoxConstraints(
+                minWidth: constraints.minWidth,
+                maxWidth: constraints.maxWidth,
+              ),
+              child: dialog,
+            );
+          },
+        ),
+      ),
+    );
     // Implement your dialog logic here
   }
 

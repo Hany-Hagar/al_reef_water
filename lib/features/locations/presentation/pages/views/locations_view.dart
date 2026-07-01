@@ -5,10 +5,8 @@ import '../../manager/location_cubit.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/nav_to.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../data/models/location_model.dart';
 import '../../../../../core/di/server_locator.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
-import '../../../../../core/services/location_service.dart';
 import '../../../../../core/widgets/custom_background.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,18 +35,9 @@ class _AddLocation extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () {
         LocationCubit.get(context).clearControllers();
-        LocationService.openLocationPicker(
+        NavTo.push(
           context: context,
-          onLocationPicked: (pickedData) {
-            LocationCubit.get(context).setControllers(
-              isEditing: false,
-              location: LocationModel.fromOSM(pickedData: pickedData),
-            );
-            NavTo.push(
-              context: context,
-              nextPage: const AddEditLocationView(isEdit: false),
-            );
-          },
+          nextPage: const AddEditLocationView(isEdit: false),
         );
       },
       child: Icon(size: 34.r, Icons.add_location_alt_outlined),

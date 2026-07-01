@@ -1,5 +1,11 @@
+// ignore_for_file: unused_element_parameter
+
+import 'package:al_reef_app/core/widgets/custom_button.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
 import 'custom_grid.dart';
 import 'package:flutter/material.dart';
+import '../services/dialog_service.dart';
 import '../../../../../generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_text.dart';
@@ -28,7 +34,7 @@ class ProductItems extends StatelessWidget {
     this.emptyAnimation,
     this.emptyMessage,
     this.failureAnimation,
-    this.failureMessage,    
+    this.failureMessage,
   });
 
   @override
@@ -48,15 +54,20 @@ class ProductItems extends StatelessWidget {
       animationTopPadding: animationTopPadding,
       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
       emptyItems: List.generate(5, (index) => ProductModel.empty()),
-      itemBuilder: (context, item) =>
-          HomeProductItem(product: item as ProductModel),
+      itemBuilder: (context, item) => GestureDetector(
+        onTap: () => DialogServices.showCustomDialog(
+          context: context,
+          dialog: _Dialog(product: item),
+        ),
+        child: _Item(product: item),
+      ),
     );
   }
 }
 
-class HomeProductItem extends StatelessWidget {
+class _Item extends StatelessWidget {
   final ProductModel product;
-  const HomeProductItem({super.key, required this.product});
+  const _Item({required this.product});
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -88,7 +99,8 @@ class HomeProductItem extends StatelessWidget {
 class _Image extends StatelessWidget {
   final String imageUrl;
   final String productId;
-  const _Image({required this.imageUrl, required this.productId});
+  final double? height;
+  const _Image({required this.imageUrl, required this.productId, this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +113,7 @@ class _Image extends StatelessWidget {
             child: Image.network(
               imageUrl,
               width: double.infinity,
-              height: 100.h,
+              height: height ?? 100.h,
               fit: BoxFit.fill,
             ),
           ),
@@ -117,16 +129,18 @@ class _Image extends StatelessWidget {
 }
 
 class _ItemBody extends StatelessWidget {
+  final double? spacing;
   final ProductModel product;
-  const _ItemBody({required this.product});
+  const _ItemBody({required this.product, this.spacing = 0});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.w),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        spacing: (spacing ?? 0).h,
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomText(
             text: product.title,
@@ -166,6 +180,76 @@ class _Carticon extends StatelessWidget {
           child: Icon(IconBroken.Buy, size: 24.sp),
         );
       },
+    );
+  }
+}
+
+class _Dialog extends StatelessWidget {
+  final ProductModel product;
+  const _Dialog({required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: 12.h,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _DialogImages(product: product),
+        SizedBox(
+          width: double.infinity,
+          child: _ItemBody(spacing: 5.h, product: product)
+        ),
+        _DialogActions(product: product),
+      ],
+    );
+  }
+}
+
+class _DialogImages extends StatelessWidget {
+  final ProductModel product;
+  const _DialogImages({required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return CarouselSlider.builder(
+      itemCount: product.images.length,
+      itemBuilder: (context, index, realIndex) => _Image(
+        imageUrl: product.images[index],
+        productId: product.id,
+        height: 125.h,
+      ),
+      options: CarouselOptions(
+        height: 125.h,
+        viewportFraction: 1.0,
+        enableInfiniteScroll: false,
+      ),
+    );
+  }
+}
+
+class _DialogActions extends StatelessWidget {
+  final ProductModel product;
+  const _DialogActions({required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CartCubit, CartState>(
+      builder:(context, state) =>  Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.w , vertical: 0.h),
+        child: Padding(
+          padding: EdgeInsets.only(bottom: 16.h),
+          child: CustomButton(
+            isLoading: state is AddToCartLoading && state.productId == product.id,
+            height: 42.h,
+            icon: IconBroken.Buy,
+            text: S.of(context).addToCart,
+            onPressed: () async {
+              CartCubit.get(context).addToCart(product: product);
+              Navigator.of(context).pop();
+            } 
+          )
+        )
+      )
     );
   }
 }

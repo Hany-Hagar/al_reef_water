@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "OrderStatus": MessageLookupByLibrary.simpleMessage("حالة الطلب"),
         "aboutUsDescription": MessageLookupByLibrary.simpleMessage(
             "مرحبًا بكم في \"مياه الريف\"، المكان الذي تجدون فيه المياه الطبيعية المعبأة بعناية لتلبية احتياجاتكم اليومية بأعلى جودة. نحن نقدم مياه الريف المعبأة في زجاجات منخفضة الصوديوم، نقية تمامًا وخالية من أي إضافات غير ضرورية، مما يجعلها الخيار الأمثل لكل أفراد العائلة."),
         "aboutUsTitle":
@@ -38,12 +39,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم إضافة الطلب بنجاح!"),
         "addProductToCartSuccess": MessageLookupByLibrary.simpleMessage(
             "تم إضافة المنتج إلى السلة بنجاح!"),
+        "addToCart": MessageLookupByLibrary.simpleMessage("أضف إلى السلة"),
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "areYouSureYouWantToDeleteThisOrder": MessageLookupByLibrary.simpleMessage(
             "هل أنت متأكد أنك تريد حذف هذا الطلب؟ لا يمكن التراجع عن هذا الإجراء."),
         "building": MessageLookupByLibrary.simpleMessage("المبنى : "),
+        "cancelled": MessageLookupByLibrary.simpleMessage("ملغي"),
         "cart": MessageLookupByLibrary.simpleMessage("السلة"),
         "cartTitle": MessageLookupByLibrary.simpleMessage("سلتك"),
         "companiesDeals": MessageLookupByLibrary.simpleMessage("عروض الشركات"),
@@ -52,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "confirmPasswordHint":
             MessageLookupByLibrary.simpleMessage("أعد إدخال كلمة المرور"),
+        "confirmed": MessageLookupByLibrary.simpleMessage("تم التأكيد"),
         "contactUsDescription": MessageLookupByLibrary.simpleMessage(
             "إذا كانت لديك أي أسئلة أو تحتاج إلى مساعدة، تواصل معنا عبر البريد الإلكتروني أو الهاتف. فريق دعم العملاء لدينا جاهز لمساعدتك فيما يتعلق بالطلبات والمنتجات والاستفسارات العامة."),
         "contactUsTitle": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
@@ -64,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteOrder": MessageLookupByLibrary.simpleMessage("حذف الطلب"),
         "deleteOrderSuccess":
             MessageLookupByLibrary.simpleMessage("تم حذف الطلب بنجاح."),
+        "delivered": MessageLookupByLibrary.simpleMessage("تم التسليم"),
         "deliveryAddress":
             MessageLookupByLibrary.simpleMessage("عنوان التوصيل"),
         "didyouForgetPassword":
@@ -177,12 +182,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "orderSummary": MessageLookupByLibrary.simpleMessage("ملخص الطلب"),
         "ordersTitle": MessageLookupByLibrary.simpleMessage("طلباتي"),
         "other": MessageLookupByLibrary.simpleMessage("أخرى"),
+        "outForDelivery": MessageLookupByLibrary.simpleMessage("في الطريق"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordHint": MessageLookupByLibrary.simpleMessage("أدخل كلمة مرورك"),
+        "pending": MessageLookupByLibrary.simpleMessage("قيد الانتظار"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "phoneNumberHint":
             MessageLookupByLibrary.simpleMessage("أدخل رقم هاتفك"),
         "preferences": MessageLookupByLibrary.simpleMessage("التفضيلات"),
+        "preparing": MessageLookupByLibrary.simpleMessage("جاري التجهيز"),
         "price": MessageLookupByLibrary.simpleMessage("السعر:  "),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "privacyPolicyDescription": MessageLookupByLibrary.simpleMessage(

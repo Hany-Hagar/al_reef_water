@@ -164,6 +164,10 @@
     "@companiesDeals": {
         "description": "Title for the section that displays company deals on the home screen"
     },
+    "addToCart": "أضف إلى السلة",
+    "@addToCart": {
+        "description": "Text for the add to cart button"
+    },
     "addProductToCartSuccess": "تم إضافة المنتج إلى السلة بنجاح!",
     "@addProductToCartSuccess": {
         "description": "Message displayed when a product is successfully added to the cart"
@@ -429,6 +433,40 @@
     "@manageOrders": {
         "description": "تسمية خيار إدارة الطلبات في شاشة الإعدادات"
     },
+
+
+
+    "OrderStatus": "حالة الطلب",
+    "@OrderStatus": {
+        "description": "تسمية حقل حالة الطلب في شاشة تفاصيل الطلب"
+    },
+    "pending": "قيد الانتظار",
+    "@pending": {
+        "description": "حالة الطلب قيد الانتظار"
+    },
+    "confirmed": "تم التأكيد",
+    "@confirmed": {
+        "description": "حالة الطلب تم التأكيد"
+    },
+    "preparing": "جاري التجهيز",
+    "@preparing": {
+        "description": "حالة الطلب جاري التجهيز"
+    },
+    "outForDelivery": "في الطريق",
+    "@outForDelivery": {
+        "description": "حالة الطلب في الطريق"
+    },
+    "delivered": "تم التسليم",
+    "@delivered": {
+        "description": "حالة الطلب تم التسليم"
+    },
+    "cancelled": "ملغي",
+    "@cancelled": {
+        "description": "حالة الطلب ملغى"
+    },
+
+
+
     "orderHistory": "سجل الطلبات",
     "@orderHistory": {
         "description": "تسمية خيار سجل الطلبات في شاشة الإعدادات"

@@ -24,13 +24,14 @@ class AuthData {
 
   // Login with Google
   Future<DocumentSnapshot> getUserData(String uid) async {
-    return await _firestore.collection(FirebaseAssets.userCollection).doc(uid).get();
+    return await _firestore
+        .collection(FirebaseAssets.userCollection)
+        .doc(uid)
+        .get();
   }
 
   Future<OAuthCredential> signInWithGoogle() async {
-    final GoogleSignIn googleSignIn = GoogleSignIn(
-      scopes: ['email'],
-      );
+    final GoogleSignIn googleSignIn = GoogleSignIn(scopes: ['email']);
     await googleSignIn.signOut();
     final googleUser = await googleSignIn.signIn();
     final googleAuth = await googleUser?.authentication;
@@ -54,7 +55,10 @@ class AuthData {
     required String uid,
     required UserModel userModel,
   }) async {
-    await _firestore.collection(FirebaseAssets.userCollection).doc(uid).set(userModel.toMap());
+    await _firestore.collection(FirebaseAssets.userCollection).doc(uid).set({
+      ...userModel.toMap(),
+      "type": 'customer',
+    });
   }
 
   // Reset Password

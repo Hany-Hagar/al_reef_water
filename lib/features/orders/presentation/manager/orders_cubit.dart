@@ -18,13 +18,12 @@ class OrdersCubit extends Cubit<OrdersStates> {
   Future<void> fetchOrders() async {
     emit(OrdersLoading());
     final result = await ordersRepo.getOrders();
-    result.fold(
-      (failure) => emit(OrdersFailure(message: failure.message)),
-      (orders) {
-        this.orders = orders;
-        emit(OrdersLoaded());
-      },
-    );
+    result.fold((failure) => emit(OrdersFailure(message: failure.message)), (
+      orders,
+    ) {
+      this.orders = orders;
+      emit(OrdersLoaded());
+    });
   }
 
   // Add Order Data
@@ -54,9 +53,10 @@ class OrdersCubit extends Cubit<OrdersStates> {
   }
 
   /// Add Order
-
-  OrderModel _orderModel() {
-    return OrderModel(
+  Future<void> addOrder({required GlobalKey<FormState> formKey}) async {
+    if (!formKey.currentState!.validate()) return;
+    emit(AddOrderLoading());
+    final order = OrderModel(
       id: '',
       userId: userId,
       firstName: firstNameController.text,
@@ -68,12 +68,6 @@ class OrdersCubit extends Cubit<OrdersStates> {
       createdAt: DateTime.now(),
       status: OrderStatus.pending,
     );
-  }
-
-  Future<void> addOrder({required GlobalKey<FormState> formKey}) async {
-    if (!formKey.currentState!.validate()) return;
-    emit(AddOrderLoading());
-    final order = _orderModel();
     final result = await ordersRepo.addOrder(order: order);
     result.fold(
       (failure) => emit(OrdersFailure(message: failure.message)),
@@ -88,7 +82,13 @@ class OrdersCubit extends Cubit<OrdersStates> {
     final result = await ordersRepo.cancelOrder(orderId: orderId);
     result.fold(
       (failure) => emit(CancelOrderFailure(message: failure.message)),
-      (_) => emit(CancelOrderSuccess()),
+      (_) {
+        var index = orders.indexWhere((order) => order.id == orderId);
+        if (index != -1) {
+          orders[index] = orders[index].copyWith(status: OrderStatus.cancelled);
+        }
+        emit(CancelOrderSuccess());
+      },
     );
   }
 }

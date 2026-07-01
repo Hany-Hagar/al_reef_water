@@ -44,7 +44,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   void deleteProfile() async {
     emit(ProfileDeleteLoading());
-    var result = await profileRepo.deleteProfile();
+    var result = await profileRepo.deleteProfile(isGoogleUser: user.isGoogleUser);
     result.fold(
       (failure) => emit(ProfileErrorState(failure.message)),
       (_) => emit(ProfileDeleteSuccess()),

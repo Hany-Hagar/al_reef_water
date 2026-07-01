@@ -424,6 +424,16 @@ class S {
     );
   }
 
+  /// `Add to Cart`
+  String get addToCart {
+    return Intl.message(
+      'Add to Cart',
+      name: 'addToCart',
+      desc: 'Text for the add to cart button',
+      args: [],
+    );
+  }
+
   /// `Product added to cart successfully!`
   String get addProductToCartSuccess {
     return Intl.message(
@@ -1042,6 +1052,76 @@ class S {
       'Manage Orders',
       name: 'manageOrders',
       desc: 'Label for the manage orders option in the settings screen',
+      args: [],
+    );
+  }
+
+  /// `Order Status`
+  String get OrderStatus {
+    return Intl.message(
+      'Order Status',
+      name: 'OrderStatus',
+      desc: 'Label for the order status field in the order details screen',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get pending {
+    return Intl.message(
+      'Pending',
+      name: 'pending',
+      desc: 'Label for the pending order status',
+      args: [],
+    );
+  }
+
+  /// `Confirmed`
+  String get confirmed {
+    return Intl.message(
+      'Confirmed',
+      name: 'confirmed',
+      desc: 'Label for the confirmed order status',
+      args: [],
+    );
+  }
+
+  /// `Preparing`
+  String get preparing {
+    return Intl.message(
+      'Preparing',
+      name: 'preparing',
+      desc: 'Label for the preparing order status',
+      args: [],
+    );
+  }
+
+  /// `Out for Delivery`
+  String get outForDelivery {
+    return Intl.message(
+      'Out for Delivery',
+      name: 'outForDelivery',
+      desc: 'Label for the out for delivery order status',
+      args: [],
+    );
+  }
+
+  /// `Delivered`
+  String get delivered {
+    return Intl.message(
+      'Delivered',
+      name: 'delivered',
+      desc: 'Label for the delivered order status',
+      args: [],
+    );
+  }
+
+  /// `Cancelled`
+  String get cancelled {
+    return Intl.message(
+      'Cancelled',
+      name: 'cancelled',
+      desc: 'Label for the cancelled order status',
       args: [],
     );
   }

@@ -162,6 +162,10 @@
     "@companiesDeals": {
         "description": "Title for the section that displays company deals on the home screen"
     },
+    "addToCart": "Add to Cart",
+    "@addToCart": {
+        "description": "Text for the add to cart button"
+    },
     "addProductToCartSuccess": "Product added to cart successfully!",
     "@addProductToCartSuccess": {
         "description": "Message displayed when a product is successfully added to the cart"
@@ -429,6 +433,41 @@
     "@manageOrders": {
         "description": "Label for the manage orders option in the settings screen"
     },
+    "OrderStatus": "Order Status",
+    "@OrderStatus": {
+        "description": "Label for the order status field in the order details screen"
+    },
+    "pending": "Pending",
+    "@pending": {
+        "description": "Label for the pending order status"
+    },
+    "confirmed": "Confirmed",
+    "@confirmed": {
+        "description": "Label for the confirmed order status"
+    },
+
+    "preparing": "Preparing",
+    "@preparing": {
+        "description": "Label for the preparing order status"
+    },
+
+    "outForDelivery": "Out for Delivery",
+    "@outForDelivery": {
+        "description": "Label for the out for delivery order status"
+    },
+
+    "delivered": "Delivered",
+    "@delivered": {
+        "description": "Label for the delivered order status"
+    },
+
+    "cancelled": "Cancelled",
+    "@cancelled": {
+        "description": "Label for the cancelled order status"
+    },
+
+
+    
     "orderHistory": "Order History",
     "@orderHistory": {
         "description": "Label for the order history option in the settings screen"

@@ -9,7 +9,8 @@ class UserModel {
   final String? password;
   final String phone;
   final String email;
-  List<String> favorites;
+  final List<String> favorites;
+  final bool isGoogleUser;
 
   UserModel({
     required this.id,
@@ -19,6 +20,7 @@ class UserModel {
     required this.email,
     this.password,
     required this.favorites,
+    this.isGoogleUser = false,
   });
 
   // From Firebase User
@@ -30,6 +32,7 @@ class UserModel {
       phone: user.phoneNumber ?? '',
       email: user.email ?? '',
       favorites: [],
+      isGoogleUser: user.providerData.any((p) => p.providerId == 'google.com'),
     );
   }
 
@@ -43,6 +46,7 @@ class UserModel {
       favorites: (map['favorites'] as List<dynamic>? ?? <dynamic>[])
           .map((item) => item.toString())
           .toList(),
+      isGoogleUser: (map['isGoogleUser'] as bool?) ?? false,
     );
   }
 
@@ -54,6 +58,7 @@ class UserModel {
       'phone': phone,
       'email': email,
       'favorites': favorites,
+      'isGoogleUser': isGoogleUser,
     };
   }
 
@@ -66,6 +71,7 @@ class UserModel {
     String? email,
     List<String>? favorites,
     List<ProductModel>? cart,
+    bool? isGoogleUser,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -74,6 +80,7 @@ class UserModel {
       phone: phone ?? this.phone,
       email: email ?? this.email,
       favorites: favorites ?? this.favorites,
+      isGoogleUser: isGoogleUser ?? this.isGoogleUser,
     );
   }
 }

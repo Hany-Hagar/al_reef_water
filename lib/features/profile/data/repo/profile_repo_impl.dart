@@ -30,9 +30,9 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  Future<Either<Failure, void>> deleteProfile() async {
+  Future<Either<Failure, void>> deleteProfile({required bool isGoogleUser}) async {
     try {
-      return Right(await profileData.deleteProfile());
+      return Right(await profileData.deleteProfile(isGoogleUser: isGoogleUser));
     } catch (e) {
       return Left(Failure.handle(e.toString()));
     }

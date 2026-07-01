@@ -34,7 +34,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_screenutil: ^5.7.0
   osm_search_and_pick: ^0.4.0
-  cached_network_image: ^3.2.3
+  cached_network_image: ^3.4.1
   smooth_page_indicator: ^1.0.0
   dropdown_button2: ^3.1.0
   geolocator: ^14.0.2

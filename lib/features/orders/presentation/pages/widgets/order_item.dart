@@ -1,17 +1,17 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../core/services/dialog_service.dart';
-import '../../../../../core/widgets/custom_list.dart';
-import '../../../../cart/data/model/cart_model.dart';
-import '../../../data/models/order_model.dart';
-import '../../manager/orders_states.dart';
 import 'overlapping_images.dart';
 import 'package:flutter/material.dart';
 import '../../manager/orders_cubit.dart';
+import '../../manager/orders_states.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../data/models/order_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../const_data/asset_data.dart';
+import '../../../../cart/data/model/cart_model.dart';
+import '../../../../../core/widgets/custom_list.dart';
 import '../../../../../core/widgets/custom_text.dart';
+import '../../../../../core/services/dialog_service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/extensions/order_status_extension.dart';
 
 class OrderItem extends StatelessWidget {
   final OrderModel? order;
@@ -164,32 +164,20 @@ class _Status extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: _getStatusColor(orderStatus),
+        color: orderStatus.value(context).backgroundColor,
         borderRadius: BorderRadius.circular(4.r),
       ),
       padding: EdgeInsetsDirectional.only(bottom: 4.h, start: 6.w, end: 6.w),
       child: CustomText(
-        text: orderStatus.name,
+        text: orderStatus.value(context).name,
         size: 14.sp,
         type: Type.overMedium,
+        color: orderStatus.value(context).textColor,
       ),
     );
   }
 
-  Color _getStatusColor(OrderStatus orderStatus) {
-    switch (orderStatus) {
-      case OrderStatus.pending:
-        return Colors.orange;
-      case OrderStatus.processing:
-        return Colors.blue;
-      case OrderStatus.shipped:
-        return Colors.green;
-      case OrderStatus.delivered:
-        return Colors.grey;
-      case OrderStatus.cancelled:
-        return Colors.red;
-    }
-  }
+
 }
 
 class _BottomSheet extends StatelessWidget {
@@ -210,24 +198,73 @@ class _BottomSheet extends StatelessWidget {
 
 class _BottomSheetItem extends StatelessWidget {
   final CartModel item;
+
   const _BottomSheetItem({required this.item});
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      tileColor: Theme.of(context).cardColor,
-      contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
-      title: CustomText(
-        text: item.product.title,
-        size: 16.sp,
-        maxLines: 3,
-        type: Type.overMedium,
+    return Container(
+      height: 70.h,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: BorderRadius.circular(4.r),
       ),
-      trailing: CustomText(
-        text: (item.quantity * item.product.price).toStringAsFixed(2),
-        size: 16.sp,
-        type: Type.header,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Row(
+            spacing: 10.w,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: CustomText(
+                  text: item.product.title,
+                  size: 16.sp,
+                  maxLines: 3,
+                  type: Type.overMedium,
+                ),
+              ),
+              CustomText(
+                text: (item.quantity * item.product.price).toStringAsFixed(2),
+                size: 16.sp,
+                type: Type.header,
+              ),
+            ],
+          ),
+          Transform.translate(
+            offset: Offset(-14.w, -12.h),
+            child: Align(
+              alignment: AlignmentDirectional.topEnd,
+              child: _ItemCount(count: item.quantity),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ItemCount extends StatelessWidget {
+  final int count;
+  const _ItemCount({required this.count});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 30.w,
+      height: 30.h,
+      color: Theme.of(context).primaryColor,
+      child: Center(
+        child: Padding(
+          padding: EdgeInsetsDirectional.only(top: 4.h, end: 2.w),
+          child: CustomText(
+            text: count.toString(),
+            size: 18.sp,
+            type: Type.header,
+          ),
+        ),
       ),
     );
   }

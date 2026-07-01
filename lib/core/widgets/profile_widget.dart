@@ -22,7 +22,7 @@ class ProfileWidget extends StatelessWidget {
         return CircleAvatar(
           radius: radius.r,
           backgroundColor: Theme.of(context).primaryColor,
-          child: CustomText(text: name, size: (radius-3).sp, type: Type.header),
+          child: CustomText(text: name, size: (radius-3).sp, type: Type.header , height: 0.8,),
         );
       },
     );

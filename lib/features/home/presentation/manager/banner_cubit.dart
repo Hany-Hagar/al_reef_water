@@ -2,6 +2,7 @@
 
 import 'banner_states.dart';
 import '../../data/repo/banner_repo.dart';
+import '../../data/models/banner_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -12,7 +13,7 @@ class BannerCubit extends Cubit<BannerStates> {
 
   static BannerCubit get(context) => BlocProvider.of(context);
 
-  List<String> banners = [];
+  List<BannerModel> banners = [];
 
   Future<void> fetchBanners() async {
     if (banners.isNotEmpty) return;

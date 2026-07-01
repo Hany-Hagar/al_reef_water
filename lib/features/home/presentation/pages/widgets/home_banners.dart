@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import '../../manager/banner_cubit.dart';
 import '../../manager/banner_states.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import '../../../data/models/banner_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/di/server_locator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeBanners extends StatelessWidget {
@@ -29,7 +31,9 @@ class HomeBanners extends StatelessWidget {
               Skeletonizer(
                 ignoreContainers: true,
                 enabled: state is BannerLoading,
-                child: _Banners(banners: banners),
+                child: state is BannerLoading
+                    ? _Item(banner: BannerModel.empty())
+                    : _Banners(banners: banners),
               ),
               SizedBox(height: 14.h),
               if (state is! BannerLoading) _Indicator(banners: banners),
@@ -42,7 +46,7 @@ class HomeBanners extends StatelessWidget {
 }
 
 class _Banners extends StatelessWidget {
-  final List<String> banners;
+  final List<BannerModel> banners;
   const _Banners({required this.banners});
 
   @override
@@ -52,7 +56,7 @@ class _Banners extends StatelessWidget {
       itemCount: banners.length,
       carouselController: cubit.carouselController,
       itemBuilder: (context, index, realIndex) {
-        return _Item(imageUrl: banners[index]);
+        return _Item(banner: banners[index]);
       },
       options: CarouselOptions(
         height: 160.h,
@@ -68,7 +72,7 @@ class _Banners extends StatelessWidget {
 }
 
 class _Indicator extends StatelessWidget {
-  final List<String> banners;
+  final List<BannerModel> banners;
   const _Indicator({required this.banners});
 
   @override
@@ -97,15 +101,29 @@ class _Indicator extends StatelessWidget {
 }
 
 class _Item extends StatelessWidget {
-  final String imageUrl;
+  final BannerModel banner;
 
-  const _Item({required this.imageUrl});
+  const _Item({required this.banner});
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8.r),
-      child: Image.network(imageUrl, width: double.infinity, fit: BoxFit.fill),
+    return Container(
+      height: 150.h,
+      width: double.infinity,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.r),
+        color: Colors.grey,
+      ),
+      child: CachedNetworkImage(
+        fit: BoxFit.fill,
+        imageUrl: banner.imageUrl,
+        errorWidget: (context, url, error) => Icon(
+          Icons.broken_image_outlined,
+          size: 60,
+          color: Colors.grey.shade400,
+        ),
+      ),
     );
   }
 }

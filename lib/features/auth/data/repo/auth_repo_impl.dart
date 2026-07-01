@@ -66,7 +66,6 @@ class AuthRepoImpl extends AuthRepo {
       }
 
       final userDoc = await authData.getUserData(firebaseUser.uid);
-
       if (userDoc.exists) {
         final data = userDoc.data();
         if (data is Map<String, dynamic>) {
@@ -74,20 +73,14 @@ class AuthRepoImpl extends AuthRepo {
         }
         return Right(UserModel.fromFirebaseUser(firebaseUser));
       } else {
-        final fullName = firebaseUser.displayName ?? '';
-        final nameParts = fullName.trim().split(' ');
-        final firstName = nameParts.isNotEmpty ? nameParts.first : '';
-        final lastName = nameParts.length > 1
-            ? nameParts.sublist(1).join(' ')
-            : '';
-
         final newUser = UserModel(
           id: firebaseUser.uid,
           email: firebaseUser.email ?? '',
-          firstName: firstName,
-          lastName: lastName,
+          firstName: firebaseUser.displayName?.split(' ').first ?? '',
+          lastName: firebaseUser.displayName?.split(' ').last ?? '',
           phone: firebaseUser.phoneNumber ?? '',
           favorites: const [],
+          isGoogleUser: true,
         );
 
         // إنشاء وحفظ بيانات المستخدم الجديد في الفايرستور
@@ -112,9 +105,9 @@ class AuthRepoImpl extends AuthRepo {
       }
       await authData.addUserData(
         uid: firebaseUser.uid,
-        userModel: user.copyWith(id: firebaseUser.uid),
+        userModel: user.copyWith(id: firebaseUser.uid , isGoogleUser: false),
       );
-      return Right(user.copyWith(id: firebaseUser.uid));
+      return Right(user.copyWith(id: firebaseUser.uid, isGoogleUser: false));
     } catch (e) {
       return Left(Failure.handle(e.toString()));
     }

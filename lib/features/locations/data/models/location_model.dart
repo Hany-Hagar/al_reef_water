@@ -5,7 +5,6 @@ import 'package:osm_search_and_pick/models/picked_data.dart';
 class LocationModel {
   final String id;
   final String name;
-
   final String country;
   final String region;
   final String city;
