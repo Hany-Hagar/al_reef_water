@@ -122,6 +122,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "lastNameHint":
             MessageLookupByLibrary.simpleMessage("أدخل اسمك الأخير"),
         "light": MessageLookupByLibrary.simpleMessage("فاتح"),
+        "locationApartmentNumber":
+            MessageLookupByLibrary.simpleMessage("رقم الشقة"),
+        "locationApartmentNumberHint": MessageLookupByLibrary.simpleMessage(
+            "أدخل رقم الشقة (مثل 101، 202، إلخ)"),
         "locationBuilding":
             MessageLookupByLibrary.simpleMessage("اسم/رقم المبنى"),
         "locationBuildingHint": MessageLookupByLibrary.simpleMessage(

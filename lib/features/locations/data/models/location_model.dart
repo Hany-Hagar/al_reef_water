@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:osm_search_and_pick/models/picked_data.dart';
 
 class LocationModel {
@@ -11,6 +10,7 @@ class LocationModel {
   final String district;
   final String street;
   final String buildingNumber;
+  final String apartmentNumber;
   final int floor;
 
   LocationModel({
@@ -22,6 +22,7 @@ class LocationModel {
     required this.district,
     required this.street,
     required this.buildingNumber,
+    required this.apartmentNumber,
     required this.floor,
   });
 
@@ -36,6 +37,7 @@ class LocationModel {
       district: '',
       street: '',
       buildingNumber: '',
+      apartmentNumber: '',
       floor: 0,
     );
   }
@@ -50,6 +52,7 @@ class LocationModel {
     String? district,
     String? street,
     String? buildingNumber,
+    String? apartmentNumber,
     int? floor,
   }) {
     return LocationModel(
@@ -61,6 +64,7 @@ class LocationModel {
       district: district ?? this.district,
       street: street ?? this.street,
       buildingNumber: buildingNumber ?? this.buildingNumber,
+      apartmentNumber: apartmentNumber ?? this.apartmentNumber,
       floor: floor ?? this.floor,
     );
   }
@@ -88,6 +92,7 @@ class LocationModel {
       id: "",
       name: "",
       floor: 1,
+      apartmentNumber: '',
       country: pick(['country']),
       region: region,
       city: city,
@@ -95,7 +100,9 @@ class LocationModel {
       street: street,
       buildingNumber: address['buildingNumber']?.toString() ?? '',
     );
+
     log(location.toFirestore().toString());
+
     return location;
   }
 
@@ -110,6 +117,7 @@ class LocationModel {
       district: data['district'] ?? '',
       street: data['street'] ?? '',
       buildingNumber: data['buildingNumber'] ?? '',
+      apartmentNumber: data['apartmentNumber'] ?? '',
       floor: data['floor'] ?? 0,
     );
   }
@@ -124,6 +132,7 @@ class LocationModel {
       'district': district,
       'street': street,
       'buildingNumber': buildingNumber,
+      'apartmentNumber': apartmentNumber,
       'floor': floor,
     };
   }

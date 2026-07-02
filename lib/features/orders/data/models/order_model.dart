@@ -8,8 +8,9 @@ class OrderModel {
   final String firstName;
   final String lastName;
   final String phone;
-  final LocationModel location;
+  final int totalCount;
   final double totalPrice;
+  final LocationModel location;
   final List<CartModel> cartItems;
   final OrderStatus status;
   final DateTime createdAt;
@@ -22,6 +23,7 @@ class OrderModel {
     required this.phone,
     required this.location,
     required this.totalPrice,
+    required this.totalCount,
     required this.cartItems,
     required this.status,
     required this.createdAt,
@@ -38,10 +40,10 @@ class OrderModel {
       phone: '',
       location: LocationModel.empty(),
       totalPrice: 0.0,
+      totalCount: 0,
       cartItems: const [],
       status: OrderStatus.pending,
       createdAt: DateTime.now(),
-
     );
   }
 
@@ -54,6 +56,7 @@ class OrderModel {
     String? phone,
     LocationModel? location,
     double? totalPrice,
+    int? totalCount,
     List<CartModel>? cartItems,
     OrderStatus? status,
     DateTime? createdAt,
@@ -66,6 +69,7 @@ class OrderModel {
       lastName: lastName ?? this.lastName,
       phone: phone ?? this.phone,
       location: location ?? this.location,
+      totalCount: totalCount ?? this.totalCount,
       totalPrice: totalPrice ?? this.totalPrice,
       cartItems: cartItems ?? this.cartItems,
       status: status ?? this.status,
@@ -85,6 +89,7 @@ class OrderModel {
       location: LocationModel.fromFirestore(
         (data['location'] as Map<String, dynamic>?) ?? <String, dynamic>{},
       ),
+      totalCount: (data['totalCount'] as int?) ?? 0,
       totalPrice: (data['totalPrice'] as num?)?.toDouble() ?? 0.0,
       cartItems:
           (data['cartItems'] as List<dynamic>?)
@@ -110,6 +115,7 @@ class OrderModel {
       'lastName': lastName,
       'phone': phone,
       'location': location.toFirestore(),
+      "totalCount": totalCount,
       'totalPrice': totalPrice,
       'cartItems': cartItems.map((item) => item.toFirestore()).toList(),
       'status': status.toString().split('.').last,

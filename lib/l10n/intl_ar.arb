@@ -410,6 +410,14 @@
     "@locationFloorHint": {
         "description": "نص التلميح لحقل الطابق في شاشة إضافة/تعديل الموقع في قسم إدارة المواقع في شاشة الإعدادات"
     },
+    "locationApartmentNumber": "رقم الشقة",
+    "@locationApartmentNumber": {
+        "description": "تسمية حقل رقم الشقة في شاشة إضافة/تعديل الموقع في قسم إدارة المواقع في شاشة الإعدادات"
+    },
+    "locationApartmentNumberHint": "أدخل رقم الشقة (مثل 101، 202، إلخ)",
+    "@locationApartmentNumberHint": {
+        "description": "نص التلميح لحقل رقم الشقة في شاشة إضافة/تعديل الموقع في قسم إدارة المواقع في شاشة الإعدادات"
+    },
     "addLocationButton": "إضافة موقع",
     "@addLocationButton": {
         "description": "نص زر إضافة الموقع في شاشة إضافة الموقع في قسم إدارة المواقع في شاشة الإعدادات"

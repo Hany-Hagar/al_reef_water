@@ -1006,6 +1006,28 @@ class S {
     );
   }
 
+  /// `Apartment Number`
+  String get locationApartmentNumber {
+    return Intl.message(
+      'Apartment Number',
+      name: 'locationApartmentNumber',
+      desc:
+          'Label for the apartment number field in the add/edit location screen',
+      args: [],
+    );
+  }
+
+  /// `Enter the apartment number for this location (e.g., 101, 202, etc.)`
+  String get locationApartmentNumberHint {
+    return Intl.message(
+      'Enter the apartment number for this location (e.g., 101, 202, etc.)',
+      name: 'locationApartmentNumberHint',
+      desc:
+          'Hint text for the apartment number field in the add/edit location screen',
+      args: [],
+    );
+  }
+
   /// `Add Location`
   String get addLocationButton {
     return Intl.message(

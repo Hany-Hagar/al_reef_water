@@ -3,7 +3,6 @@
 import 'location_states.dart';
 import 'package:flutter/material.dart';
 import '../../data/repo/location_repo.dart';
-import '../../data/models/region_model.dart';
 import '../../data/models/location_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,7 +12,6 @@ class LocationCubit extends Cubit<LocationState> {
 
   static LocationCubit get(context) => BlocProvider.of(context);
 
-  List<RegionModel> regions = [];
   List<LocationModel> locations = [];
 
   var titleController = TextEditingController();
@@ -24,10 +22,10 @@ class LocationCubit extends Cubit<LocationState> {
   var streetController = TextEditingController();
   var buildingNumberController = TextEditingController();
   var floorController = TextEditingController(text: "1");
+  var apartmentNumberController = TextEditingController(text: "1");
 
   String editId = "";
   String deleteId = "";
-  
 
   Future<void> fetchLocations() async {
     emit(LocationLoading());
@@ -51,6 +49,7 @@ class LocationCubit extends Cubit<LocationState> {
     streetController.text = location.street;
     buildingNumberController.text = location.buildingNumber;
     floorController.text = location.floor.toString();
+    apartmentNumberController.text = location.apartmentNumber;
   }
 
   void clearControllers() {
@@ -63,6 +62,7 @@ class LocationCubit extends Cubit<LocationState> {
     streetController.clear();
     buildingNumberController.clear();
     floorController.text = "1";
+    apartmentNumberController.text = "1";
   }
 
   LocationModel getLocationFromInput() {
@@ -75,6 +75,7 @@ class LocationCubit extends Cubit<LocationState> {
       district: districtController.text,
       street: streetController.text,
       buildingNumber: buildingNumberController.text,
+      apartmentNumber: apartmentNumberController.text,
       floor: int.tryParse(floorController.text) ?? 0,
     );
   }

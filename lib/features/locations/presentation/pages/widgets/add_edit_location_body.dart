@@ -38,8 +38,8 @@ class AddEditLocationBody extends StatelessWidget {
               _Street(),
               _BuildingNumber(),
               _Floor(),
+              _ApartmentNumber(),
               SizedBox(height: 12.h),
-
               BlocBuilder<LocationCubit, LocationState>(
                 builder: (context, state) {
                   if (isEdit) {
@@ -240,6 +240,21 @@ class _Floor extends StatelessWidget {
       hintText: s.locationFloorHint,
       keyboardType: TextInputType.number,
       controller: LocationCubit.get(context).floorController,
+    );
+  }
+}
+
+class _ApartmentNumber extends StatelessWidget {
+  const _ApartmentNumber();
+
+  @override
+  Widget build(BuildContext context) {
+    return _Item(
+      title: S.of(context).locationApartmentNumber,
+      icon: IconBroken.Category,
+      keyboardType: TextInputType.text,
+      hintText: S.of(context).locationApartmentNumberHint,
+      controller: LocationCubit.get(context).apartmentNumberController,
     );
   }
 }

@@ -409,6 +409,14 @@
     "@locationFloorHint": {
         "description": "Hint text for the floor field in the add/edit location screen"
     },
+    "locationApartmentNumber": "Apartment Number",
+    "@locationApartmentNumber": {
+        "description": "Label for the apartment number field in the add/edit location screen"
+    },
+    "locationApartmentNumberHint": "Enter the apartment number for this location (e.g., 101, 202, etc.)",
+    "@locationApartmentNumberHint": {
+        "description": "Hint text for the apartment number field in the add/edit location screen"
+    },
     "addLocationButton": "Add Location",
     "@addLocationButton": {
         "description": "Text for the add location button in the add location screen"
